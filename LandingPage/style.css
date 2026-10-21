@@ -1,0 +1,150 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    width: 100%;
+    background-color: white;
+}
+
+.NavegarIzquierda {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.LogoCasaLista {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    flex-shrink: 0;
+    font-family: "Inter", sans-serif;
+}
+
+.IconoLogo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    display: block;
+}
+
+.LogoCasaLista > span {
+    display: inline-block;
+    font-size: 1.2rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.TextoLogoCasa {
+    color: black;
+}
+
+.TextoLogoLista{
+    color: #0B6E63;
+}
+
+.NavegarLink {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+    font-family: "Inter", sans-serif;
+    text-decoration: none;
+}
+.NavegarLink a {
+    text-decoration: none;
+    color: black;
+    font-family: "Inter", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: color 0.3s;
+}
+.NavegarLink a:hover, .NavegarLink a.activo {
+    color: #0B6E63;
+    text-decoration: none;
+}
+.NavegarBotones {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.BotonCrearCuentaCabecera {
+    background-color: #E8A33D;
+    color: black;
+    border: none;
+    border-radius: 15px;
+    font-family: "Inter", sans-serif;
+    padding: 15px 30px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.BotonIniciarSesionCabecera {
+    background-color: #0B6E63;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-family: "Inter", sans-serif;
+    padding: 15px 30px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.body1 {
+    font-family: "Inter", sans-serif;
+    background-color: #E6F2F0;
+    display: flex;
+}
+.TextoBody1{
+    padding: 5rem 3rem;
+}
+.Frase1 {
+    color: #0B6E63;
+    gap: 3rem 3rem;
+}
+.Frase2 {
+    font-size: 3rem;
+    gap: 3rem 3rem;
+
+}
+.Frase3 {
+    color: #5F5F5F;
+    padding: 1rem 3rem;
+
+}
+.BotonesBody1{
+    display: flex;
+}
+.BtonCrearCuenta {
+    background-color: #E8A33D;
+    color: black;
+    border: none;
+    border-radius: 15px;
+    font-family: "Inter", sans-serif;
+    padding: 15px 30px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.BtonIniciarSesion {
+    background-color: #0B6E63;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-family: "Inter", sans-serif;
+    padding: 15px 30px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
