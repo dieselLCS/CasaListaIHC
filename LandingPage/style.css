@@ -3,6 +3,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+
 }
 
 nav {
@@ -85,6 +87,7 @@ nav {
     border: none;
     border-radius: 15px;
     font-family: "Inter", sans-serif;
+    font-weight: 600;
     padding: 15px 30px;
     cursor: pointer;
     white-space: nowrap;
@@ -96,6 +99,7 @@ nav {
     border: none;
     border-radius: 15px;
     font-family: "Inter", sans-serif;
+    font-weight: 600;
     padding: 15px 30px;
     cursor: pointer;
     white-space: nowrap;
@@ -106,25 +110,28 @@ nav {
     background-color: #E6F2F0;
     display: flex;
 }
-.TextoBody1{
-    padding: 5rem 3rem;
-}
 .Frase1 {
     color: #0B6E63;
-    gap: 3rem 3rem;
+    padding: 6rem 7.5rem 0rem 7.5rem;
 }
 .Frase2 {
     font-size: 3rem;
-    gap: 3rem 3rem;
+    font-weight:800;
+    padding: 1rem 7.5rem 1rem 7.5rem;
 
 }
 .Frase3 {
     color: #5F5F5F;
-    padding: 1rem 3rem;
+    padding: 1rem 7.5rem 1rem 7.5rem;
 
 }
 .BotonesBody1{
     display: flex;
+    padding: 1rem 7.5rem 1rem 7.5rem;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+    
 }
 .BtonCrearCuenta {
     background-color: #E8A33D;
@@ -132,6 +139,7 @@ nav {
     border: none;
     border-radius: 15px;
     font-family: "Inter", sans-serif;
+    font-weight: 600;
     padding: 15px 30px;
     cursor: pointer;
     white-space: nowrap;
@@ -143,8 +151,52 @@ nav {
     border: none;
     border-radius: 15px;
     font-family: "Inter", sans-serif;
+    font-weight: 600;
     padding: 15px 30px;
     cursor: pointer;
     white-space: nowrap;
 }
+.Checks1{
+    display: flex;
+    padding: 1rem 7.5rem 1rem 7.5rem;
+    align-items: center;
+    gap: 1rem;
+    list-style-type: none;
+    font-weight: 700;
+}
+.Checks2{
+    padding: 1rem 7.5rem 1rem 7.5rem;
+    align-items: center;
+    list-style-type: none;
+    font-weight: 700;
 
+}
+.ImagenLandingPage1{
+    justify-content: flex-end;
+}
+.Body2{
+    background-color: white;
+}
+.Body2Frase1{
+    text-align: center;
+    color: #0B6E63;
+    padding: 5rem 0rem 1rem 0rem;
+}
+.Body2Frase2{
+    text-align: center;
+    font-weight: 750;
+}
+.Body2 ol{
+    display: flex;
+    list-style-type: none;
+    padding: 6rem;
+    align-items: center;
+    gap: 2rem;
+    
+}
+.Body3{
+    background-color: #F4F4F4;
+}
+.Body5{
+    background-color: #0B6E63;
+}
