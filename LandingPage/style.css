@@ -9,6 +9,7 @@
 
 nav {
     display: flex;
+    position: fixed;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
@@ -110,25 +111,31 @@ nav {
     background-color: #E6F2F0;
     display: flex;
 }
+.ColumnaBody1{
+    width: 70%;
+}
+.ImagenLandingPage1{
+    width: 30;
+}
 .Frase1 {
     color: #0B6E63;
-    padding: 6rem 7.5rem 0rem 7.5rem;
+    padding: 6rem 0rem 0rem 7.5rem;
 }
 .Frase2 {
     font-size: 3rem;
     font-weight:800;
-    padding: 1rem 7.5rem 1rem 7.5rem;
+    padding: 1rem 0rem 1rem 7.5rem;
 
 }
 
 .Frase3 {
     color: #5F5F5F;
-    padding: 1rem 7.5rem 1rem 7.5rem;
+    padding: 1rem 0rem 1rem 7.5rem;
 
 }
 .BotonesBody1{
     display: flex;
-    padding: 1rem 7.5rem 1rem 7.5rem;
+    padding: 1rem 0rem 1rem 7.5rem;
     align-items: center;
     gap: 1rem;
     flex-shrink: 0;
@@ -172,9 +179,7 @@ nav {
     font-weight: 700;
 
 }
-.ImagenLandingPage1{
-    justify-content: flex-end;
-}
+
 .Body2{
     background-color: white;
 }
@@ -200,4 +205,33 @@ nav {
 }
 .Body5{
     background-color: #0B6E63;
+    display: flex;
+}
+.FrasesBody5{
+    color: white;
+    padding: 5rem 0rem 3rem 7rem;
+}
+.FrasesBody5 ul{
+    line-height: 1.6;
+    list-style-type: none;
+    padding: 0rem 0rem 2rem 0rem;
+}
+.BotonRegistrateComoProfesional{
+    background-color: #E8A33D;
+    border-radius: 15px;
+    border: none;
+    padding: 15px 30px;
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .body1{
+        flex-direction: column;
+    }
+    .Body5 {
+        flex-direction: column; /* Esto cambia la fila por una columna */
+    }
+    .FrasesBody5{
+        padding: 5rem 1rem 3rem 1rem;
+    }
 }
