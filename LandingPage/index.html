@@ -12,66 +12,70 @@
     <div class="BarraProgreso" id="Progreso"></div>
         <header>
             <nav>
-                <div class="NavegarIzquierda">
-                    <a href="#" class="LogoCasaLista">
-                        <img class="IconoLogo" src="img/IconoLogo.png" alt="Logo CasaLista">
-                        <span><span class="TextoLogoCasa">Casa</span><span class="TextoLogoLista">Lista</span></span>
-                    </a>
+                <div class="NavegadorContenedor">
+                    <div class="ContenedorIzquierda">
 
-                    <ul class="NavegarLink">
-                        <li><a href="#ComoFunciona">Como Funciona</a></li>
-                        <li><a href="#Servicios">Servicios</a></li>
-                        <li><a href="#Seguridad">Seguridad</a></li>
-                        <li><a href="#ParaProfesionales">Para Profesionales</a></li>
-                        <li><a href="#PreguntasFrecuentes">Preguntas Frecuentes</a></li>
-                    </ul>
-                </div>
+                        <a href="#" class="LogoCasaLista">
+                            <img class="IconoLogo" src="img/IconoLogo.png" alt="Logo CasaLista">
+                            <span><span class="TextoLogoCasa">Casa</span><span class="TextoLogoLista">Lista</span></span>
+                        </a>
 
-                <div class="NavegarBotones">
-                    <button class="BotonCrearCuentaCabecera">Crear Cuenta</button>
-                    <button class="BotonIniciarSesionCabecera">Iniciar Sesion</button>
+                        <ul class="NavegarLink" id="NavLink">
+                            <li><a href="#ComoFunciona">Como Funciona</a></li>
+                            <li><a href="#Servicios">Servicios</a></li>
+                            <li><a href="#Seguridad">Seguridad</a></li>
+                            <li><a href="#ParaProfesionales">Para Profesionales</a></li>
+                            <li><a href="#PreguntasFrecuentes">Preguntas Frecuentes</a></li>
+                        </ul>
+
+                    </div>
+
+                    <div class="ContenedorDerecha">
+                        <button class="BotonIniciarSesionCabecera">Iniciar Sesion</button>
+                        <button class="MenuBoton" id="MenuBton">☰</button>
+                    </div>
                 </div>
             </nav>
         </header>
     </div>
 
     <main>
-        <section class="body1">
-            <div class="FrasesBody1">
+        <section class="Body1" id="Body1">
+            <div class="Contenedor1Body1">
         
-                <h4 class="Frase1">GASFITERIA Y LIMPIEZA EN LIMA</h4>
+                <h5 class="Frase1Body1">GASFITERIA Y LIMPIEZA EN LIMA</h5>
 
-                <h1 class="Frase2">Profesionales verificados para tu hogar, al precio que acuerden juntos</h1>
+                <h1 class="Frase2Body1">Profesionales verificados para tu hogar, al precio que acuerden juntos</h1>
 
-                <h3 class="Frase3">Encuentra gasfiteros y personal de limpieza cerca de ti, revisa sus reseñas y negocia el precio antes de que lleguen a tu casa</h3>
+                <h3 class="Frase3Body1">Encuentra gasfiteros y personal de limpieza cerca de ti, revisa sus reseñas y negocia el precio antes de que lleguen a tu casa</h3>
                 
                 <div class="BotonesBody1">
-                    <button class="BtonCrearCuenta">Crear Cuenta</button>
-                
-                    <button class="BtonIniciarSesion">Iniciar Sesion</button>
+                    <input class="EntradaEmail" type="text" name="EmailCrearCuenta" placeholder="Ingrese su Email">
+                    <button class="BotonCrearCuenta">Crear Cuenta</button>
                 </div>
                 
-                <ul class="Checks1">
+                <ul class="ChecksBody1">
                     <li>✔ Identidad Verificada</li>
                     <li>✔ Precio acordado antes</li>
-                </ul>
-
-                <ul class="Checks2">
                     <li>✔ Reseña de clientes reales</li>
                 </ul>
+
             </div>
-
-            <img class="ImagenLandingPage1" src="img/LandingPage1.png" alt="Persona sentanda en un sofa usando la plataforma de CasaLista">
-
-
+            <div class="Contenedor2Body1">
+                <img class="ImagenLandingContenedor2" src="img/LandingPage1.png" alt="Persona sentanda en un sofa usando la plataforma de CasaLista">
+            </div>
+            
+        
         </section>
 
         <section class="Body2">
 
-            <h4 class="Body2Frase1">COMO FUNCIONA</h4>
-            <h2 class="Body2Frase2">Resuelve tu problema en 3 pasos</h2>
             
-            <div class="ContenedorPasos">
+            <h4 class="Frase1Body2">COMO FUNCIONA</h4>
+            <h2 class="Frase2Body2">Resuelve tu problema en 3 pasos</h2>
+            
+
+            <div class="Contenedor1Body2">
 
                 <div class="PasosTarjeta">
                     <span class="PasoNumero">1</span>
@@ -95,48 +99,81 @@
         </section>
 
         <section class="Body3">
+            
+            <h5>SERVICIOS</h5>
 
             <h2>Empezamos por lo que mas se necesita en casa</h2>
+            <div class="Contenedor1Body3">
 
-            <ol>
-                <li class="NecesitaEnCasa">
-                    <span></span>
-                    <h3>Gasfiteria</h3>
-                    <p>Fugas, atoros, cambios de griferia e instalaciones de terma</p>
-                </li>
+                <div class="ServicioTarjeta">
+                    <div>
+                        <img src="img/GasfiteriaBody3.png" alt="Profesional arreglando un lavabo">
+                    </div>
+                    <div>
+                        <h3>Gasfiteria</h3>
+                        <p>Fugas, atoros, cambios de griferia e instalaciones de terma</p>
+                    </div>
+                </div>
 
-                <li class="NecesitaEnCasa">
-                    <span></span>
-                    <h3>Limpieza</h3>
-                    <p>Limpieza general del hogar, cocinas, baños y despues de una mudanza</p>
-                </li>
-            </ol>
+                <div class="ServicioTarjeta">
+                    <div>
+                        <img src="img/LimpiezaBody3.png" alt="Profesional limpiando">
+                    </div>
+                    <div>
+                        <h3>Limpieza</h3>
+                        <p>Limpieza general del hogar, cocinas, baños y despues de una mudanza</p>
+                    </div>
+                </div>
+
+            </div>
 
         </section>
 
-        <section>
-            <h4>SEGURIDAD</h4>
-            <h3>Sabes quien entra a tu casa</h3>
-            <ul>
-                <li>
-                    <h4>Identidad y antecedentes verificados</h4>
-                    <p>Revisamos el DNI y los antecedentes de cada profesional antes de activar su perfil.</p>
-                </li>
+        <section class="Body4">
 
-                <li>
-                    <h4>Codigo de seguridad en cada visita</h4>
-                    <p>Al llegar el profesional te dice un codigo y solo tu lo conoces</p>
-                </li>
+            
+            <h5>SEGURIDAD</h5>
+
+            <div class="Contenedor1Body4">
+                <img class="SeguridadBody4" src="img/SeguridadBody4.png" alt="Profesional mostrando su codigo de seguridad">
+            </div>
+
+            <h3>Sabes quien entra a tu casa</h3>
+            <div class="Contenedor2Body4">
+                <div class="SeguridadTarjeta">
+                    <div>
+                        <img src="img/IconoSeguridad1Body4.png" alt="Simbolo de Escudo">
+                    </div>
+                    <div>
+                        <h4>Identidad y antecedentes verificados</h4>
+                        <p>Revisamos el DNI y los antecedentes de cada profesional antes de activar su perfil.</p>
+                    </div>
+                </div >
+
+                <div class="SeguridadTarjeta">
+                    <div>
+                        <img src="img/IconoSeguridad2Body4.png" alt="Simbolo de Candado">
+                    </div>
+                    <div>
+                        <h4>Codigo de seguridad en cada visita</h4>
+                        <p>Al llegar el profesional te dice un codigo y solo tu lo conoces</p>
+                    </div>
+                </div>
                 
-                <li>
-                    <h4>Precio claro desde el inicio</h4>
-                    <p>Ves la tarifa base y acuerdan el precio final antes del servicio. Sin sorpresas.</p>
-                </li>
-            </ul>  
+                <div class="SeguridadTarjeta">
+                    <div>
+                        <img src="img/IconoSeguridad3Body4.png" alt="Simbolo de Etiqueta">
+                    </div>
+                    <div>
+                        <h4>Precio claro desde el inicio</h4>
+                        <p>Ves la tarifa base y acuerdan el precio final antes del servicio. Sin sorpresas.</p>
+                    </div>
+                </div>
+            </div>  
         </section>
 
         <section class="Body5">
-            <div class="FrasesBody5">
+            <div class="Contenedor1Body5">
                 <h5>PARA PROFESIONALES</h5>
                 <h2>Consigue mas trabajos y organiza mejor tu dia</h2>
                 <ul>
@@ -144,9 +181,11 @@
                     <li>✔ Negocia tu precio, sin tarifa impuestas</li>
                     <li>✔ Llena tus horas libres con servicios cercanos</li>
                 </ul>
-                <button class="BotonRegistrateComoProfesional">Registrate como profesional</button>
             </div>
-            <img src="img/ParaProfesionales.png" alt="Profesional agarrando un movil mostrando la app">
+            <div class="Contenedor2Body5">
+                <img class="ParaProfesionalesBody5" src="img/ParaProfesionales.png" alt="Profesional agarrando un movil mostrando la app">
+            </div>
+
         </section>
 
         <section class="Body6">
@@ -157,9 +196,39 @@
 
     </main>
 
-    <footer>
+    <footer class="Body7">
 
+        <div class="Contenedor1Body7">
+            <span><span class="FooterTextoLogoCasa">Casa</span><span class="FooterTextoLogoLista">Lista</span></span>
+            <p>Conectamos hogares con profesionales verificados de gasfiteria y limpieza.</p>
+        </div>
+
+        <div class="Contenedor2Body7">
+            <div class="TarjetaBody7">
+                <span>Clientes</span>
+                <ul>
+                    <li><a href="#Body1">Funciona</a></li>
+                    <li><a>Servicios</a></li>
+                    <li><a>Seguridad</a></li>
+                </ul>
+            </div>
+            <div class="TarjetaBody7">
+                <span>Profesionales</span>
+                <ul>
+                    <li><a href="#Body1">Registrate</a></li>
+                    <li><a>Requsitos</a></li>
+                </ul>
+            </div>
+            <div class="TarjetaBody7">
+                <span>Ayuda</span>
+                <ul>
+                    <li><a href="#Body1">Preguntas Frecuentes</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <h6>2026 CasaLista</h6>
     </footer>
-
+    <script src="script.js"></script>
 </body>
 </html>
