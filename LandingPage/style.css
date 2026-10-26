@@ -1,5 +1,5 @@
 * {
-    margin: 0;
+    margin: 0; /*crea un espacio exterior transparente alrededor de un elemento html*/
     padding: 0;
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
@@ -9,277 +9,306 @@ nav {
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 100;
+    background-color: white;
+}
+.NavegadorContenedor{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 0.5rem 0.5rem;
     width: 100%;
-    background-color: white;
 }
-
-.NavegarIzquierda {
+.ContenedorIzquierda{
     display: flex;
     align-items: center;
-    gap: 3rem;
 }
-
-.LogoCasaLista {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+.NavegarLink{
+    display: none;
+}
+.LogoCasaLista{
     text-decoration: none;
-    flex-shrink: 0;
-}
-
-.IconoLogo {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-    display: block;
-}
-
-.LogoCasaLista > span {
-    display: inline-block;
     font-size: 1.2rem;
-    font-weight: 700;
-    white-space: nowrap;
-}
-
-.TextoLogoCasa {
-    color: black;
-}
-
-.TextoLogoLista{
-    color: #0B6E63;
-}
-
-.NavegarLink {
+    font-weight:bolder;
     display: flex;
     align-items: center;
-    gap: 2rem;
-    list-style: none;
-    text-decoration: none;
+    gap: 0.2rem;
 }
-.NavegarLink a {
-    text-decoration: none;
+.TextoLogoCasa{
     color: black;
-    font-size: 0.9rem;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    transition: color 0.3s;
 }
-.NavegarLink a:hover, .NavegarLink a.activo {
-    color: #0B6E63;
-    text-decoration: none;
+.TextoLogoLista{
+    color: #07695D;
 }
-.NavegarBotones {
+.ContenedorDerecha{
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    flex-shrink: 0;
 }
-
-.BotonCrearCuentaCabecera {
-    background-color: #E8A33D;
-    color: black;
-    border: none;
-    border-radius: 15px;
-    font-weight: 600;
-    padding: 15px 30px;
-    cursor: pointer;
-    white-space: nowrap;
+.ContenedorDerecha p{
+    font-size: 1.7rem;
+    font-weight: 700;
 }
-
-.BotonIniciarSesionCabecera {
-    background-color: #0B6E63;
+.BotonIniciarSesionCabecera{
+    background-color: #07695D;
     color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    border:none;
+}
+.MenuBoton{
     border: none;
-    border-radius: 15px;
-    font-weight: 600;
-    padding: 15px 30px;
-    cursor: pointer;
-    white-space: nowrap;
+    font-size: 1.1rem;
+    padding: 0.5rem;
 }
-
-.body1 {
-    background-color: #E6F2F0;
+.Body1{
+    background-color: #E5F0EC;
+    max-height: 100vh;
     display: flex;
-    width: 100vw;
-    height: 100vh;
+    flex-direction: column;
+}
+.Contenedor1Body1{
+    padding: 5rem 1rem 0.5rem 1rem;
+    height: 70%;
+}
+.Frase1Body1{
+    color: #07695D;
+    padding: 0.5rem 0rem;
 }
 
-.Frase1 {
-    color: #0B6E63;
-    padding: 11rem 0rem 0rem 7.5rem;
-}
-.Frase2 {
-    font-size: 3rem;
-    font-weight:800;
-    padding: 1rem 0rem 1rem 7.5rem;
-}
-
-.Frase3 {
-    color: #5F5F5F;
-    padding: 1rem 0rem 1rem 7.5rem;
-
+.Frase3Body1{
+    color: #5C6360;
+    padding: 0.5rem 0rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.2rem;
 }
 .BotonesBody1{
     display: flex;
-    padding: 1rem 0rem 1rem 7.5rem;
     align-items: center;
-    gap: 1rem;
-    flex-shrink: 0;
-    
-}
-.BtonCrearCuenta {
-    background-color: #E8A33D;
-    color: black;
-    border: none;
-    border-radius: 15px;
-    font-weight: 600;
-    padding: 15px 30px;
-    cursor: pointer;
-    white-space: nowrap;
-}
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem 0rem;
 
-.BtonIniciarSesion {
-    background-color: #0B6E63;
-    color: white;
-    border: none;
-    border-radius: 15px;
-    font-weight: 600;
-    padding: 15px 30px;
-    cursor: pointer;
-    white-space: nowrap;
 }
-.Checks1{
+.EntradaEmail{
+    border: 1px solid #07695D;
+    border-radius: 10px;
+    width: 69%;
+    box-sizing: border-box;
+    padding: 10px;
+
+}
+.BotonCrearCuenta{
+    background-color: #E9A23B;
+    border: none;
+    border-radius: 10px;
+    width: 30%;
+    padding: 10px;
+    cursor: pointer;
+}
+.ChecksBody1{
+    list-style-type: none;
+    line-height: 2rem;
+}
+.Contenedor2Body1{
+    height: 30%;
     display: flex;
-    padding: 1rem 7.5rem 1rem 7.5rem;
-    align-items: center;
-    gap: 1rem;
-    list-style-type: none;
-    font-weight: 700;
-}
-.Checks2{
-    padding: 1rem 7.5rem 1rem 7.5rem;
-    align-items: center;
-    list-style-type: none;
-    font-weight: 700;
-}
+    justify-content: center;
+    width: 100%;
+    padding: 1rem 0rem;
+    box-sizing: border-box;
+    justify-content: flex-end;
+    padding-bottom: 0;
 
+}
+.ImagenLandingContenedor2{
+    display: block;
+    width: 100%;
+    height: auto;
+    align-self: center;
+    padding: 0rem 1rem 0rem 0rem;
+}
 .Body2{
     background-color: white;
-}
-.Body2Frase1{
     text-align: center;
-    color: #0B6E63;
-    padding: 5rem 0rem 1rem 0rem;
+    padding: 0rem 1rem;
 }
-.Body2Frase2{
-    text-align: center;
-    font-weight: 750;
+.Frase1Body2{
+    color: #07695D;
+    padding: 1rem 1rem;
+    font-size: 0.8rem;
 }
-.Body2 ol{
+.Frase2Body2{
+    color: black;
+    font-size: 1.5rem;
+}
+.Contenedor1Body2{
     display: flex;
-    list-style-type: none;
-    padding: 6rem;
-    align-items: center;
-    gap: 2rem;
-    
-}
-.ContenedorPasos{
-    padding: 3rem 1rem 2rem 1rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 10rem;
+    flex-direction: column;
+    padding: 1rem 0rem 3rem 0rem;
+    gap: 1rem;
 }
 .PasosTarjeta{
-    border: 2px solid #E3E3E3;
-    border-radius: 15px;
+    border: 2px solid #CCCCCC;
+    border-radius: 10px;
+    text-align: start;
+    padding: 1rem 0.5rem;
+}
+.PasosTarjeta span{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #07695D;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    color: white;
+}
+.PasosTarjeta h3{
+    font-weight: 700;
+    padding: 0.5rem 0rem;
+}
+.PasosTarjeta p{
+    color: #666D6A;
 }
 .Body3{
-    background-color: #F4F4F4;
+    background-color: #F3F3F3;
+    padding: 0rem 1rem;
+}
+.Body3 h2{
+    font-size: 1.7rem;
+}
+.Body3 h5{
+    color: #07695D;
+    padding: 1rem 0rem;
+}
+.Contenedor1Body3{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0rem;
+    gap: 1rem;
+}
+.ServicioTarjeta{
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    gap:1rem;
+    padding: 1rem 1rem;
+}
+.Body4{
+    background-color: white;
+    padding: 1rem 1rem 2rem 1rem;
+}
+.Contenedor1Body4{
+    width: 100%;
+    max-width: 100%;
+}
+.SeguridadBody4{
+    display: block;
+    max-width: 100%;
+    height: auto;
+    padding: 1.5rem 0rem 0rem 0rem;
+}
+.Body4 h5{
+    font-size: 0.8rem;
+    color: #07695D;
+}
+.Body4 h3{
+    font-size: 1.6rem;
+    padding: 1rem 0rem;
+}
+.Contenedor2Body4{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.SeguridadTarjeta{
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+}
+
+.SeguridadTarjeta h4{
+    font-size: 1rem;
+    padding: 0rem 0rem 0.5rem 0rem;
+}
+.SeguridadTarjeta p{
+    font-size: 14px;
+    font-weight: 500;
+    color: #666D6A;
 }
 .Body5{
-    background-color: #0B6E63;
-    display: flex;
-}
-.FrasesBody5{
+    background-color: #07695D;
+    padding: 1rem 1rem 0rem 1rem;
     color: white;
-    padding: 5rem 0rem 3rem 7rem;
 }
-.FrasesBody5 ul{
-    line-height: 1.6;
+.Contenedor1Body5 h5{
+    font-size: 0.8rem;
+    padding: 1rem 0rem;
+}
+
+.Contenedor1Body5 ul{
     list-style-type: none;
-    padding: 0rem 0rem 2rem 0rem;
+    padding: 1.5rem 0rem;
+    line-height: 2rem;
+    font-size: 0.8rem;
+    font-weight: 500;
 }
-.BotonRegistrateComoProfesional{
-    background-color: #E8A33D;
-    border-radius: 15px;
-    border: none;
-    padding: 15px 30px;
-    font-weight: 700;
+.Contenedor2Body5{
+    width: 100%;
+    max-width: 100%;
 }
+.ParaProfesionalesBody5{
+    width: 100%;
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+.Body6{
+    padding: 1rem 1rem;
+}
+.Body7{
+    background-color: #1B1B1B;
+    padding: 1rem 1rem;
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem 1rem;
 
-@media (max-width: 768px) {
-    .body1{
-        flex-direction: column;
-    }
-    .Frase1 {
-        padding: 7rem 0rem 0rem 1rem;
-    }
-    .Frase2 {
-        font-size: 2rem;
-        padding: 1rem 0rem 0rem 1rem;
 
-    }
-    .Frase3 {
-        font-size: 0.90rem;
-        padding: 1rem 1rem 1rem 1rem;
-    }
-    .BotonesBody1{
-        padding: 1rem 1rem 1rem 1rem;
-        flex-direction: column;
-    }
-    .BtonCrearCuenta{
-        padding: 15px 40%;
-    }
-    .BtonIniciarSesion{
-        padding: 15px 40%;
-    }
-    .Checks1{
-        padding: 1rem 0rem 1rem 1.5rem;
-        align-items: center;
-        gap: 2rem;
-        list-style-type: none;
-        font-weight: 600;
-        font-size: 0.8rem;
-    }
-    .Checks2{
-        padding: 1rem 0rem 1rem 1.5rem;
-        align-items: center;
-        gap: 2rem;
-        list-style-type: none;
-        font-weight: 600;
-        font-size: 0.8rem;
-    }
+}
+.Contenedor2Body7{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 30px;
+}
+.FooterTextoLogoCasa{
+    color: white;
+}
+.FooterTextoLogoLista{
+    color: #07695D;
+}
+.Body7 p{
+    color: #9FA5A4;
+    padding: 1rem 0rem 0rem 0rem;
+    font-size: 0.9rem;
+}
+.TarjetaBody7{
+    line-height: 1.8rem;
+}
+.TarjetaBody7 ul{
+    list-style-type: none;
+}
+.TarjetaBody7 ul li a{
+    text-decoration: none;
+    color: #6E7170;
 
-    .Body2Frase1{
-        text-align: left;
-        flex-direction: column;
-        color: #0B6E63;
-
-        padding: 5rem 0rem 1rem 0rem;
-    }
-    .Body2Frase2{
-        text-align: left;
-        flex-direction: column;
-        font-weight: 750;
-    }
-    .Body5 {
-        flex-direction: column; 
-    }
-    .FrasesBody5{
-        padding: 5rem 1rem 3rem 1rem;
+}
+@media (min-width: 850px) {
+    .Body7 {
+        grid-template-columns: 1fr 2fr; 
+        align-items: start;
     }
 }
