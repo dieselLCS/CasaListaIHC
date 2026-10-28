@@ -6,34 +6,60 @@
     <title>CasaLista</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/IconoLogo.png" type="img/png">
+    <link rel="stylesheet" href="IniciarSesion.css">
 </head>
 <body>
     <section class="Section1">
         <div class="Contenedor1Section1">
             <img src="assets/IconoLogo.png">
-            <span><span class="TextoLogoCasa">Casa</span><span class="TextoLogoLista">Lista</span></span>
+            <div class="TextoLogo">
+                <span><span class="TextoLogoCasa">Casa</span><span class="TextoLogoLista">Lista</span></span>
+            </div>
         </div>
 
         <div class="Contenedor2Section1">
-            <span><span class="TextoLogoCasa">Bienvenido</span><span class="TextoLogoLista"> de Nuevo</span></span>
-            <p>Inicia sesion para gestionar gestionar tus servicios del hogar de forma simple y segura.</p>
-            <input type="text" name="CorreoElectronico" placeholder="Correo Electronico">
-            <input type="text" name="Contraseña" placeholder="Contraseña">
-            <div>
-
-            </div>
-            <div>
-
-            </div>
-            <p>o continua con</p>
-            <div>
-
-            </div>
-            <div>
-                <p>Al continuar, acepta nuestros terminos</p>
-                
-            </div>
+            <img class="ImagenPersonaSofa" src="assets/PersonaSofa.png" alt="Mujer Sentada en un Sofa Relajada">
         </div>
+
+        <div class="Contenedor3Section1">
+            <div class="TextoSaludoBienvenidoDeNuevo">
+                <span><span class="TextoSaludoBienvenido">Bienvenido</span><span class="TextoSaludoDeNuevo"> de Nuevo</span></span>
+            </div>
+            
+            <p>Inicia sesion para gestionar gestionar tus servicios del hogar de forma simple y segura.</p>
+            
+
+            <div class="EntradaIniciarSesion">
+                <input type="text" name="CorreoElectronico" placeholder="♙ Correo Electronico">
+                <input type="text" name="Contraseña" placeholder="◉ Contraseña">
+            </div>
+
+            <div>
+                <div>
+                    <input type="checkbox" id="CheckRecordarme" name="CheckBoxRecordarme">
+                    <label for="CheckRecordarme">Recordarme</label>
+                </div>
+                <div>
+                    <a>¿Olvidaste tu contraseña?</a>
+                </div>
+            </div>
+
+            <div>
+                <button>Iniciar Sesion</button>
+                <button>Crear Cuenta</button>
+            </div>
+
+            <p>o continua con</p>
+
+            <div>
+                <img src="assets/IconoGoogle.png" alt="Logo de Google">
+            </div>
+            
+            <p>Al continuar, acepta nuestros terminos</p>
+                
+        </div>
+
+        <a>Terminos de Servicio y Politica de Privacidad</a>
 
     </section>
 </body>
