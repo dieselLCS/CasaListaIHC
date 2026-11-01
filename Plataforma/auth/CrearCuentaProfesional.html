@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CasaLista - Crear cuenta profesional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/IconoLogo.png" type="image/png">
+    <link rel="stylesheet" href="CrearCuentaProfesional.css">
+</head>
+<body>
+    <div class="Fondo" aria-hidden="true">
+        <div class="ManchaDecorativa ManchaArribaIzquierda"></div>
+        <div class="ManchaDecorativa ManchaAbajoIzquierda"></div>
+        <div class="ManchaDecorativa ManchaAbajoDerecha"></div>
+    </div>
+
+    <main class="Registro">
+        <header class="Encabezado">
+            <div class="Logo">
+                <img src="assets/IconoLogo.png" alt="Logo de Casa Lista">
+                <span class="TextoLogo"><span class="TextoLogoCasa">Casa</span> <span class="TextoLogoLista">Lista</span></span>
+            </div>
+
+            <div class="Titulo">
+                <a class="BotonVolver" href="IniciarSesion.html" aria-label="Volver">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4 7 12l8 8"/></svg>
+                </a>
+                <h1><span class="TituloCrear">Crear</span> <span class="TituloCuenta">Cuenta</span></h1>
+            </div>
+        </header>
+
+        <form class="FormularioRegistro" id="FormularioRegistro" data-tipo="profesional" novalidate>
+            <nav class="TipoCuenta" aria-label="Tipo de cuenta">
+                <div class="TarjetasTipo">
+                    <a class="TarjetaTipo" href="CrearCuentaCliente.html">
+                        <span class="CirculoRadio" aria-hidden="true"></span>
+                        <img src="assets/RegistroCliente.png" alt="Mujer usando su celular">
+                        <span class="NombreTipo">Usuario/Cliente</span>
+                    </a>
+                    <a class="TarjetaTipo Seleccionada" href="CrearCuentaProfesional.html" aria-current="page">
+                        <span class="CirculoRadio" aria-hidden="true"></span>
+                        <img src="assets/RegistroProfesional.png" alt="Gasfitero sosteniendo una llave">
+                        <span class="NombreTipo">Profesional</span>
+                    </a>
+                </div>
+                <p class="AyudaTipo">Elige cómo usarás Casa Lista</p>
+            </nav>
+
+            <section class="Tarjeta">
+                <div class="CabeceraTarjeta">
+                    <span class="CirculoIcono" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/></svg>
+                    </span>
+                    <div>
+                        <h2>Datos personales</h2>
+                        <p>Queremos conocerte un poquito.</p>
+                    </div>
+                </div>
+
+                <div class="Campo">
+                    <label class="SoloLector" for="nombres">Nombres y apellidos</label>
+                    <div class="CampoEntrada">
+                        <svg class="IconoCampo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/></svg>
+                        <input type="text" id="nombres" name="nombres" placeholder="Nombres y apellidos" autocomplete="name">
+                    </div>
+                    <small class="MensajeError" id="error-nombres"></small>
+                </div>
+
+                <div class="Campo">
+                    <label class="SoloLector" for="correo">Correo electrónico</label>
+                    <div class="CampoEntrada">
+                        <svg class="IconoCampo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg>
+                        <input type="email" id="correo" name="correo" placeholder="Correo electrónico" autocomplete="email">
+                    </div>
+                    <small class="MensajeError" id="error-correo"></small>
+                </div>
+
+                <div class="Campo">
+                    <label class="SoloLector" for="celular">Número de celular</label>
+                    <div class="CampoEntrada">
+                        <svg class="IconoCampo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18h2"/></svg>
+                        <input type="tel" id="celular" name="celular" placeholder="Número de celular" inputmode="numeric" maxlength="9" autocomplete="tel-national">
+                    </div>
+                    <small class="MensajeError" id="error-celular"></small>
+                </div>
+
+                <div class="Campo">
+                    <label class="SoloLector" for="contrasena">Contraseña</label>
+                    <div class="CampoEntrada">
+                        <svg class="IconoCampo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10.5" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><path d="M12 15v2"/></svg>
+                        <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" autocomplete="new-password">
+                        <button type="button" class="BotonOjo" data-objetivo="contrasena" aria-label="Mostrar contraseña">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </button>
+                    </div>
+                    <small class="MensajeError" id="error-contrasena"></small>
+                </div>
+
+                <div class="Campo">
+                    <label class="SoloLector" for="confirmarContrasena">Confirmar contraseña</label>
+                    <div class="CampoEntrada">
+                        <svg class="IconoCampo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10.5" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><path d="M12 15v2"/></svg>
+                        <input type="password" id="confirmarContrasena" name="confirmarContrasena" placeholder="Confirmar contraseña" autocomplete="new-password">
+                        <button type="button" class="BotonOjo" data-objetivo="confirmarContrasena" aria-label="Mostrar contraseña">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </button>
+                    </div>
+                    <small class="MensajeError" id="error-confirmarContrasena"></small>
+                </div>
+            </section>
+
+            <section class="Tarjeta">
+                <div class="CabeceraTarjeta">
+                    <span class="CirculoIcono" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7"/><path d="M3 12.5h18"/><path d="M12 11.5v2"/></svg>
+                    </span>
+                    <div>
+                        <h2>Perfil profesional</h2>
+                        <p>Cuéntanos qué haces y dónde trabajas.</p>
+                    </div>
+                </div>
+
+                <fieldset class="Servicios" id="servicios">
+                    <legend class="TituloServicios">¿Qué servicio ofreces?</legend>
+                    <div class="TarjetasServicio">
+                        <label class="TarjetaServicio">
+                            <input type="checkbox" name="servicios" value="gasfiteria">
+                            <span class="CheckServicio" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+                            </span>
+                            <svg class="IconoServicio IconoGasfiteria" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h9a4 4 0 0 1 4 4v1"/><path d="M4 14h7a2 2 0 0 1 2 2v-1"/><path d="M4 8.5v7"/><path d="M15.5 15h3v2.5h-3z"/><path d="M8 10V6.5"/><path d="M5.5 6.5h5"/><path d="M17 20.5v.5"/></svg>
+                            <span class="TextoServicio">
+                                <strong>Gasfitería</strong>
+                                <span>Reparación e instalación</span>
+                            </span>
+                        </label>
+                        <label class="TarjetaServicio">
+                            <input type="checkbox" name="servicios" value="limpieza">
+                            <span class="CheckServicio" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+                            </span>
+                            <svg class="IconoServicio IconoLimpieza" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3 11.5 11"/><path d="M8.5 11h7l1.5 3.5H7z"/><path d="M7 14.5 5.5 21"/><path d="M10 14.5 9.3 21"/><path d="M13.5 14.5l.2 6.5"/><path d="M17 14.5 18 21"/></svg>
+                            <span class="TextoServicio">
+                                <strong>Limpieza</strong>
+                                <span>Limpieza del hogar</span>
+                            </span>
+                        </label>
+                    </div>
+                    <small class="MensajeError" id="error-servicios"></small>
+                </fieldset>
+
+                <div class="Campo">
+                    <label class="SoloLector" for="zonaTrabajo">Distrito / zona de trabajo</label>
+                    <div class="CampoEntrada">
+                        <svg class="IconoCampo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.5s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+                        <select id="zonaTrabajo" name="zonaTrabajo" class="SinValor">
+                            <option value="" selected disabled>Distrito / zona de trabajo</option>
+                            <option>Ate</option>
+                            <option>Barranco</option>
+                            <option>Breña</option>
+                            <option>Chorrillos</option>
+                            <option>Comas</option>
+                            <option>Jesús María</option>
+                            <option>La Molina</option>
+                            <option>La Victoria</option>
+                            <option>Lince</option>
+                            <option>Los Olivos</option>
+                            <option>Magdalena del Mar</option>
+                            <option>Miraflores</option>
+                            <option>Pueblo Libre</option>
+                            <option>San Borja</option>
+                            <option>San Isidro</option>
+                            <option>San Juan de Lurigancho</option>
+                            <option>San Juan de Miraflores</option>
+                            <option>San Martín de Porres</option>
+                            <option>San Miguel</option>
+                            <option>Santiago de Surco</option>
+                            <option>Surquillo</option>
+                            <option>Villa El Salvador</option>
+                        </select>
+                        <svg class="IconoFlecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                    </div>
+                    <small class="MensajeError" id="error-zonaTrabajo"></small>
+                </div>
+
+                <div class="Campo">
+                    <label class="SoloLector" for="experiencia">Años de experiencia</label>
+                    <div class="CampoEntrada">
+                        <svg class="IconoCampo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7"/><path d="M3 12.5h18"/><path d="M12 11.5v2"/></svg>
+                        <select id="experiencia" name="experiencia" class="SinValor">
+                            <option value="" selected disabled>Años de experiencia</option>
+                            <option>Menos de 1 año</option>
+                            <option>1 a 2 años</option>
+                            <option>3 a 5 años</option>
+                            <option>Más de 5 años</option>
+                        </select>
+                        <svg class="IconoFlecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                    </div>
+                    <small class="MensajeError" id="error-experiencia"></small>
+                </div>
+
+                <div class="Campo">
+                    <label class="SoloLector" for="descripcion">Descripción breve de tu servicio</label>
+                    <div class="CampoEntrada CampoTexto">
+                        <svg class="IconoCampo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg>
+                        <textarea id="descripcion" name="descripcion" placeholder="Descripción breve de tu servicio" maxlength="300" aria-describedby="contadorDescripcion"></textarea>
+                        <span class="Contador" id="contadorDescripcion">0/300</span>
+                    </div>
+                    <small class="MensajeError" id="error-descripcion"></small>
+                </div>
+            </section>
+
+            <section class="Tarjeta SeccionVerificacion">
+                <div class="CabeceraTarjeta">
+                    <span class="CirculoIcono" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5.5c0 4.4 3 8.2 7 9.5 4-1.3 7-5.1 7-9.5V6l-7-3Z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg>
+                    </span>
+                    <div>
+                        <h2>Verificación</h2>
+                        <p>Ayúdanos a generar confianza.</p>
+                    </div>
+                </div>
+
+                <div class="Campo">
+                    <div class="FilaArchivo">
+                        <svg class="IconoArchivo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/></svg>
+                        <div class="TextoArchivo">
+                            <label for="fotoPerfil">Foto de perfil</label>
+                            <span class="DetalleArchivo">JPG o PNG · Máx. 5 MB</span>
+                        </div>
+                        <button type="button" class="BotonSubir" data-objetivo="fotoPerfil">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V4"/><path d="m7.5 8.5 4.5-4.5 4.5 4.5"/><path d="M4 15v3.5A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V15"/></svg>
+                            Subir foto
+                        </button>
+                        <input type="file" id="fotoPerfil" name="fotoPerfil" accept="image/jpeg,image/png" hidden>
+                    </div>
+                    <small class="MensajeError" id="error-fotoPerfil"></small>
+                </div>
+
+                <div class="Campo">
+                    <div class="FilaArchivo">
+                        <svg class="IconoArchivo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg>
+                        <div class="TextoArchivo">
+                            <label for="documento">Documento de identidad</label>
+                            <span class="DetalleArchivo">JPG o PNG · Máx. 5 MB</span>
+                        </div>
+                        <button type="button" class="BotonSubir" data-objetivo="documento">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V4"/><path d="m7.5 8.5 4.5-4.5 4.5 4.5"/><path d="M4 15v3.5A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V15"/></svg>
+                            Subir archivo
+                        </button>
+                        <input type="file" id="documento" name="documento" accept="image/jpeg,image/png" hidden>
+                    </div>
+                    <small class="MensajeError" id="error-documento"></small>
+                </div>
+
+                <p class="AvisoSeguro">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 7.5v.5"/></svg>
+                    Revisaremos tus documentos de forma segura.
+                </p>
+            </section>
+
+            <section class="Tarjeta TarjetaTerminos">
+                <h2>Términos y preferencias</h2>
+                <div class="Casilla">
+                    <input type="checkbox" id="terminos" name="terminos">
+                    <label for="terminos">Acepto los <a href="#">Términos y Privacidad</a></label>
+                </div>
+                <small class="MensajeError" id="error-terminos"></small>
+                <div class="Casilla CasillaSecundaria">
+                    <input type="checkbox" id="novedades" name="novedades">
+                    <label for="novedades">Quiero recibir novedades y promociones.</label>
+                </div>
+            </section>
+
+            <p class="MensajeExito" id="MensajeExito" role="status" hidden>¡Cuenta creada! Te llevamos a iniciar sesión…</p>
+
+            <button type="submit" class="BotonCrearCuenta">
+                Crear mi cuenta
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg>
+            </button>
+
+            <p class="TextoIniciarSesion">¿Ya tienes cuenta? <a href="IniciarSesion.html">Iniciar sesión</a></p>
+        </form>
+    </main>
+
+    <script src="CrearCuenta.js"></script>
+</body>
+</html>

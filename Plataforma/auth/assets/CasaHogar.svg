@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" role="img" aria-label="Casa con sol">
+  <circle cx="40" cy="27" r="26" fill="#FFB735"/>
+  <path d="M40 22 12 46h9v26a5 5 0 0 0 5 5h28a5 5 0 0 0 5-5V46h9z" fill="#006D61" stroke="#E6F5F1" stroke-width="4" stroke-linejoin="round"/>
+</svg>
