@@ -1,45 +1,19 @@
+// Lógica común de CrearCuentaCliente.html y CrearCuentaProfesional.html.
+// El tipo de cuenta se lee del atributo data-tipo del formulario.
 const formulario = document.getElementById("FormularioRegistro");
-const tarjetasTipo = document.querySelectorAll(".TarjetaTipo");
-const tarjetasServicio = document.querySelectorAll(".TarjetaServicio");
-const seccionesPorTipo = document.querySelectorAll("[data-tipo]");
-const descripcion = document.getElementById("descripcion");
+const tipo = formulario.dataset.tipo;
 
 const TIPOS_ARCHIVO = ["image/jpeg", "image/png"];
 const TAMANO_MAXIMO = 5 * 1024 * 1024;
 
 const CAMPOS_COMUNES = ["nombres", "correo", "celular", "contrasena", "confirmarContrasena", "terminos"];
-const CAMPOS_CLIENTE = ["distrito"];
-const CAMPOS_PROFESIONAL = ["servicios", "zonaTrabajo", "experiencia", "descripcion", "fotoPerfil", "documento"];
-
-// Muestra las secciones del tipo elegido y deshabilita los campos de las ocultas
-function actualizarTipo() {
-    const tipo = formulario.tipoCuenta.value;
-
-    tarjetasTipo.forEach(function (tarjeta) {
-        tarjeta.classList.toggle("Seleccionada", tarjeta.querySelector("input").checked);
-    });
-
-    seccionesPorTipo.forEach(function (seccion) {
-        const visible = seccion.dataset.tipo === tipo;
-        seccion.hidden = !visible;
-        seccion.querySelectorAll("input, select, textarea, button").forEach(function (campo) {
-            campo.disabled = !visible;
-        });
-    });
-
-    const ocultos = tipo === "profesional" ? CAMPOS_CLIENTE : CAMPOS_PROFESIONAL;
-    ocultos.forEach(function (id) {
-        mostrarError(id, "");
-    });
-}
-
-// Selección de tarjetas Usuario/Cliente y Profesional
-tarjetasTipo.forEach(function (tarjeta) {
-    tarjeta.querySelector("input").addEventListener("change", actualizarTipo);
-});
+const CAMPOS_POR_TIPO = {
+    cliente: ["distrito"],
+    profesional: ["servicios", "zonaTrabajo", "experiencia", "descripcion", "fotoPerfil", "documento"]
+};
 
 // Selección de servicios (se pueden marcar varios)
-tarjetasServicio.forEach(function (tarjeta) {
+document.querySelectorAll(".TarjetaServicio").forEach(function (tarjeta) {
     const casilla = tarjeta.querySelector("input");
     casilla.addEventListener("change", function () {
         tarjeta.classList.toggle("Marcada", casilla.checked);
@@ -69,9 +43,12 @@ document.getElementById("celular").addEventListener("input", function (evento) {
 });
 
 // Contador de la descripción
-descripcion.addEventListener("input", function () {
-    document.getElementById("contadorDescripcion").textContent = descripcion.value.length + "/300";
-});
+const descripcion = document.getElementById("descripcion");
+if (descripcion) {
+    descripcion.addEventListener("input", function () {
+        document.getElementById("contadorDescripcion").textContent = descripcion.value.length + "/300";
+    });
+}
 
 // Subir foto / documento: el botón abre el input oculto y se muestra el nombre del archivo
 document.querySelectorAll(".BotonSubir").forEach(function (boton) {
@@ -118,7 +95,6 @@ function validarArchivo(id, nombre) {
 }
 
 function validar() {
-    const tipo = formulario.tipoCuenta.value;
     const nombres = formulario.nombres.value.trim();
     const correo = formulario.correo.value.trim();
     const celular = formulario.celular.value.trim();
@@ -183,8 +159,7 @@ function validar() {
         errores.terminos = "Debes aceptar los Términos y Privacidad.";
     }
 
-    const campos = CAMPOS_COMUNES.concat(tipo === "cliente" ? CAMPOS_CLIENTE : CAMPOS_PROFESIONAL);
-    campos.forEach(function (id) {
+    CAMPOS_COMUNES.concat(CAMPOS_POR_TIPO[tipo]).forEach(function (id) {
         mostrarError(id, errores[id] || "");
     });
 
@@ -224,5 +199,3 @@ formulario.addEventListener("submit", function (evento) {
         window.location.href = "IniciarSesion.html";
     }, 2000);
 });
-
-actualizarTipo();
