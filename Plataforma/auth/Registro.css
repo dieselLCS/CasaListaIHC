@@ -378,6 +378,212 @@ body{
     margin-top: 0;
 }
 
+/* Perfil profesional */
+.Servicios{
+    border: none;
+    min-width: 0;
+    margin-top: -4px;
+    margin-bottom: 8px;
+}
+.TituloServicios{
+    margin-bottom: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #073E3B;
+}
+.TarjetasServicio{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+.TarjetaServicio{
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    height: 70px;
+    padding: 13px 10px 0 10px;
+    background-color: #FFFFFF;
+    border: 1px solid #DCDFDE;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.TarjetaServicio.Marcada{
+    background-color: #E6F5F1;
+    border: 1.5px solid #006D61;
+}
+.TarjetaServicio input{
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+}
+.TarjetaServicio input:focus-visible ~ .IconoServicio{
+    outline: 2px solid #006D61;
+    outline-offset: 2px;
+}
+.CheckServicio{
+    display: none;
+    position: absolute;
+    top: -1px;
+    right: 7px;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #006D61;
+    color: #FFFFFF;
+}
+.TarjetaServicio.Marcada .CheckServicio{
+    display: flex;
+}
+.CheckServicio svg{
+    width: 10px;
+    height: 10px;
+}
+.IconoServicio{
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+}
+.IconoGasfiteria{
+    color: #006D61;
+}
+.IconoLimpieza{
+    color: #FFB735;
+}
+.TextoServicio strong{
+    display: block;
+    margin-top: 2px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #073E3B;
+}
+.TextoServicio span{
+    display: block;
+    margin-top: 3px;
+    font-size: 0.5625rem;
+    color: #3F4A47;
+}
+.CampoTexto .IconoCampo{
+    top: 12px;
+    transform: none;
+}
+.CampoTexto textarea{
+    display: block;
+    width: 100%;
+    height: 62px;
+    padding: 10px 14px 18px 43px;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: #073E3B;
+    background-color: #FFFFFF;
+    border: 1px solid #DCDFDE;
+    border-radius: 10px;
+    outline: none;
+    resize: none;
+}
+.CampoTexto textarea::placeholder{
+    color: #6B7471;
+}
+.CampoTexto textarea:focus{
+    border-color: #006D61;
+}
+.CampoEntrada.TieneError textarea{
+    border-color: #D14343;
+}
+.Contador{
+    position: absolute;
+    right: 12px;
+    bottom: 6px;
+    font-size: 0.5625rem;
+    color: #6B7471;
+}
+
+/* Verificación */
+.SeccionVerificacion{
+    padding-bottom: 8px;
+}
+.FilaArchivo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 47px;
+    padding: 0 10px 0 11px;
+    background-color: #F8F9F8;
+    border: 1px solid #E3E5E4;
+    border-radius: 8px;
+}
+.FilaArchivo.TieneError{
+    border-color: #D14343;
+}
+.IconoArchivo{
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    color: #006D61;
+}
+.TextoArchivo{
+    flex: 1;
+    min-width: 0;
+}
+.TextoArchivo label{
+    display: block;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: #073E3B;
+}
+.DetalleArchivo{
+    display: block;
+    margin-top: 3px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 0.5625rem;
+    color: #6B7471;
+}
+.BotonSubir{
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 108px;
+    height: 28px;
+    font-size: 0.625rem;
+    font-weight: 700;
+    color: #006D61;
+    background-color: #E6F5F1;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.BotonSubir svg{
+    width: 13px;
+    height: 13px;
+}
+.AvisoSeguro{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 8px;
+    padding: 5px 8px;
+    font-size: 0.5625rem;
+    color: #073E3B;
+    background-color: #E6F5F1;
+    border-radius: 6px;
+}
+.AvisoSeguro svg{
+    flex-shrink: 0;
+    width: 11px;
+    height: 11px;
+    color: #006D61;
+}
+.SeccionVerificacion:not([hidden]) + .TarjetaTerminos{
+    margin-top: 15px;
+}
+
 /* Términos */
 .TarjetaTerminos{
     margin-top: 28px;

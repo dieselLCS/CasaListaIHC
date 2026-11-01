@@ -1,14 +1,48 @@
 const formulario = document.getElementById("FormularioRegistro");
 const tarjetasTipo = document.querySelectorAll(".TarjetaTipo");
-const selectDistrito = document.getElementById("distrito");
+const tarjetasServicio = document.querySelectorAll(".TarjetaServicio");
+const seccionesPorTipo = document.querySelectorAll("[data-tipo]");
+const descripcion = document.getElementById("descripcion");
+
+const TIPOS_ARCHIVO = ["image/jpeg", "image/png"];
+const TAMANO_MAXIMO = 5 * 1024 * 1024;
+
+const CAMPOS_COMUNES = ["nombres", "correo", "celular", "contrasena", "confirmarContrasena", "terminos"];
+const CAMPOS_CLIENTE = ["distrito"];
+const CAMPOS_PROFESIONAL = ["servicios", "zonaTrabajo", "experiencia", "descripcion", "fotoPerfil", "documento"];
+
+// Muestra las secciones del tipo elegido y deshabilita los campos de las ocultas
+function actualizarTipo() {
+    const tipo = formulario.tipoCuenta.value;
+
+    tarjetasTipo.forEach(function (tarjeta) {
+        tarjeta.classList.toggle("Seleccionada", tarjeta.querySelector("input").checked);
+    });
+
+    seccionesPorTipo.forEach(function (seccion) {
+        const visible = seccion.dataset.tipo === tipo;
+        seccion.hidden = !visible;
+        seccion.querySelectorAll("input, select, textarea, button").forEach(function (campo) {
+            campo.disabled = !visible;
+        });
+    });
+
+    const ocultos = tipo === "profesional" ? CAMPOS_CLIENTE : CAMPOS_PROFESIONAL;
+    ocultos.forEach(function (id) {
+        mostrarError(id, "");
+    });
+}
 
 // Selección de tarjetas Usuario/Cliente y Profesional
 tarjetasTipo.forEach(function (tarjeta) {
-    const radio = tarjeta.querySelector("input");
-    radio.addEventListener("change", function () {
-        tarjetasTipo.forEach(function (otra) {
-            otra.classList.toggle("Seleccionada", otra.querySelector("input").checked);
-        });
+    tarjeta.querySelector("input").addEventListener("change", actualizarTipo);
+});
+
+// Selección de servicios (se pueden marcar varios)
+tarjetasServicio.forEach(function (tarjeta) {
+    const casilla = tarjeta.querySelector("input");
+    casilla.addEventListener("change", function () {
+        tarjeta.classList.toggle("Marcada", casilla.checked);
     });
 });
 
@@ -22,9 +56,11 @@ document.querySelectorAll(".BotonOjo").forEach(function (boton) {
     });
 });
 
-// Placeholder gris del select mientras no se elija distrito
-selectDistrito.addEventListener("change", function () {
-    selectDistrito.classList.toggle("SinValor", selectDistrito.value === "");
+// Placeholder gris de los select mientras no se elija una opción
+document.querySelectorAll(".CampoEntrada select").forEach(function (select) {
+    select.addEventListener("change", function () {
+        select.classList.toggle("SinValor", select.value === "");
+    });
 });
 
 // Solo números en el celular
@@ -32,11 +68,30 @@ document.getElementById("celular").addEventListener("input", function (evento) {
     evento.target.value = evento.target.value.replace(/\D/g, "").slice(0, 9);
 });
 
+// Contador de la descripción
+descripcion.addEventListener("input", function () {
+    document.getElementById("contadorDescripcion").textContent = descripcion.value.length + "/300";
+});
+
+// Subir foto / documento: el botón abre el input oculto y se muestra el nombre del archivo
+document.querySelectorAll(".BotonSubir").forEach(function (boton) {
+    const entrada = document.getElementById(boton.dataset.objetivo);
+    const detalle = boton.closest(".FilaArchivo").querySelector(".DetalleArchivo");
+    const textoInicial = detalle.textContent;
+
+    boton.addEventListener("click", function () {
+        entrada.click();
+    });
+    entrada.addEventListener("change", function () {
+        detalle.textContent = entrada.files.length > 0 ? entrada.files[0].name : textoInicial;
+    });
+});
+
 function mostrarError(id, mensaje) {
     const campo = document.getElementById(id);
     const error = document.getElementById("error-" + id);
     error.textContent = mensaje;
-    const contenedor = campo.closest(".CampoEntrada");
+    const contenedor = campo.closest(".CampoEntrada, .FilaArchivo");
     if (contenedor) {
         contenedor.classList.toggle("TieneError", mensaje !== "");
     }
@@ -48,7 +103,22 @@ function mostrarError(id, mensaje) {
     }
 }
 
+function validarArchivo(id, nombre) {
+    const archivo = document.getElementById(id).files[0];
+    if (!archivo) {
+        return "Sube tu " + nombre + ".";
+    }
+    if (!TIPOS_ARCHIVO.includes(archivo.type)) {
+        return "El archivo debe ser JPG o PNG.";
+    }
+    if (archivo.size > TAMANO_MAXIMO) {
+        return "El archivo no debe pesar más de 5 MB.";
+    }
+    return "";
+}
+
 function validar() {
+    const tipo = formulario.tipoCuenta.value;
     const nombres = formulario.nombres.value.trim();
     const correo = formulario.correo.value.trim();
     const celular = formulario.celular.value.trim();
@@ -82,26 +152,68 @@ function validar() {
         errores.confirmarContrasena = "Las contraseñas no coinciden.";
     }
 
-    if (selectDistrito.value === "") {
-        errores.distrito = "Elige el distrito donde vives.";
+    if (tipo === "cliente") {
+        if (formulario.distrito.value === "") {
+            errores.distrito = "Elige el distrito donde vives.";
+        }
+    } else {
+        if (formulario.querySelectorAll('input[name="servicios"]:checked').length === 0) {
+            errores.servicios = "Elige al menos un servicio.";
+        }
+        if (formulario.zonaTrabajo.value === "") {
+            errores.zonaTrabajo = "Elige tu distrito o zona de trabajo.";
+        }
+        if (formulario.experiencia.value === "") {
+            errores.experiencia = "Elige tus años de experiencia.";
+        }
+        if (descripcion.value.trim() === "") {
+            errores.descripcion = "Describe brevemente tu servicio.";
+        }
+        const errorFoto = validarArchivo("fotoPerfil", "foto de perfil");
+        if (errorFoto !== "") {
+            errores.fotoPerfil = errorFoto;
+        }
+        const errorDocumento = validarArchivo("documento", "documento de identidad");
+        if (errorDocumento !== "") {
+            errores.documento = errorDocumento;
+        }
     }
 
     if (!formulario.terminos.checked) {
         errores.terminos = "Debes aceptar los Términos y Privacidad.";
     }
 
-    ["nombres", "correo", "celular", "contrasena", "confirmarContrasena", "distrito", "terminos"].forEach(function (id) {
+    const campos = CAMPOS_COMUNES.concat(tipo === "cliente" ? CAMPOS_CLIENTE : CAMPOS_PROFESIONAL);
+    campos.forEach(function (id) {
         mostrarError(id, errores[id] || "");
     });
 
-    return Object.keys(errores);
+    // Mismo orden en que aparecen en pantalla, para enfocar el primero con error
+    const orden = Array.from(formulario.querySelectorAll("[id]")).map(function (elemento) {
+        return elemento.id;
+    });
+    return Object.keys(errores).sort(function (a, b) {
+        return orden.indexOf(a) - orden.indexOf(b);
+    });
+}
+
+// Elemento que recibe el foco cuando un campo tiene error
+function elementoParaFoco(id) {
+    const campo = document.getElementById(id);
+    if (campo.tagName === "FIELDSET") {
+        return campo.querySelector("input");
+    }
+    if (campo.type === "file") {
+        return campo.closest(".FilaArchivo").querySelector(".BotonSubir");
+    }
+    return campo;
 }
 
 formulario.addEventListener("submit", function (evento) {
     evento.preventDefault();
     const conError = validar();
     if (conError.length > 0) {
-        document.getElementById(conError[0]).focus();
+        elementoParaFoco(conError[0]).focus();
         return;
     }
 
@@ -112,3 +224,5 @@ formulario.addEventListener("submit", function (evento) {
         window.location.href = "IniciarSesion.html";
     }, 2000);
 });
+
+actualizarTipo();
