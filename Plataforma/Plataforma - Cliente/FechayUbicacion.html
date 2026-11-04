@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>CasaLista - Fecha y ubicación</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link rel="icon" href="../../LandingPage/img/IconoLogo.png" type="image/png">
+    <link rel="stylesheet" href="FechayUbicacion.css">
+</head>
+<body>
+    <div class="Pantalla">
+        <header class="Encabezado">
+            <img class="Logo" src="../../LandingPage/img/casalista_logo.png" alt="CasaLista">
+
+            <div class="AccionesEncabezado">
+                <div class="Desplegable">
+                    <button type="button" class="BotonNotificaciones" data-panel="PanelNotificaciones" aria-label="Notificaciones" aria-expanded="false" aria-controls="PanelNotificaciones">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.27 21a2 2 0 0 0 3.46 0"/><path d="M3.26 15.33A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.67C19.41 13.96 18 12.5 18 8A6 6 0 0 0 6 8c0 4.5-1.41 5.96-2.74 7.33"/></svg>
+                    </button>
+                    <div class="Panel" id="PanelNotificaciones" hidden>
+                        <p class="TituloPanel">Notificaciones</p>
+                        <p class="TextoPanel">No tienes notificaciones nuevas.</p>
+                    </div>
+                </div>
+
+                <div class="Desplegable">
+                    <button type="button" class="BotonUsuario" data-panel="PanelUsuario" aria-label="Menú de Maribel" aria-expanded="false" aria-controls="PanelUsuario">
+                        <span class="Avatar" aria-hidden="true">M</span>
+                        <span class="NombreUsuario">Maribel</span>
+                        <svg class="FlechaUsuario" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div class="Panel" id="PanelUsuario" hidden>
+                        <p class="TituloPanel">Maribel</p>
+                        <p class="TextoPanel">Cuenta de cliente</p>
+                        <a class="EnlacePanel" href="../auth/IniciarSesion.html">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>
+                            Cerrar sesión
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="Contenido">
+            <ol class="Pasos" aria-label="Pasos de la solicitud">
+                <li class="Paso Hecho">
+                    <a class="MarcaPaso" href="Servicio.html">
+                        <span class="CirculoPaso">1</span>
+                        <span class="EtiquetaPaso">Servicio</span>
+                    </a>
+                </li>
+                <li class="Paso Hecho">
+                    <a class="MarcaPaso" href="Detalles.html">
+                        <span class="CirculoPaso">2</span>
+                        <span class="EtiquetaPaso">Detalles</span>
+                    </a>
+                </li>
+                <li class="Paso Hecho" aria-current="step">
+                    <span class="MarcaPaso">
+                        <span class="CirculoPaso">3</span>
+                        <span class="EtiquetaPaso">Fecha y Ubicación</span>
+                    </span>
+                </li>
+                <li class="Paso">
+                    <span class="MarcaPaso">
+                        <span class="CirculoPaso">4</span>
+                        <span class="EtiquetaPaso">Negociación</span>
+                    </span>
+                </li>
+            </ol>
+
+            <h1 class="Titulo">¿Dónde y cuándo necesitas el servicio?</h1>
+            <p class="Descripcion">Indica la dirección y la fecha/hora en la que prefieres recibir el servicio.</p>
+
+            <form class="Formulario" id="FormularioServicio" novalidate>
+                <div class="Campo">
+                    <label class="Etiqueta" for="direccion">Dirección del servicio</label>
+                    <div class="CajaDireccion">
+                        <svg class="IconoCampo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s-7.5-6.4-7.5-12.5a7.5 7.5 0 0 1 15 0C19.5 15.6 12 22 12 22Z"/><circle cx="12" cy="9.5" r="2.8"/></svg>
+                        <input type="text" id="direccion" name="direccion" value="Av. Primavera 123, Santiago de Surco" placeholder="Escribe la dirección del servicio" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="Sugerencias">
+                        <button type="button" class="BotonLimpiar" id="BotonLimpiar" aria-label="Borrar dirección">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M17 7 7 17M7 7l10 10"/></svg>
+                        </button>
+                        <ul class="Sugerencias" id="Sugerencias" role="listbox" aria-label="Direcciones sugeridas" hidden></ul>
+                    </div>
+                    <small class="MensajeError" id="error-direccion"></small>
+                </div>
+
+                <div class="Mapa Cargando" id="Mapa">
+                    <iframe id="MarcoMapa" title="Mapa de la dirección del servicio" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+                    <button type="button" class="Boton3D" id="Boton3D" aria-label="Abrir vista 3D de la dirección">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+                        Vista 3D
+                    </button>
+                    <div class="TarjetaMapa">
+                        <div class="TextoTarjeta">
+                            <strong id="TituloDireccion">Av. Primavera 123</strong>
+                            <span id="DetalleDireccion">Santiago de Surco, Lima</span>
+                        </div>
+                        <button type="button" class="BotonEditar" id="BotonEditar">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.98-3.98L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5z"/><path d="m15 5 4 4"/></svg>
+                            Editar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="Campo">
+                    <label class="Etiqueta" id="EtiquetaFecha" for="BotonFecha">Fecha del servicio</label>
+                    <div class="Control Selector" id="SelectorFecha">
+                        <svg class="IconoCampo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="16" rx="2.5"/><path d="M3.5 9.5h17M8 2.8v3.4M16 2.8v3.4"/><path d="M8 13.5h.01M12 13.5h.01M16 13.5h.01M8 17h.01M12 17h.01M16 17h.01" stroke-width="2.4"/></svg>
+                        <button type="button" class="CampoSelector" id="BotonFecha" aria-haspopup="dialog" aria-expanded="false" aria-controls="Calendario" aria-labelledby="EtiquetaFecha TextoFecha">
+                            <span id="TextoFecha">Lun, 12 de oct 2026</span>
+                        </button>
+                        <svg class="IconoFlecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 9.5 5 5 5-5"/></svg>
+                        <div class="Calendario" id="Calendario" role="dialog" aria-label="Elegir la fecha del servicio" hidden>
+                            <div class="CabeceraCalendario">
+                                <button type="button" class="BotonMes" id="MesAnterior" aria-label="Mes anterior">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+                                </button>
+                                <p class="TituloMes" id="TituloMes" aria-live="polite"></p>
+                                <button type="button" class="BotonMes" id="MesSiguiente" aria-label="Mes siguiente">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+                                </button>
+                            </div>
+                            <div class="DiasSemana" aria-hidden="true">
+                                <span>Lu</span><span>Ma</span><span>Mi</span><span>Ju</span><span>Vi</span><span>Sá</span><span>Do</span>
+                            </div>
+                            <div class="DiasMes" id="DiasMes"></div>
+                        </div>
+                    </div>
+                    <small class="MensajeError" id="error-fecha"></small>
+                </div>
+
+                <div class="Campo">
+                    <label class="Etiqueta" for="hora">Hora del servicio</label>
+                    <div class="Control">
+                        <svg class="IconoCampo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.8"/><path d="M12 7.3V12l3.2 2.1"/></svg>
+                        <select class="CampoSelector" id="hora" name="hora"></select>
+                        <svg class="IconoFlecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 9.5 5 5 5-5"/></svg>
+                    </div>
+                    <small class="MensajeError" id="error-hora"></small>
+                </div>
+
+                <div class="Campo CampoReferencia">
+                    <label class="Etiqueta" for="referencia">Referencia adicional <span class="Opcional">(opcional)</span></label>
+                    <textarea id="referencia" name="referencia" maxlength="200" placeholder="Ej. Departamento 301, casa color blanco, timbre 2, etc."></textarea>
+                </div>
+            </form>
+        </main>
+
+        <footer class="Pie">
+            <a class="BotonVolver" href="Detalles.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19.5 12h-15M10.5 6l-6 6 6 6"/></svg>
+                Volver
+            </a>
+            <button type="submit" class="BotonSiguiente" form="FormularioServicio">
+                Siguiente
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg>
+            </button>
+        </footer>
+    </div>
+
+    <dialog class="Vista3D" id="Vista3D" aria-labelledby="TituloVista3D">
+        <div class="CabeceraVista3D">
+            <div class="TextoVista3D">
+                <h2 id="TituloVista3D">Vista 3D</h2>
+                <p id="DireccionVista3D"></p>
+            </div>
+            <button type="button" class="BotonCerrar" id="CerrarVista3D" aria-label="Cerrar vista 3D">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </button>
+        </div>
+        <p class="AvisoVista3D" id="AvisoVista3D" hidden>No encontramos una vista 3D para esta dirección. Te mostramos la vista satelital.</p>
+        <div class="MarcoVista3D Cargando" id="ContenedorVista3D">
+            <iframe id="MarcoVista3D" title="Vista 3D de la dirección del servicio" referrerpolicy="no-referrer-when-downgrade" allow="accelerometer; gyroscope; fullscreen"></iframe>
+        </div>
+    </dialog>
+
+    <script>
+        const CLAVE_GUARDADO = "CasaListaFechaUbicacion";
+        const DIAS_CORTOS = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
+        const DIAS_LARGOS = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
+        const MESES_CORTOS = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+        const MESES = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+        const PRIMERA_HORA = 7 * 60;
+        const ULTIMA_HORA = 20 * 60;
+        const INTERVALO_HORAS = 30;
+        const MINUTOS_ANTICIPACION = 60;
+        const DIAS_DISPONIBLES = 90;
+        const HORA_PREDETERMINADA = 10 * 60;
+        const BUSQUEDA_LIMA = "&lang=default&lat=-12.09&lon=-77.02&bbox=-77.25,-12.55,-76.65,-11.70";
+        const TIPOS_DESCARTADOS = ["cycleway", "footway", "path", "steps", "pedestrian", "bus_stop", "platform", "track", "construction"];
+        const NUMERO_CASA = /\b\d{1,5}\b(?!\s+de\b)/g;
+        const DETALLE_CASA = /\b(mz|lt|dpto|int)\b\.?\s*[a-z0-9]+/gi;
+        const REEMPLAZOS_BUSQUEDA = [
+            [/\bav(da)?\b\.?/gi, "avenida"],
+            [/\bjr\b\.?/gi, "jirón"],
+            [/\b(ca|cl)\b\.?/gi, "calle"],
+            [/\bp(s)?je\b\.?/gi, "pasaje"],
+            [/\bprol\b\.?/gi, "prolongación"],
+            [/\burb\b\.?/gi, "urbanización"],
+            [DETALLE_CASA, " "]
+        ];
+        const ICONO_LUGAR = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.5s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>';
+
+        const formulario = document.getElementById("FormularioServicio");
+        const campoDireccion = document.getElementById("direccion");
+        const botonLimpiar = document.getElementById("BotonLimpiar");
+        const listaSugerencias = document.getElementById("Sugerencias");
+        const mapa = document.getElementById("Mapa");
+        const marcoMapa = document.getElementById("MarcoMapa");
+        const tituloDireccion = document.getElementById("TituloDireccion");
+        const detalleDireccion = document.getElementById("DetalleDireccion");
+        const botonEditar = document.getElementById("BotonEditar");
+        const boton3D = document.getElementById("Boton3D");
+        const vista3D = document.getElementById("Vista3D");
+        const contenedorVista3D = document.getElementById("ContenedorVista3D");
+        const marcoVista3D = document.getElementById("MarcoVista3D");
+        const direccionVista3D = document.getElementById("DireccionVista3D");
+        const avisoVista3D = document.getElementById("AvisoVista3D");
+        const selectorFecha = document.getElementById("SelectorFecha");
+        const botonFecha = document.getElementById("BotonFecha");
+        const textoFecha = document.getElementById("TextoFecha");
+        const calendario = document.getElementById("Calendario");
+        const tituloMes = document.getElementById("TituloMes");
+        const diasMes = document.getElementById("DiasMes");
+        const botonMesAnterior = document.getElementById("MesAnterior");
+        const botonMesSiguiente = document.getElementById("MesSiguiente");
+        const campoHora = document.getElementById("hora");
+        const campoReferencia = document.getElementById("referencia");
+        const botonesPanel = document.querySelectorAll("[data-panel]");
+
+        const hoy = inicioDelDia(new Date());
+        const fechaMinima = horasDisponibles(hoy).length > 0 ? hoy : sumarDias(hoy, 1);
+        const fechaMaxima = sumarDias(hoy, DIAS_DISPONIBLES);
+
+        const estado = {
+            direccion: "",
+            coordenadas: null,
+            busqueda: Promise.resolve(null),
+            fecha: sumarDias(hoy, 1),
+            hora: HORA_PREDETERMINADA,
+            mesVisible: null,
+            fechaEnfocada: null,
+            sugerencias: [],
+            indiceActivo: -1
+        };
+        let temporizadorSugerencias = null;
+        let controladorSugerencias = null;
+        let controladorCoordenadas = null;
+
+        function inicioDelDia(fecha) {
+            return new Date(fecha.getFullYear(), fecha.getMonth(), fecha.getDate());
+        }
+
+        function sumarDias(fecha, dias) {
+            return new Date(fecha.getFullYear(), fecha.getMonth(), fecha.getDate() + dias);
+        }
+
+        function mismoDia(a, b) {
+            return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
+        }
+
+        function numeroMes(fecha) {
+            return fecha.getFullYear() * 12 + fecha.getMonth();
+        }
+
+        function dosDigitos(numero) {
+            return String(numero).padStart(2, "0");
+        }
+
+        function claveFecha(fecha) {
+            return fecha.getFullYear() + "-" + dosDigitos(fecha.getMonth() + 1) + "-" + dosDigitos(fecha.getDate());
+        }
+
+        function leerClaveFecha(clave) {
+            const partes = /^(\d{4})-(\d{2})-(\d{2})$/.exec(clave || "");
+            return partes ? new Date(Number(partes[1]), Number(partes[2]) - 1, Number(partes[3])) : null;
+        }
+
+        function formatoFecha(fecha) {
+            return DIAS_CORTOS[fecha.getDay()] + ", " + fecha.getDate() + " de " + MESES_CORTOS[fecha.getMonth()] + " " + fecha.getFullYear();
+        }
+
+        function formatoFechaLargo(fecha) {
+            return DIAS_LARGOS[fecha.getDay()] + " " + fecha.getDate() + " de " + MESES[fecha.getMonth()].toLowerCase() + " de " + fecha.getFullYear();
+        }
+
+        function formatoHora(minutos) {
+            const horas = Math.floor(minutos / 60);
+            return (horas % 12 || 12) + ":" + dosDigitos(minutos % 60) + (horas < 12 ? " a. m." : " p. m.");
+        }
+
+        function claveHora(minutos) {
+            return dosDigitos(Math.floor(minutos / 60)) + ":" + dosDigitos(minutos % 60);
+        }
+
+        function leerClaveHora(clave) {
+            const partes = /^(\d{2}):(\d{2})$/.exec(clave || "");
+            return partes ? Number(partes[1]) * 60 + Number(partes[2]) : null;
+        }
+
+        function horasDisponibles(fecha) {
+            const horas = [];
+            for (let minutos = PRIMERA_HORA; minutos <= ULTIMA_HORA; minutos += INTERVALO_HORAS) {
+                horas.push(minutos);
+            }
+            const ahora = new Date();
+            if (!mismoDia(fecha, ahora)) {
+                return horas;
+            }
+            const limite = ahora.getHours() * 60 + ahora.getMinutes() + MINUTOS_ANTICIPACION;
+            return horas.filter(function (minutos) {
+                return minutos >= limite;
+            });
+        }
+
+        function fechaPermitida(fecha) {
+            return fecha >= fechaMinima && fecha <= fechaMaxima;
+        }
+
+        function desplazamiento() {
+            return window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+        }
+
+        function unicos(lista) {
+            return lista.filter(function (valor, indice) {
+                return valor && lista.indexOf(valor) === indice;
+            });
+        }
+
+        function partesDireccion(texto) {
+            const partes = texto.split(",").map(function (parte) {
+                return parte.trim();
+            }).filter(Boolean);
+            const titulo = partes.shift() || texto;
+            if (!partes.some(function (parte) { return /\blima\b/i.test(parte); })) {
+                partes.push("Lima");
+            }
+            return { titulo: titulo, detalle: partes.join(", ") };
+        }
+
+        function consultaGoogle(texto) {
+            let consulta = texto;
+            if (!/\blima\b/i.test(consulta)) {
+                consulta += ", Lima";
+            }
+            if (!/\bper[uú]/i.test(consulta)) {
+                consulta += ", Perú";
+            }
+            return consulta;
+        }
+
+        function urlMapa(texto) {
+            return "https://maps.google.com/maps?q=" + encodeURIComponent(consultaGoogle(texto)) + "&t=m&z=17&iwloc=&output=embed&hl=es";
+        }
+
+        function urlSatelite(texto) {
+            return "https://maps.google.com/maps?q=" + encodeURIComponent(consultaGoogle(texto)) + "&t=k&z=19&iwloc=&output=embed&hl=es";
+        }
+
+        function urlVista3D(coordenadas) {
+            return "https://maps.google.com/maps?layer=c&cbll=" + coordenadas.lat + "," + coordenadas.lng + "&cbp=12,0,0,0,0&source=embed&output=svembed&hl=es";
+        }
+
+        function cargarMarco(marco, contenedor, url) {
+            if (marco.getAttribute("src") === url) {
+                return;
+            }
+            contenedor.classList.add("Cargando");
+            marco.setAttribute("src", url);
+        }
+
+        function guardar() {
+            try {
+                const tieneHora = Number.isFinite(estado.hora);
+                sessionStorage.setItem(CLAVE_GUARDADO, JSON.stringify({
+                    direccion: estado.direccion,
+                    coordenadas: estado.coordenadas,
+                    fecha: claveFecha(estado.fecha),
+                    fechaTexto: formatoFecha(estado.fecha),
+                    hora: tieneHora ? claveHora(estado.hora) : "",
+                    horaTexto: tieneHora ? formatoHora(estado.hora) : "",
+                    referencia: campoReferencia.value.trim()
+                }));
+            } catch (error) {
+                return;
+            }
+        }
+
+        function leerGuardado() {
+            try {
+                return JSON.parse(sessionStorage.getItem(CLAVE_GUARDADO)) || {};
+            } catch (error) {
+                return {};
+            }
+        }
+
+        function controlDe(id) {
+            return id === "fecha" ? botonFecha : document.getElementById(id);
+        }
+
+        function mostrarError(id, mensaje) {
+            const error = document.getElementById("error-" + id);
+            const control = controlDe(id);
+            error.textContent = mensaje;
+            control.classList.add("ConError");
+            control.setAttribute("aria-invalid", "true");
+            control.setAttribute("aria-describedby", error.id);
+        }
+
+        function limpiarError(id) {
+            const control = controlDe(id);
+            document.getElementById("error-" + id).textContent = "";
+            control.classList.remove("ConError");
+            control.removeAttribute("aria-invalid");
+            control.removeAttribute("aria-describedby");
+        }
+
+        function normalizarBusqueda(texto) {
+            return REEMPLAZOS_BUSQUEDA.reduce(function (resultado, reemplazo) {
+                return resultado.replace(reemplazo[0], reemplazo[1]);
+            }, texto);
+        }
+
+        function numeroCasa(texto) {
+            const numeros = normalizarBusqueda(texto).match(NUMERO_CASA);
+            return numeros ? numeros[numeros.length - 1] : "";
+        }
+
+        function textoBusqueda(texto) {
+            return normalizarBusqueda(texto).replace(NUMERO_CASA, " ").replace(/\s+/g, " ").replace(/^[\s,]+|[\s,]+$/g, "");
+        }
+
+        function buscarLugares(texto, limite, senal) {
+            const consulta = textoBusqueda(texto);
+            if (consulta.length < 2) {
+                return Promise.resolve([]);
+            }
+            const url = "https://photon.komoot.io/api/?q=" + encodeURIComponent(consulta) + "&limit=" + limite + BUSQUEDA_LIMA;
+            return fetch(url, { signal: senal })
+                .then(function (respuesta) {
+                    return respuesta.ok ? respuesta.json() : { features: [] };
+                })
+                .then(function (datos) {
+                    return (datos.features || []).filter(function (lugar) {
+                        return lugar.properties && !TIPOS_DESCARTADOS.includes(lugar.properties.osm_value);
+                    }).map(convertirLugar);
+                });
+        }
+
+        function convertirLugar(lugar) {
+            const datos = lugar.properties || {};
+            const calle = [datos.street, datos.housenumber].filter(Boolean).join(" ");
+            const distrito = datos.city || datos.district || "Lima";
+            const titulo = datos.housenumber && datos.street ? calle : datos.name || calle || datos.locality || datos.district || distrito;
+            const detalle = unicos([datos.name !== titulo ? datos.name : "", distrito]).join(", ");
+            return {
+                titulo: titulo,
+                detalle: detalle,
+                distrito: distrito,
+                esCalle: datos.type === "street",
+                lat: lugar.geometry.coordinates[1],
+                lng: lugar.geometry.coordinates[0]
+            };
+        }
+
+        function textoSugerencia(lugar, escrito) {
+            let principal = lugar.titulo;
+            const numero = numeroCasa(escrito);
+            const detalles = (escrito.match(DETALLE_CASA) || []).join(" ");
+            if (lugar.esCalle && numero && !principal.includes(numero)) {
+                principal += " " + numero;
+            }
+            if (detalles) {
+                principal += " " + detalles;
+            }
+            return principal === lugar.distrito ? principal : principal + ", " + lugar.distrito;
+        }
+
+        function buscarCoordenadas(texto) {
+            if (controladorCoordenadas) {
+                controladorCoordenadas.abort();
+            }
+            controladorCoordenadas = new AbortController();
+            estado.busqueda = buscarLugares(texto, 3, controladorCoordenadas.signal)
+                .then(function (lugares) {
+                    const coordenadas = lugares.length > 0 ? { lat: lugares[0].lat, lng: lugares[0].lng } : null;
+                    if (texto === estado.direccion) {
+                        estado.coordenadas = coordenadas;
+                        guardar();
+                    }
+                    return coordenadas;
+                })
+                .catch(function () {
+                    return null;
+                });
+        }
+
+        function aplicarDireccion(texto, coordenadas) {
+            const limpio = texto.replace(/\s+/g, " ").trim();
+            if (limpio === "") {
+                return false;
+            }
+            campoDireccion.value = limpio;
+            actualizarBotonLimpiar();
+            limpiarError("direccion");
+            const partes = partesDireccion(limpio);
+            tituloDireccion.textContent = partes.titulo;
+            detalleDireccion.textContent = partes.detalle;
+            if (limpio !== estado.direccion) {
+                estado.direccion = limpio;
+                estado.coordenadas = null;
+                cargarMarco(marcoMapa, mapa, urlMapa(limpio));
+                if (!coordenadas) {
+                    buscarCoordenadas(limpio);
+                }
+            }
+            if (coordenadas) {
+                if (controladorCoordenadas) {
+                    controladorCoordenadas.abort();
+                }
+                estado.coordenadas = coordenadas;
+                estado.busqueda = Promise.resolve(coordenadas);
+            }
+            guardar();
+            return true;
+        }
+
+        function actualizarBotonLimpiar() {
+            botonLimpiar.hidden = campoDireccion.value === "";
+        }
+
+        function abrirSugerencias() {
+            listaSugerencias.hidden = false;
+            campoDireccion.setAttribute("aria-expanded", "true");
+        }
+
+        function cerrarSugerencias() {
+            clearTimeout(temporizadorSugerencias);
+            if (controladorSugerencias) {
+                controladorSugerencias.abort();
+            }
+            listaSugerencias.hidden = true;
+            listaSugerencias.innerHTML = "";
+            estado.sugerencias = [];
+            estado.indiceActivo = -1;
+            campoDireccion.setAttribute("aria-expanded", "false");
+            campoDireccion.removeAttribute("aria-activedescendant");
+        }
+
+        function mensajeSugerencias(texto) {
+            listaSugerencias.innerHTML = "";
+            const mensaje = document.createElement("li");
+            mensaje.className = "MensajeSugerencias";
+            mensaje.setAttribute("role", "option");
+            mensaje.setAttribute("aria-disabled", "true");
+            mensaje.textContent = texto;
+            listaSugerencias.appendChild(mensaje);
+            abrirSugerencias();
+        }
+
+        function mostrarSugerencias(lugares, escrito) {
+            const vistos = [];
+            estado.sugerencias = lugares.filter(function (lugar) {
+                const clave = lugar.titulo + "|" + lugar.distrito;
+                if (!lugar.titulo || vistos.includes(clave)) {
+                    return false;
+                }
+                vistos.push(clave);
+                return true;
+            }).slice(0, 5).map(function (lugar) {
+                lugar.texto = textoSugerencia(lugar, escrito);
+                return lugar;
+            });
+            estado.indiceActivo = -1;
+            campoDireccion.removeAttribute("aria-activedescendant");
+            if (estado.sugerencias.length === 0) {
+                mensajeSugerencias("No encontramos esa dirección. Presiona Enter para usarla tal como la escribiste.");
+                return;
+            }
+            listaSugerencias.innerHTML = "";
+            estado.sugerencias.forEach(function (lugar, indice) {
+                const opcion = document.createElement("li");
+                opcion.className = "Sugerencia";
+                opcion.id = "Sugerencia" + indice;
+                opcion.setAttribute("role", "option");
+                opcion.setAttribute("aria-selected", "false");
+                opcion.innerHTML = ICONO_LUGAR + "<span><strong></strong><small></small></span>";
+                opcion.querySelector("strong").textContent = lugar.titulo;
+                opcion.querySelector("small").textContent = lugar.detalle;
+                opcion.addEventListener("click", function () {
+                    elegirSugerencia(indice);
+                });
+                listaSugerencias.appendChild(opcion);
+            });
+            abrirSugerencias();
+        }
+
+        function cargarSugerencias(escrito) {
+            if (controladorSugerencias) {
+                controladorSugerencias.abort();
+            }
+            controladorSugerencias = new AbortController();
+            if (listaSugerencias.hidden) {
+                mensajeSugerencias("Buscando direcciones…");
+            }
+            buscarLugares(escrito, 15, controladorSugerencias.signal)
+                .then(function (lugares) {
+                    if (campoDireccion.value.trim() === escrito && document.activeElement === campoDireccion) {
+                        mostrarSugerencias(lugares, escrito);
+                    }
+                })
+                .catch(function (error) {
+                    if (error.name !== "AbortError") {
+                        cerrarSugerencias();
+                    }
+                });
+        }
+
+        function activarSugerencia(indice) {
+            estado.indiceActivo = indice;
+            listaSugerencias.querySelectorAll(".Sugerencia").forEach(function (opcion, posicion) {
+                const activa = posicion === indice;
+                opcion.classList.toggle("Activa", activa);
+                opcion.setAttribute("aria-selected", String(activa));
+                if (activa) {
+                    opcion.scrollIntoView({ block: "nearest" });
+                }
+            });
+            campoDireccion.setAttribute("aria-activedescendant", "Sugerencia" + indice);
+        }
+
+        function elegirSugerencia(indice) {
+            const lugar = estado.sugerencias[indice];
+            if (!lugar) {
+                return;
+            }
+            cerrarSugerencias();
+            aplicarDireccion(lugar.texto, { lat: lugar.lat, lng: lugar.lng });
+        }
+
+        function abrirVista3D() {
+            if (!estado.direccion) {
+                return;
+            }
+            const direccion = estado.direccion;
+            direccionVista3D.textContent = direccion;
+            avisoVista3D.hidden = true;
+            contenedorVista3D.classList.add("Cargando");
+            vista3D.showModal();
+            Promise.resolve(estado.coordenadas || estado.busqueda).then(function (coordenadas) {
+                if (!vista3D.open || direccion !== estado.direccion) {
+                    return;
+                }
+                avisoVista3D.hidden = Boolean(coordenadas);
+                cargarMarco(marcoVista3D, contenedorVista3D, coordenadas ? urlVista3D(coordenadas) : urlSatelite(direccion));
+            });
+        }
+
+        function actualizarHoras() {
+            const horas = horasDisponibles(estado.fecha);
+            campoHora.innerHTML = "";
+            horas.forEach(function (minutos) {
+                campoHora.add(new Option(formatoHora(minutos), String(minutos)));
+            });
+            if (!horas.includes(estado.hora)) {
+                estado.hora = horas.includes(HORA_PREDETERMINADA) ? HORA_PREDETERMINADA : horas[0];
+            }
+            campoHora.value = String(estado.hora);
+        }
+
+        function elegirFecha(fecha) {
+            estado.fecha = fecha;
+            textoFecha.textContent = formatoFecha(fecha);
+            limpiarError("fecha");
+            actualizarHoras();
+            guardar();
+        }
+
+        function dibujarCalendario() {
+            const mes = estado.mesVisible;
+            tituloMes.textContent = MESES[mes.getMonth()] + " " + mes.getFullYear();
+            botonMesAnterior.disabled = numeroMes(mes) <= numeroMes(fechaMinima);
+            botonMesSiguiente.disabled = numeroMes(mes) >= numeroMes(fechaMaxima);
+            diasMes.innerHTML = "";
+            const espacios = (mes.getDay() + 6) % 7;
+            for (let indice = 0; indice < espacios; indice++) {
+                diasMes.appendChild(document.createElement("span"));
+            }
+            const totalDias = new Date(mes.getFullYear(), mes.getMonth() + 1, 0).getDate();
+            for (let dia = 1; dia <= totalDias; dia++) {
+                const fecha = new Date(mes.getFullYear(), mes.getMonth(), dia);
+                const boton = document.createElement("button");
+                boton.type = "button";
+                boton.className = "Dia";
+                boton.textContent = dia;
+                boton.dataset.fecha = claveFecha(fecha);
+                boton.setAttribute("aria-label", formatoFechaLargo(fecha));
+                boton.setAttribute("aria-pressed", String(mismoDia(fecha, estado.fecha)));
+                boton.tabIndex = mismoDia(fecha, estado.fechaEnfocada) ? 0 : -1;
+                boton.disabled = !fechaPermitida(fecha);
+                if (mismoDia(fecha, hoy)) {
+                    boton.classList.add("Hoy");
+                    boton.setAttribute("aria-current", "date");
+                }
+                diasMes.appendChild(boton);
+            }
+        }
+
+        function limitarFecha(fecha) {
+            if (fecha < fechaMinima) {
+                return fechaMinima;
+            }
+            if (fecha > fechaMaxima) {
+                return fechaMaxima;
+            }
+            return fecha;
+        }
+
+        function enfocarDia(fecha) {
+            estado.fechaEnfocada = limitarFecha(fecha);
+            estado.mesVisible = new Date(estado.fechaEnfocada.getFullYear(), estado.fechaEnfocada.getMonth(), 1);
+            dibujarCalendario();
+            diasMes.querySelector('[data-fecha="' + claveFecha(estado.fechaEnfocada) + '"]').focus();
+        }
+
+        function cambiarMes(salto) {
+            const mes = new Date(estado.mesVisible.getFullYear(), estado.mesVisible.getMonth() + salto, 1);
+            const diasDelMes = new Date(mes.getFullYear(), mes.getMonth() + 1, 0).getDate();
+            estado.mesVisible = mes;
+            estado.fechaEnfocada = limitarFecha(new Date(mes.getFullYear(), mes.getMonth(), Math.min(estado.fechaEnfocada.getDate(), diasDelMes)));
+            dibujarCalendario();
+        }
+
+        function abrirCalendario() {
+            estado.fechaEnfocada = estado.fecha;
+            estado.mesVisible = new Date(estado.fecha.getFullYear(), estado.fecha.getMonth(), 1);
+            dibujarCalendario();
+            calendario.hidden = false;
+            selectorFecha.classList.add("Abierto");
+            botonFecha.setAttribute("aria-expanded", "true");
+            diasMes.querySelector('[tabindex="0"]').focus({ preventScroll: true });
+            calendario.scrollIntoView({ behavior: desplazamiento(), block: "nearest" });
+        }
+
+        function cerrarCalendario(devolverFoco) {
+            if (calendario.hidden) {
+                return;
+            }
+            calendario.hidden = true;
+            selectorFecha.classList.remove("Abierto");
+            botonFecha.setAttribute("aria-expanded", "false");
+            if (devolverFoco) {
+                botonFecha.focus();
+            }
+        }
+
+        function cerrarPaneles(excepto) {
+            botonesPanel.forEach(function (boton) {
+                if (boton === excepto) {
+                    return;
+                }
+                document.getElementById(boton.dataset.panel).hidden = true;
+                boton.setAttribute("aria-expanded", "false");
+            });
+        }
+
+        botonesPanel.forEach(function (boton) {
+            const panel = document.getElementById(boton.dataset.panel);
+            boton.addEventListener("click", function () {
+                cerrarPaneles(boton);
+                panel.hidden = !panel.hidden;
+                boton.setAttribute("aria-expanded", String(!panel.hidden));
+            });
+        });
+
+        campoDireccion.addEventListener("input", function () {
+            actualizarBotonLimpiar();
+            limpiarError("direccion");
+            clearTimeout(temporizadorSugerencias);
+            const escrito = campoDireccion.value.trim();
+            if (escrito.length < 3) {
+                cerrarSugerencias();
+                return;
+            }
+            temporizadorSugerencias = setTimeout(function () {
+                cargarSugerencias(escrito);
+            }, 300);
+        });
+
+        campoDireccion.addEventListener("keydown", function (evento) {
+            const total = estado.sugerencias.length;
+            const abiertas = !listaSugerencias.hidden && total > 0;
+            if (evento.key === "ArrowDown" && abiertas) {
+                evento.preventDefault();
+                activarSugerencia((estado.indiceActivo + 1) % total);
+            } else if (evento.key === "ArrowUp" && abiertas) {
+                evento.preventDefault();
+                activarSugerencia((estado.indiceActivo - 1 + total) % total);
+            } else if (evento.key === "Enter") {
+                evento.preventDefault();
+                if (abiertas && estado.indiceActivo >= 0) {
+                    elegirSugerencia(estado.indiceActivo);
+                } else {
+                    cerrarSugerencias();
+                    aplicarDireccion(campoDireccion.value);
+                }
+            } else if (evento.key === "Escape" && !listaSugerencias.hidden) {
+                evento.preventDefault();
+                evento.stopPropagation();
+                cerrarSugerencias();
+            }
+        });
+
+        campoDireccion.addEventListener("blur", function () {
+            cerrarSugerencias();
+            aplicarDireccion(campoDireccion.value);
+        });
+
+        listaSugerencias.addEventListener("mousedown", function (evento) {
+            evento.preventDefault();
+        });
+
+        botonLimpiar.addEventListener("mousedown", function (evento) {
+            evento.preventDefault();
+        });
+
+        botonLimpiar.addEventListener("click", function () {
+            campoDireccion.value = "";
+            actualizarBotonLimpiar();
+            cerrarSugerencias();
+            campoDireccion.focus();
+        });
+
+        botonEditar.addEventListener("click", function () {
+            campoDireccion.focus({ preventScroll: true });
+            campoDireccion.select();
+            campoDireccion.scrollIntoView({ behavior: desplazamiento(), block: "center" });
+        });
+
+        marcoMapa.addEventListener("load", function () {
+            mapa.classList.remove("Cargando");
+        });
+
+        marcoVista3D.addEventListener("load", function () {
+            if (marcoVista3D.getAttribute("src") !== "about:blank") {
+                contenedorVista3D.classList.remove("Cargando");
+            }
+        });
+
+        boton3D.addEventListener("click", abrirVista3D);
+
+        document.getElementById("CerrarVista3D").addEventListener("click", function () {
+            vista3D.close();
+        });
+
+        vista3D.addEventListener("click", function (evento) {
+            if (evento.target === vista3D) {
+                vista3D.close();
+            }
+        });
+
+        vista3D.addEventListener("close", function () {
+            marcoVista3D.setAttribute("src", "about:blank");
+            boton3D.focus();
+        });
+
+        botonFecha.addEventListener("click", function () {
+            if (calendario.hidden) {
+                abrirCalendario();
+            } else {
+                cerrarCalendario(false);
+            }
+        });
+
+        botonMesAnterior.addEventListener("click", function () {
+            cambiarMes(-1);
+        });
+
+        botonMesSiguiente.addEventListener("click", function () {
+            cambiarMes(1);
+        });
+
+        diasMes.addEventListener("click", function (evento) {
+            const boton = evento.target.closest(".Dia");
+            if (!boton || boton.disabled) {
+                return;
+            }
+            elegirFecha(leerClaveFecha(boton.dataset.fecha));
+            cerrarCalendario(true);
+        });
+
+        diasMes.addEventListener("keydown", function (evento) {
+            const saltos = { ArrowLeft: -1, ArrowRight: 1, ArrowUp: -7, ArrowDown: 7 };
+            const posicion = (estado.fechaEnfocada.getDay() + 6) % 7;
+            let destino = null;
+            if (evento.key in saltos) {
+                destino = sumarDias(estado.fechaEnfocada, saltos[evento.key]);
+            } else if (evento.key === "Home") {
+                destino = sumarDias(estado.fechaEnfocada, -posicion);
+            } else if (evento.key === "End") {
+                destino = sumarDias(estado.fechaEnfocada, 6 - posicion);
+            } else {
+                return;
+            }
+            evento.preventDefault();
+            enfocarDia(destino);
+        });
+
+        campoHora.addEventListener("change", function () {
+            estado.hora = Number(campoHora.value);
+            limpiarError("hora");
+            guardar();
+        });
+
+        campoReferencia.addEventListener("input", guardar);
+
+        document.addEventListener("click", function (evento) {
+            if (!evento.target.closest(".Desplegable")) {
+                cerrarPaneles();
+            }
+            if (!evento.target.closest("#SelectorFecha")) {
+                cerrarCalendario(false);
+            }
+        });
+
+        document.addEventListener("keydown", function (evento) {
+            if (evento.key !== "Escape") {
+                return;
+            }
+            const botonAbierto = Array.from(botonesPanel).find(function (boton) {
+                return boton.getAttribute("aria-expanded") === "true";
+            });
+            if (botonAbierto) {
+                cerrarPaneles();
+                botonAbierto.focus();
+            }
+            if (!calendario.hidden) {
+                cerrarCalendario(true);
+            }
+        });
+
+        selectorFecha.addEventListener("focusout", function (evento) {
+            if (evento.relatedTarget && !selectorFecha.contains(evento.relatedTarget)) {
+                cerrarCalendario(false);
+            }
+        });
+
+        document.querySelectorAll(".Desplegable").forEach(function (desplegable) {
+            desplegable.addEventListener("focusout", function (evento) {
+                if (evento.relatedTarget && !desplegable.contains(evento.relatedTarget)) {
+                    cerrarPaneles();
+                }
+            });
+        });
+
+        window.addEventListener("blur", function () {
+            cerrarPaneles();
+            cerrarCalendario(false);
+        });
+
+        formulario.addEventListener("submit", function (evento) {
+            evento.preventDefault();
+            cerrarSugerencias();
+            cerrarCalendario(false);
+            let primerError = null;
+            if (!aplicarDireccion(campoDireccion.value)) {
+                mostrarError("direccion", "Ingresa la dirección donde necesitas el servicio.");
+                primerError = campoDireccion;
+            }
+            if (!fechaPermitida(estado.fecha)) {
+                mostrarError("fecha", "Elige una fecha disponible.");
+                primerError = primerError || botonFecha;
+            }
+            if (!horasDisponibles(estado.fecha).includes(estado.hora)) {
+                actualizarHoras();
+                mostrarError("hora", "Elige una hora disponible.");
+                primerError = primerError || campoHora;
+            }
+            if (primerError) {
+                primerError.focus();
+                return;
+            }
+            guardar();
+            window.location.href = "Negociacion.html";
+        });
+
+        function iniciar() {
+            const guardado = leerGuardado();
+            const fechaGuardada = leerClaveFecha(guardado.fecha);
+            const horaGuardada = leerClaveHora(guardado.hora);
+            const coordenadas = guardado.coordenadas;
+            if (fechaGuardada && fechaPermitida(fechaGuardada)) {
+                estado.fecha = fechaGuardada;
+            }
+            if (horaGuardada !== null) {
+                estado.hora = horaGuardada;
+            }
+            textoFecha.textContent = formatoFecha(estado.fecha);
+            actualizarHoras();
+            if (typeof guardado.referencia === "string") {
+                campoReferencia.value = guardado.referencia;
+            }
+            const coordenadasValidas = coordenadas && Number.isFinite(coordenadas.lat) && Number.isFinite(coordenadas.lng);
+            aplicarDireccion(guardado.direccion || campoDireccion.value, coordenadasValidas ? coordenadas : null);
+        }
+
+        iniciar();
+    </script>
+</body>
+</html>

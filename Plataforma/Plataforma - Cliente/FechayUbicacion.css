@@ -1,0 +1,899 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+body{
+    min-height: 100vh;
+    font-family: "Inter", sans-serif;
+    background-color: #FFFFFF;
+    color: #0C1B24;
+    -webkit-font-smoothing: antialiased;
+}
+button,
+input,
+select,
+textarea{
+    font: inherit;
+    color: inherit;
+}
+button{
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+a{
+    -webkit-tap-highlight-color: transparent;
+}
+svg{
+    display: block;
+    flex-shrink: 0;
+}
+[hidden]{
+    display: none !important;
+}
+a:focus-visible,
+button:focus-visible{
+    outline: 2px solid #0B6E63;
+    outline-offset: 2px;
+}
+
+.Pantalla{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 440px;
+    min-height: 100vh;
+    min-height: 100dvh;
+    margin: 0 auto;
+    background-color: #FFFFFF;
+}
+
+.Encabezado{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 16px 0 9px;
+}
+.Logo{
+    display: block;
+    flex: 0 1 auto;
+    min-width: 0;
+    width: auto;
+    height: 42px;
+    margin-left: -2px;
+    object-fit: contain;
+    object-position: left center;
+}
+.AccionesEncabezado{
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 5px;
+}
+.Desplegable{
+    position: relative;
+}
+.BotonNotificaciones{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background: none;
+    color: #1B264E;
+    transition: background-color 0.2s;
+}
+.BotonNotificaciones svg{
+    width: 26px;
+    height: 26px;
+}
+.BotonUsuario{
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 3px 4px 3px 3px;
+    border: none;
+    border-radius: 22px;
+    background: none;
+    transition: background-color 0.2s;
+}
+.BotonNotificaciones:hover,
+.BotonUsuario:hover,
+.BotonNotificaciones[aria-expanded="true"],
+.BotonUsuario[aria-expanded="true"]{
+    background-color: #F1F4F6;
+}
+.Avatar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(140deg, #E3B22A 0%, #C8960F 52%, #8E6A0A 100%);
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1;
+}
+.NombreUsuario{
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #0E2B42;
+}
+.FlechaUsuario{
+    width: 20px;
+    height: 20px;
+    margin-left: -2px;
+    color: #2D2D2D;
+    transition: transform 0.2s;
+}
+.BotonUsuario[aria-expanded="true"] .FlechaUsuario{
+    transform: rotate(180deg);
+}
+.Panel{
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    z-index: 50;
+    width: 240px;
+    padding: 14px 16px;
+    background-color: #FFFFFF;
+    border: 1px solid #E4E8EA;
+    border-radius: 12px;
+    box-shadow: 0 16px 36px rgba(12, 27, 36, 0.14);
+}
+.TituloPanel{
+    font-size: 14px;
+    font-weight: 700;
+    color: #0C1B24;
+}
+.TextoPanel{
+    margin-top: 4px;
+    font-size: 12.5px;
+    line-height: 1.45;
+    color: #5E6E86;
+}
+.EnlacePanel{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #EEF1F2;
+    font-size: 13px;
+    font-weight: 600;
+    color: #C23B3B;
+    text-decoration: none;
+}
+.EnlacePanel svg{
+    width: 18px;
+    height: 18px;
+}
+
+.Contenido{
+    flex: 1;
+    padding: 0 16px 12px;
+}
+
+.Pasos{
+    display: flex;
+    margin-top: 25px;
+    padding: 0 16px 13px 4px;
+    list-style: none;
+}
+.Paso{
+    position: relative;
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+}
+.Paso:first-child{
+    flex: 0 0 auto;
+}
+.Paso:not(:first-child)::before{
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    right: 42px;
+    height: 2px;
+    border-radius: 2px;
+    background-color: #BCC3CA;
+}
+.Paso.Hecho::before{
+    background-color: #0B6E63;
+}
+.MarcaPaso{
+    position: relative;
+    display: block;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    text-decoration: none;
+}
+.CirculoPaso{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #ADB4BD;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 300;
+    transition: background-color 0.2s;
+}
+.Hecho .CirculoPaso{
+    background-color: #0B6E63;
+}
+a.MarcaPaso:hover .CirculoPaso{
+    background-color: #0F8174;
+}
+.EtiquetaPaso{
+    position: absolute;
+    top: 33px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 12px;
+    white-space: nowrap;
+    color: #717F92;
+}
+.Hecho .EtiquetaPaso{
+    color: #1E796F;
+}
+
+.Titulo{
+    max-width: 310px;
+    margin-top: 20px;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 26px;
+    font-optical-sizing: none;
+    color: #0C1B24;
+}
+.Descripcion{
+    max-width: 330px;
+    margin-top: 10px;
+    font-size: 12.5px;
+    line-height: 17.5px;
+    color: #5E6E86;
+}
+
+.Formulario{
+    margin-top: 13px;
+}
+.Etiqueta{
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17px;
+    color: #0D2233;
+}
+.Opcional{
+    font-size: 13px;
+    font-weight: 400;
+    color: #9AA2AD;
+}
+.Campo + .Campo,
+.Mapa + .Campo{
+    margin-top: 8px;
+}
+.Campo.CampoReferencia{
+    margin-top: 13px;
+}
+.CajaDireccion,
+.Control{
+    position: relative;
+    margin-top: 7px;
+}
+.CajaDireccion{
+    margin-top: 8px;
+}
+.IconoCampo{
+    position: absolute;
+    top: 50%;
+    left: 7px;
+    width: 26px;
+    height: 26px;
+    transform: translateY(-50%);
+    color: #516173;
+    pointer-events: none;
+}
+.CajaDireccion .IconoCampo{
+    left: 4px;
+    width: 28px;
+    height: 28px;
+    color: #506173;
+}
+.IconoFlecha{
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    color: #808080;
+    pointer-events: none;
+    transition: transform 0.2s;
+}
+.Selector.Abierto .IconoFlecha{
+    transform: rotate(180deg);
+}
+
+.CajaDireccion input{
+    display: block;
+    width: 100%;
+    height: 38px;
+    padding: 0 36px 0 38px;
+    font-size: 12.5px;
+    color: #212F4B;
+    text-overflow: ellipsis;
+    background-color: #FFFFFF;
+    border: 1px solid #E4E4E4;
+    border-radius: 7px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.CajaDireccion input::placeholder{
+    color: #9AA3AE;
+}
+.BotonLimpiar{
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    margin-top: -15px;
+    border: none;
+    border-radius: 50%;
+    background: none;
+    color: #797979;
+    transition: background-color 0.2s;
+}
+.BotonLimpiar:hover{
+    background-color: #F1F4F6;
+}
+.BotonLimpiar svg{
+    width: 22px;
+    height: 22px;
+}
+
+.Sugerencias{
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    z-index: 45;
+    max-height: 264px;
+    overflow-y: auto;
+    padding: 6px;
+    list-style: none;
+    background-color: #FFFFFF;
+    border: 1px solid #E4E8EA;
+    border-radius: 12px;
+    box-shadow: 0 16px 36px rgba(12, 27, 36, 0.14);
+}
+.Sugerencia{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.Sugerencia:hover,
+.Sugerencia.Activa{
+    background-color: #EEF6F4;
+}
+.Sugerencia svg{
+    width: 18px;
+    height: 18px;
+    color: #0B6E63;
+}
+.Sugerencia span{
+    min-width: 0;
+}
+.Sugerencia strong,
+.Sugerencia small{
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.Sugerencia strong{
+    font-size: 13px;
+    font-weight: 600;
+    color: #0C1B24;
+}
+.Sugerencia small{
+    margin-top: 2px;
+    font-size: 11.5px;
+    color: #6B7A8C;
+}
+.MensajeSugerencias{
+    padding: 10px;
+    font-size: 12.5px;
+    line-height: 1.45;
+    color: #5E6E86;
+}
+
+.Mapa{
+    position: relative;
+    height: 180px;
+    margin-top: 9px;
+    overflow: hidden;
+    isolation: isolate;
+    background-color: #EEEAE5;
+    border: 1px solid #E6E6E6;
+    border-radius: 8px;
+}
+.Mapa iframe,
+.MarcoVista3D iframe{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    transition: opacity 0.3s;
+}
+.Mapa::before,
+.MarcoVista3D::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.6) 50%, rgba(255, 255, 255, 0) 70%);
+    background-size: 250% 100%;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+.Cargando::before{
+    opacity: 1;
+    animation: Brillo 1.3s linear infinite;
+}
+.Cargando iframe{
+    opacity: 0;
+}
+@keyframes Brillo{
+    from{
+        background-position: 120% 0;
+    }
+    to{
+        background-position: -120% 0;
+    }
+}
+.Boton3D{
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    height: 32px;
+    padding: 0 12px 0 10px;
+    border: none;
+    border-radius: 16px;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 4px rgba(12, 27, 36, 0.24);
+    font-size: 12px;
+    font-weight: 700;
+    color: #0B6E63;
+    transition: background-color 0.2s;
+}
+.Boton3D:hover{
+    background-color: #F2F7F6;
+}
+.Boton3D svg{
+    width: 17px;
+    height: 17px;
+}
+.TarjetaMapa{
+    position: absolute;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 52px;
+    padding: 7px 16px 7px 9px;
+    background-color: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 7px;
+    box-shadow: 0 2px 6px rgba(12, 27, 36, 0.1);
+}
+.TextoTarjeta{
+    min-width: 0;
+}
+.TextoTarjeta strong,
+.TextoTarjeta span{
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.TextoTarjeta strong{
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    color: #1E3342;
+}
+.TextoTarjeta span{
+    margin-top: 3px;
+    font-size: 11px;
+    line-height: 14px;
+    color: #959DAA;
+}
+.BotonEditar{
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 6px;
+    height: 36px;
+    padding: 0 11px 0 10px;
+    border: 1.5px solid #6FAAA3;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 700;
+    color: #127267;
+    transition: background-color 0.2s;
+}
+.BotonEditar:hover{
+    background-color: #EEF6F4;
+}
+.BotonEditar svg{
+    width: 15px;
+    height: 15px;
+    color: #247D73;
+}
+
+.CampoSelector{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 43px;
+    padding: 0 36px 0 38px;
+    font-size: 12.5px;
+    text-align: left;
+    color: #22304B;
+    background-color: #FFFFFF;
+    border: 1px solid #E1E1E1;
+    border-radius: 8px;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.CampoSelector span{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+select.CampoSelector{
+    display: block;
+    cursor: pointer;
+}
+select.CampoSelector option{
+    color: #22304B;
+}
+.CampoSelector:hover{
+    border-color: #CBD2D8;
+}
+.CajaDireccion input:focus,
+.CampoSelector:focus-visible,
+select.CampoSelector:focus,
+.Selector.Abierto .CampoSelector,
+.Campo textarea:focus{
+    border-color: #0B6E63;
+    box-shadow: 0 0 0 3px rgba(11, 110, 99, 0.12);
+}
+.Campo textarea{
+    display: block;
+    width: 100%;
+    height: 66px;
+    min-height: 66px;
+    margin-top: 7px;
+    padding: 11px 15px;
+    font-size: 12px;
+    line-height: 1.45;
+    color: #22304B;
+    background-color: #FFFFFF;
+    border: 1px solid #E4E4E4;
+    border-radius: 8px;
+    outline: none;
+    resize: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.Campo textarea::placeholder{
+    color: #AEB6BF;
+}
+.ConError,
+.ConError:focus{
+    border-color: #D14343 !important;
+    box-shadow: 0 0 0 3px rgba(209, 67, 67, 0.1) !important;
+}
+.MensajeError{
+    display: block;
+    margin-top: 5px;
+    font-size: 11.5px;
+    color: #C23B3B;
+}
+.MensajeError:empty{
+    display: none;
+}
+
+.Calendario{
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    z-index: 40;
+    padding: 14px 12px 12px;
+    background-color: #FFFFFF;
+    border: 1px solid #E4E8EA;
+    border-radius: 14px;
+    box-shadow: 0 16px 36px rgba(12, 27, 36, 0.16);
+}
+.CabeceraCalendario{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2px 10px;
+}
+.TituloMes{
+    font-size: 14px;
+    font-weight: 700;
+    color: #0C1B24;
+}
+.BotonMes{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #E4E8EA;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    color: #22304B;
+    transition: background-color 0.2s;
+}
+.BotonMes svg{
+    width: 18px;
+    height: 18px;
+}
+.BotonMes:hover:not(:disabled){
+    background-color: #F2F6F5;
+}
+.BotonMes:disabled{
+    opacity: 0.35;
+    cursor: default;
+}
+.DiasSemana,
+.DiasMes{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+}
+.DiasSemana span{
+    padding: 4px 0 6px;
+    font-size: 11px;
+    font-weight: 600;
+    text-align: center;
+    color: #8A94A6;
+}
+.Dia{
+    height: 38px;
+    border: none;
+    border-radius: 10px;
+    background: none;
+    font-size: 13px;
+    color: #22304B;
+    transition: background-color 0.15s;
+}
+.Dia:hover:not(:disabled){
+    background-color: #EAF4F2;
+}
+.Dia.Hoy{
+    font-weight: 700;
+    color: #0B6E63;
+    box-shadow: inset 0 0 0 1px #9CCBC5;
+}
+.Dia[aria-pressed="true"],
+.Dia[aria-pressed="true"]:hover{
+    background-color: #0B6E63;
+    color: #FFFFFF;
+    font-weight: 600;
+    box-shadow: none;
+}
+.Dia:disabled{
+    color: #C3C9D0;
+    cursor: default;
+}
+.Dia:focus-visible{
+    outline-offset: 1px;
+}
+
+.Pie{
+    position: sticky;
+    bottom: 0;
+    z-index: 20;
+    display: grid;
+    grid-template-columns: 0.95fr 1fr;
+    gap: 20px;
+    padding: 17px 16px 16px;
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
+    background-color: #FFFFFF;
+    border-top: 1px solid #F0F0F0;
+}
+.BotonVolver,
+.BotonSiguiente{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 52px;
+    border-radius: 12px;
+    font-family: "Poppins", "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s, transform 0.1s;
+}
+.BotonVolver{
+    justify-content: flex-start;
+    gap: 30px;
+    padding-left: 16px;
+    color: #112B45;
+    background-color: #FFFFFF;
+    border: 1.5px solid #66A49D;
+}
+.BotonSiguiente{
+    gap: 15px;
+    color: #0D273B;
+    background-color: #FEC135;
+    border: none;
+}
+.BotonVolver svg,
+.BotonSiguiente svg{
+    width: 24px;
+    height: 24px;
+    color: #0D273B;
+}
+.BotonVolver:hover{
+    background-color: #F1F8F7;
+}
+.BotonSiguiente:hover{
+    background-color: #F8B921;
+}
+.BotonVolver:active,
+.BotonSiguiente:active{
+    transform: scale(0.98);
+}
+
+.Vista3D{
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: #FFFFFF;
+    color: #0C1B24;
+}
+.Vista3D[open]{
+    display: flex;
+    flex-direction: column;
+}
+.Vista3D::backdrop{
+    background-color: rgba(12, 27, 36, 0.55);
+}
+.CabeceraVista3D{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 16px;
+    padding-top: max(14px, env(safe-area-inset-top));
+    border-bottom: 1px solid #EEF1F2;
+}
+.TextoVista3D{
+    min-width: 0;
+}
+.TextoVista3D h2{
+    font-size: 16px;
+    font-weight: 700;
+    color: #0C1B24;
+}
+.TextoVista3D p{
+    margin-top: 2px;
+    overflow: hidden;
+    font-size: 12.5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #5E6E86;
+}
+.BotonCerrar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    background-color: #F1F4F6;
+    color: #22304B;
+    transition: background-color 0.2s;
+}
+.BotonCerrar:hover{
+    background-color: #E5EAED;
+}
+.BotonCerrar svg{
+    width: 22px;
+    height: 22px;
+}
+.AvisoVista3D{
+    padding: 10px 16px;
+    font-size: 12.5px;
+    line-height: 1.4;
+    color: #6B4E00;
+    background-color: #FFF4D6;
+}
+.MarcoVista3D{
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    background-color: #E9EEF0;
+}
+
+@media (min-width: 600px){
+    body{
+        background-color: #F3F5F4;
+    }
+    .Pantalla{
+        box-shadow: 0 0 0 1px #E6EAE8, 0 20px 50px rgba(12, 27, 36, 0.08);
+    }
+}
+@media (min-width: 640px){
+    .Vista3D{
+        width: min(920px, calc(100vw - 48px));
+        height: min(640px, calc(100vh - 48px));
+        margin: auto;
+        overflow: hidden;
+        border-radius: 16px;
+        box-shadow: 0 24px 60px rgba(12, 27, 36, 0.3);
+    }
+}
+@supports (-webkit-touch-callout: none){
+    .CajaDireccion input,
+    select.CampoSelector,
+    .Campo textarea{
+        font-size: 16px;
+    }
+}
+@media (prefers-reduced-motion: reduce){
+    *,
+    *::before{
+        transition-duration: 0.01ms !important;
+    }
+    .Cargando::before{
+        animation: none;
+    }
+}
