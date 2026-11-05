@@ -23,6 +23,10 @@ textarea{
 button{
     cursor: pointer;
 }
+a,
+button{
+    -webkit-tap-highlight-color: transparent;
+}
 svg{
     display: block;
     flex-shrink: 0;
@@ -37,11 +41,13 @@ button:focus-visible{
 }
 
 .Pantalla{
+    --Margen: clamp(24px, 3.6vw, 56px);
     display: flex;
     flex-direction: column;
     width: 100%;
     min-height: 100vh;
-    padding: 20px clamp(24px, 3.6vw, 56px) 8px;
+    min-height: 100dvh;
+    padding: 20px var(--Margen) 8px;
 }
 
 .Encabezado{
@@ -984,6 +990,9 @@ a.MarcaPaso:hover .CirculoPaso{
     }
 }
 @media (max-width: 1080px){
+    .Pantalla{
+        padding-bottom: 0;
+    }
     .Encabezado{
         flex-wrap: wrap;
     }
@@ -993,57 +1002,383 @@ a.MarcaPaso:hover .CirculoPaso{
         max-width: 100%;
     }
     .Contenido{
-        grid-template-columns: minmax(0, 1fr);
-        gap: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
     }
-    .Referencias{
-        flex: 0 0 170px;
+    .ColumnaDatos,
+    .ColumnaMapa,
+    .Formulario{
+        display: contents;
+    }
+    .Titulo{
+        order: 1;
+    }
+    .Descripcion{
+        order: 2;
+    }
+    .Formulario > .Campo:first-child{
+        order: 3;
+        margin-top: 16px;
     }
     .Mapa{
-        flex: 0 0 auto;
-        height: 460px;
+        order: 4;
+        flex: none;
+        height: 420px;
+        min-height: 0;
+        margin-top: 14px;
+    }
+    .FilaCampos{
+        order: 5;
+        margin-top: 16px;
+    }
+    .Formulario > .Campo:last-child{
+        order: 6;
+        margin-top: 16px;
+    }
+    .Referencias{
+        order: 7;
+        flex: none;
+        height: 190px;
+        min-height: 0;
+        max-height: none;
+        margin-top: 16px;
+    }
+    .Pie{
+        order: 8;
+        margin: 16px calc(var(--Margen) * -1) 0;
+        padding: 14px var(--Margen) 14px;
+        border-top: 1px solid #F0F0F0;
     }
 }
 @media (max-width: 640px){
+    .Pantalla{
+        --Margen: 16px;
+        padding-top: 12px;
+    }
+    .Encabezado{
+        position: relative;
+        gap: 8px;
+        margin-bottom: 0;
+    }
     .Logo{
+        flex: 1 1 0;
+        width: 0;
+        min-width: 0;
+        max-width: 174px;
         height: 36px;
+        object-fit: contain;
+        object-position: left center;
+    }
+    .AccionesEncabezado{
+        gap: 2px;
+    }
+    .Desplegable{
+        position: static;
     }
     .BotonNotificaciones{
-        display: none;
+        width: 36px;
+        height: 36px;
+    }
+    .BotonNotificaciones svg{
+        width: 26px;
+        height: 26px;
+    }
+    .BotonUsuario{
+        gap: 7px;
+        padding: 3px 4px 3px 3px;
+    }
+    .Avatar{
+        width: 28px;
+        height: 28px;
+        font-size: 13px;
+    }
+    .NombreUsuario{
+        font-size: 12px;
+    }
+    .FlechaUsuario{
+        width: 20px;
+        height: 20px;
+    }
+    .Panel{
+        top: 44px;
+        width: min(280px, 100%);
+    }
+
+    .Pasos{
+        margin-top: 16px;
+        padding: 0 16px 16px 4px;
     }
     .Paso{
-        min-width: 66px;
+        flex: 0 0 32px;
+        min-width: 0;
+    }
+    .MarcaPaso{
+        position: relative;
+        display: block;
+        width: 32px;
+        height: 32px;
+    }
+    .CirculoPaso{
+        width: 32px;
+        height: 32px;
+        font-size: 13px;
     }
     .EtiquetaPaso{
-        font-size: 11px;
-        white-space: normal;
-        text-align: center;
+        position: absolute;
+        top: 35px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 10px;
+        line-height: 12px;
     }
     .LineaPaso{
         min-width: 8px;
+        margin: 15px 10px 0;
+    }
+
+    .Titulo{
+        max-width: 310px;
+        margin-top: 20px;
+        font-size: 22px;
+        line-height: 26px;
+    }
+    .Descripcion{
+        max-width: 330px;
+        margin-top: 10px;
+        font-size: 12.5px;
+        line-height: 17.5px;
+        text-wrap: wrap;
+    }
+    .Etiqueta{
+        font-size: 14px;
+        line-height: 17px;
+    }
+    .Opcional{
+        font-size: 13px;
+    }
+    .Contador{
+        font-size: 11.5px;
+    }
+    .Formulario > .Campo:first-child{
+        margin-top: 13px;
+    }
+    .CajaDireccion{
+        margin-top: 8px;
+    }
+    .IconoCampo{
+        left: 7px;
+        width: 26px;
+        height: 26px;
+    }
+    .CajaDireccion .IconoCampo{
+        left: 5px;
+        width: 26px;
+        height: 26px;
+    }
+    .IconoFlecha{
+        right: 10px;
+        width: 20px;
+        height: 20px;
+        margin-top: -10px;
+    }
+    .CajaDireccion input{
+        height: 38px;
+        padding: 0 36px 0 38px;
+        font-size: 12.5px;
+        border-width: 1px;
+        border-color: #E4E4E4;
+        border-radius: 7px;
+    }
+    .BotonLimpiar{
+        right: 5px;
+        width: 30px;
+        height: 30px;
+        margin-top: -15px;
+    }
+    .BotonLimpiar svg{
+        width: 22px;
+        height: 22px;
+    }
+    .CampoSelector{
+        height: 43px;
+        padding: 0 36px 0 38px;
+        font-size: 12.5px;
+        border-width: 1px;
+        border-color: #E1E1E1;
+        border-radius: 8px;
     }
     .FilaCampos{
         grid-template-columns: minmax(0, 1fr);
+        gap: 8px;
+        margin-top: 8px;
     }
+    .Formulario > .Campo:last-child{
+        margin-top: 13px;
+    }
+    .Campo textarea{
+        height: 66px;
+        padding: 11px 15px;
+        font-size: 12px;
+        border-width: 1px;
+        border-color: #E4E4E4;
+        border-radius: 8px;
+    }
+
+    .Calendario,
     .PanelHoras{
         width: 100%;
     }
+    .Dia{
+        height: 38px;
+    }
     .ListaHoras{
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
     }
-    .Calendario{
-        width: 100%;
+    .Hora{
+        height: 38px;
+        font-size: 12px;
     }
+
+    .Mapa{
+        height: 260px;
+        margin-top: 9px;
+        background-color: #EEF1F2;
+        border-width: 1px;
+        border-radius: 8px;
+    }
+    .Mapa iframe{
+        top: -44px;
+        height: calc(100% - 12px);
+    }
+    .Mapa.ModoCalle iframe{
+        top: -80px;
+        height: calc(100% + 24px);
+    }
+    .Mapa.ModoCalle .AbrirGoogleMaps{
+        display: none;
+    }
+    .VistasMapa{
+        top: 8px;
+        left: 8px;
+        padding: 3px;
+        transform: none;
+        border-radius: 19px;
+    }
+    .BotonVista{
+        gap: 4px;
+        height: 30px;
+        padding: 0 10px;
+        font-size: 12px;
+    }
+    .BotonVista svg{
+        width: 14px;
+        height: 14px;
+    }
+    .AbrirGoogleMaps{
+        top: 8px;
+        right: 8px;
+        width: 36px;
+        height: 36px;
+    }
+    .AbrirGoogleMaps svg{
+        width: 18px;
+        height: 18px;
+    }
+    .AvisoMapa{
+        top: 52px;
+        right: 8px;
+        left: 8px;
+        width: auto;
+        max-width: none;
+        padding: 6px 10px;
+        transform: none;
+        font-size: 11.5px;
+    }
+    .TarjetaMapa{
+        right: 4px;
+        bottom: 4px;
+        left: 4px;
+        width: auto;
+        min-width: 0;
+        min-height: 52px;
+        padding: 7px 12px 7px 9px;
+        border-color: #D9D9D9;
+        border-radius: 7px;
+    }
+    .TextoTarjeta strong{
+        font-size: 12px;
+        line-height: 15px;
+    }
+    .TextoTarjeta span{
+        margin-top: 3px;
+        font-size: 11px;
+        line-height: 14px;
+    }
+    .BotonEditar{
+        gap: 6px;
+        height: 36px;
+        padding: 0 11px 0 10px;
+        font-size: 13px;
+        border-radius: 8px;
+    }
+    .BotonEditar svg{
+        width: 15px;
+        height: 15px;
+    }
+
     .Referencias{
-        grid-template-columns: minmax(0, 1fr);
-        flex: 0 0 auto;
-        max-height: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        height: auto;
+        margin-top: 13px;
     }
-    .TarjetaReferencia{
-        min-height: 150px;
+    .TarjetaReferencia,
+    .TarjetaColumna{
+        flex-direction: row;
+        flex: none;
+        gap: 10px;
+        min-height: 124px;
     }
-    .TarjetaColumna .ImagenReferencia{
-        min-height: 110px;
+    .ImagenReferencia,
+    .ImagenMoto{
+        flex: 0 0 46%;
+    }
+    .TarjetaColumna .TextoReferencia{
+        flex: 1 1 0;
+        align-self: center;
+        padding: 0 4px 0 0;
+    }
+
+    .Pie{
+        margin-top: 12px;
+        padding: 17px var(--Margen) 16px;
+    }
+    .BotonVolver,
+    .BotonSiguiente{
+        height: 52px;
+        border-radius: 12px;
+        font-size: 16px;
+    }
+    .BotonVolver{
+        justify-content: flex-start;
+        gap: min(30px, 7.5vw);
+        padding-left: 16px;
+    }
+    .BotonSiguiente{
+        gap: 15px;
+    }
+    .BotonVolver svg,
+    .BotonSiguiente svg{
+        width: 24px;
+        height: 24px;
+    }
+}
+@supports (-webkit-touch-callout: none){
+    .CajaDireccion input,
+    .Campo textarea{
+        font-size: 16px;
     }
 }
 @media (prefers-reduced-motion: reduce){
