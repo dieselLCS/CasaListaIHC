@@ -4,42 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CasaLista - Crear cuenta</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <!-- Fuente Inter desde Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/IconoLogo.png" type="image/png">
     <link rel="stylesheet" href="CrearCuentaCliente.css">
 </head>
 <body>
-    <div class="Fondo" aria-hidden="true">
-        <div class="ManchaDecorativa ManchaArribaIzquierda"></div>
-        <div class="ManchaDecorativa ManchaAbajoIzquierda"></div>
-        <div class="ManchaDecorativa ManchaAbajoDerecha"></div>
-    </div>
+    <!-- Manchas decorativas del fondo (círculos color durazno en las esquinas) -->
+    <div class="Mancha ManchaArribaIzquierda"></div>
+    <div class="Mancha ManchaArribaDerecha"></div>
+    <div class="Mancha ManchaAbajoIzquierda"></div>
+    <div class="Mancha ManchaAbajoDerecha"></div>
 
-    <main class="Registro">
-        <header class="Encabezado">
-            <div class="Logo">
-                <img src="assets/IconoLogo.png" alt="Logo de Casa Lista">
-                <span class="TextoLogo"><span class="TextoLogoCasa">Casa</span> <span class="TextoLogoLista">Lista</span></span>
-            </div>
+    <main class="ContenedorPrincipal">
 
-            <div class="Titulo">
-                <a class="BotonVolver" href="IniciarSesion.html" aria-label="Volver">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4 7 12l8 8"/></svg>
-                </a>
-                <h1><span class="TituloCrear">Crear</span> <span class="TituloCuenta">Cuenta</span></h1>
-            </div>
-        </header>
+        <!-- COLUMNA IZQUIERDA: logo, título, tipo de cuenta y "Tu hogar" (solo escritorio) -->
+        <div class="ColumnaIzquierda">
+            <header class="Encabezado">
+                <div class="Logo">
+                    <img src="assets/IconoLogo.png" alt="Logo de Casa Lista">
+                    <span class="TextoLogo">Casa <span class="TextoLogoLista">Lista</span></span>
+                </div>
 
-        <form class="FormularioRegistro" id="FormularioRegistro" data-tipo="cliente" novalidate>
-            <nav class="TipoCuenta" aria-label="Tipo de cuenta">
+                <div class="Titulo">
+                    <a class="BotonVolver" href="IniciarSesion.html">
+                        <img src="assets/iconos/IconoFlechaIzquierda.svg" alt="Volver">
+                    </a>
+                    <h1>Crear <span class="TituloCuenta">Cuenta</span></h1>
+                </div>
+            </header>
+
+            <!-- Tipo de cuenta: cada tarjeta es un enlace a su página de registro -->
+            <nav class="TipoCuenta">
                 <div class="TarjetasTipo">
-                    <a class="TarjetaTipo Seleccionada" href="CrearCuentaCliente.html" aria-current="page">
-                        <span class="CirculoRadio" aria-hidden="true"></span>
+                    <a class="TarjetaTipo TarjetaSeleccionada" href="CrearCuentaCliente.html">
+                        <div class="FilaRadio">
+                            <span class="CirculoRadio"><span class="PuntoRadio"></span></span>
+                        </div>
                         <img src="assets/RegistroCliente.png" alt="Mujer usando su celular">
                         <span class="NombreTipo">Usuario/Cliente</span>
                     </a>
                     <a class="TarjetaTipo" href="CrearCuentaProfesional.html">
-                        <span class="CirculoRadio" aria-hidden="true"></span>
+                        <div class="FilaRadio">
+                            <span class="CirculoRadio"></span>
+                        </div>
                         <img src="assets/RegistroProfesional.png" alt="Gasfitero sosteniendo una llave">
                         <span class="NombreTipo">Profesional</span>
                     </a>
@@ -47,186 +55,219 @@
                 <p class="AyudaTipo">Elige cómo usarás Casa Lista</p>
             </nav>
 
-            <section class="Tarjeta">
-                <div class="CabeceraTarjeta">
-                    <span class="CirculoIcono" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/></svg>
-                    </span>
-                    <div>
-                        <h2>Datos personales</h2>
-                        <p>Queremos conocerte un poquito.</p>
-                    </div>
-                </div>
-
-                <div class="Campo">
-                    <label class="SoloLector" for="nombres">Nombres y apellidos</label>
-                    <div class="CampoEntrada">
-                        <svg class="IconoCampo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/></svg>
-                        <input type="text" id="nombres" name="nombres" placeholder="Nombres y apellidos" autocomplete="name">
-                    </div>
-                    <small class="MensajeError" id="error-nombres"></small>
-                </div>
-
-                <div class="Campo">
-                    <label class="SoloLector" for="correo">Correo electrónico</label>
-                    <div class="CampoEntrada">
-                        <svg class="IconoCampo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg>
-                        <input type="email" id="correo" name="correo" placeholder="Correo electrónico" autocomplete="email">
-                    </div>
-                    <small class="MensajeError" id="error-correo"></small>
-                </div>
-
-                <div class="Campo">
-                    <label class="SoloLector" for="celular">Número de celular</label>
-                    <div class="CampoEntrada">
-                        <svg class="IconoCampo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18h2"/></svg>
-                        <input type="tel" id="celular" name="celular" placeholder="Número de celular" inputmode="numeric" maxlength="9" autocomplete="tel-national">
-                    </div>
-                    <small class="MensajeError" id="error-celular"></small>
-                </div>
-
-                <div class="Campo">
-                    <label class="SoloLector" for="contrasena">Contraseña</label>
-                    <div class="CampoEntrada">
-                        <svg class="IconoCampo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10.5" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><path d="M12 15v2"/></svg>
-                        <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" autocomplete="new-password">
-                        <button type="button" class="BotonOjo" data-objetivo="contrasena" aria-label="Mostrar contraseña">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
-                        </button>
-                    </div>
-                    <small class="MensajeError" id="error-contrasena"></small>
-                </div>
-
-                <div class="Campo">
-                    <label class="SoloLector" for="confirmarContrasena">Confirmar contraseña</label>
-                    <div class="CampoEntrada">
-                        <svg class="IconoCampo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10.5" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><path d="M12 15v2"/></svg>
-                        <input type="password" id="confirmarContrasena" name="confirmarContrasena" placeholder="Confirmar contraseña" autocomplete="new-password">
-                        <button type="button" class="BotonOjo" data-objetivo="confirmarContrasena" aria-label="Mostrar contraseña">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
-                        </button>
-                    </div>
-                    <small class="MensajeError" id="error-confirmarContrasena"></small>
-                </div>
-            </section>
-
-            <section class="Tarjeta">
-                <div class="CabeceraTarjeta">
-                    <span class="CirculoIcono" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.5s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
-                    </span>
-                    <div>
-                        <h2>Tu ubicación</h2>
-                        <p>Para encontrar profesionales cerca de ti.</p>
-                    </div>
-                </div>
-
-                <div class="Campo">
-                    <label class="SoloLector" for="distrito">Distrito donde vives</label>
-                    <div class="CampoEntrada">
-                        <svg class="IconoCampo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.5s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
-                        <select id="distrito" name="distrito" class="SinValor">
-                            <option value="" selected disabled>Distrito donde vives</option>
-                            <option>Ate</option>
-                            <option>Barranco</option>
-                            <option>Breña</option>
-                            <option>Chorrillos</option>
-                            <option>Comas</option>
-                            <option>Jesús María</option>
-                            <option>La Molina</option>
-                            <option>La Victoria</option>
-                            <option>Lince</option>
-                            <option>Los Olivos</option>
-                            <option>Magdalena del Mar</option>
-                            <option>Miraflores</option>
-                            <option>Pueblo Libre</option>
-                            <option>San Borja</option>
-                            <option>San Isidro</option>
-                            <option>San Juan de Lurigancho</option>
-                            <option>San Juan de Miraflores</option>
-                            <option>San Martín de Porres</option>
-                            <option>San Miguel</option>
-                            <option>Santiago de Surco</option>
-                            <option>Surquillo</option>
-                            <option>Villa El Salvador</option>
-                        </select>
-                        <svg class="IconoFlecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-                    </div>
-                    <small class="MensajeError" id="error-distrito"></small>
-                </div>
-
-                <div class="Campo">
-                    <label class="SoloLector" for="direccion">Dirección o referencia (opcional)</label>
-                    <div class="CampoEntrada">
-                        <svg class="IconoCampo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5h4v5"/></svg>
-                        <input type="text" id="direccion" name="direccion" placeholder="Dirección o referencia (opcional)" autocomplete="street-address">
-                    </div>
-                </div>
-            </section>
-
-            <section class="Tarjeta">
+            <!-- "Tu hogar" versión escritorio (en móvil se oculta) -->
+            <section class="Tarjeta TarjetaHogar SoloEscritorio">
                 <div class="CajaHogar">
                     <div>
                         <h2>Tu hogar,<br>nuestra prioridad</h2>
                         <p>Encuentra ayuda confiable<br>sin complicaciones.</p>
                     </div>
-                    <img src="assets/CasaHogar.svg" alt="Casa con sol">
+                    <img src="assets/CasaHogar.svg" alt="">
                 </div>
-
                 <h3 class="TituloBeneficios">Con Casa Lista disfrutas de</h3>
                 <ul class="ListaBeneficios">
                     <li>
-                        <span class="CirculoIcono CirculoIconoPequeno" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5.5c0 4.4 3 8.2 7 9.5 4-1.3 7-5.1 7-9.5V6l-7-3Z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg>
-                        </span>
+                        <span class="CirculoIcono"><img src="assets/iconos/IconoEscudoVerde.svg" alt=""></span>
                         <div>
-                            <strong>Profesionales verificados</strong>
-                            <span>Personas evaluadas para tu tranquilidad</span>
+                            <p class="NombreBeneficio">Profesionales verificados</p>
+                            <p class="DetalleBeneficio">Personas evaluadas para tu tranquilidad</p>
                         </div>
                     </li>
                     <li>
-                        <span class="CirculoIcono CirculoIconoPequeno" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.5s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
-                        </span>
+                        <span class="CirculoIcono"><img src="assets/iconos/IconoUbicacionVerde.svg" alt=""></span>
                         <div>
-                            <strong>Servicios cerca de ti</strong>
-                            <span>Encuentra ayuda en tu distrito</span>
+                            <p class="NombreBeneficio">Servicios cerca de ti</p>
+                            <p class="DetalleBeneficio">Encuentra ayuda en tu distrito</p>
                         </div>
                     </li>
                     <li>
-                        <span class="CirculoIcono CirculoIconoPequeno" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-8-4.9-8-10.5A4.5 4.5 0 0 1 12 6.6a4.5 4.5 0 0 1 8 2.9C20 15.1 12 20 12 20Z"/></svg>
-                        </span>
+                        <span class="CirculoIcono"><img src="assets/iconos/IconoCorazonVerde.svg" alt=""></span>
                         <div>
-                            <strong>Atención sencilla</strong>
-                            <span>Solicita servicios en pocos pasos</span>
+                            <p class="NombreBeneficio">Atención sencilla</p>
+                            <p class="DetalleBeneficio">Solicita servicios en pocos pasos</p>
                         </div>
                     </li>
                 </ul>
             </section>
+        </div>
 
-            <section class="Tarjeta TarjetaTerminos">
-                <h2>Términos y preferencias</h2>
-                <div class="Casilla">
-                    <input type="checkbox" id="terminos" name="terminos">
-                    <label for="terminos">Acepto los <a href="#">Términos y Privacidad</a></label>
-                </div>
-                <small class="MensajeError" id="error-terminos"></small>
-                <div class="Casilla CasillaSecundaria">
-                    <input type="checkbox" id="novedades" name="novedades">
-                    <label for="novedades">Quiero recibir novedades y promociones.</label>
-                </div>
-            </section>
+        <!-- COLUMNA DERECHA: formulario de registro -->
+        <div class="ColumnaDerecha">
+            <!-- novalidate: desactiva los avisos del navegador; validamos con CrearCuenta.js -->
+            <form class="FormularioRegistro" id="FormularioCliente" novalidate>
 
-            <p class="MensajeExito" id="MensajeExito" role="status" hidden>¡Cuenta creada! Te llevamos a iniciar sesión…</p>
+                <!-- Datos personales -->
+                <section class="Tarjeta">
+                    <div class="CabeceraTarjeta">
+                        <span class="CirculoIcono CirculoIconoGrande"><img src="assets/iconos/IconoUsuarioVerde.svg" alt=""></span>
+                        <div>
+                            <h2>Datos personales</h2>
+                            <p>Queremos conocerte un poquito.</p>
+                        </div>
+                    </div>
 
-            <button type="submit" class="BotonCrearCuenta">
-                Crear mi cuenta
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg>
-            </button>
+                    <!-- Cada FilaCampos es una columna en móvil y una fila de dos en escritorio -->
+                    <div class="GrupoCampos">
+                        <div class="FilaCampos">
+                            <div class="Campo">
+                                <div class="CampoEntrada">
+                                    <label class="IconoCampo" for="Nombres"><img src="assets/iconos/IconoUsuario.svg" alt="Nombres y apellidos"></label>
+                                    <input type="text" id="Nombres" placeholder="Nombres y apellidos">
+                                </div>
+                                <p class="MensajeError" id="ErrorNombres"></p>
+                            </div>
+                        </div>
 
-            <p class="TextoIniciarSesion">¿Ya tienes cuenta? <a href="IniciarSesion.html">Iniciar sesión</a></p>
-        </form>
+                        <div class="FilaCampos">
+                            <div class="Campo">
+                                <div class="CampoEntrada">
+                                    <label class="IconoCampo" for="Correo"><img src="assets/iconos/IconoCorreo.svg" alt="Correo electrónico"></label>
+                                    <input type="email" id="Correo" placeholder="Correo electrónico">
+                                </div>
+                                <p class="MensajeError" id="ErrorCorreo"></p>
+                            </div>
+                            <div class="Campo">
+                                <div class="CampoEntrada">
+                                    <label class="IconoCampo" for="Celular"><img src="assets/iconos/IconoCelular.svg" alt="Número de celular"></label>
+                                    <input type="tel" id="Celular" placeholder="Número de celular" maxlength="9">
+                                </div>
+                                <p class="MensajeError" id="ErrorCelular"></p>
+                            </div>
+                        </div>
+
+                        <div class="FilaCampos">
+                            <div class="Campo">
+                                <div class="CampoEntrada CampoConOjo">
+                                    <label class="IconoCampo" for="Contrasena"><img src="assets/iconos/IconoCandado.svg" alt="Contraseña"></label>
+                                    <input type="password" id="Contrasena" placeholder="Contraseña">
+                                    <button type="button" class="BotonOjo" id="OjoContrasena"><img src="assets/iconos/IconoOjo.svg" alt="Mostrar contraseña"></button>
+                                </div>
+                                <p class="MensajeError" id="ErrorContrasena"></p>
+                            </div>
+                            <div class="Campo">
+                                <div class="CampoEntrada CampoConOjo">
+                                    <label class="IconoCampo" for="ConfirmarContrasena"><img src="assets/iconos/IconoCandado.svg" alt="Confirmar contraseña"></label>
+                                    <input type="password" id="ConfirmarContrasena" placeholder="Confirmar contraseña">
+                                    <button type="button" class="BotonOjo" id="OjoConfirmar"><img src="assets/iconos/IconoOjo.svg" alt="Mostrar contraseña"></button>
+                                </div>
+                                <p class="MensajeError" id="ErrorConfirmarContrasena"></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Tu ubicación -->
+                <section class="Tarjeta">
+                    <div class="CabeceraTarjeta">
+                        <span class="CirculoIcono CirculoIconoGrande"><img src="assets/iconos/IconoUbicacionVerde.svg" alt=""></span>
+                        <div>
+                            <h2>Tu ubicación</h2>
+                            <p>Para encontrar profesionales cerca de ti.</p>
+                        </div>
+                    </div>
+
+                    <div class="GrupoCampos">
+                        <div class="FilaCampos">
+                            <div class="Campo">
+                                <div class="CampoEntrada">
+                                    <label class="IconoCampo" for="Distrito"><img src="assets/iconos/IconoUbicacion.svg" alt="Distrito donde vives"></label>
+                                    <select id="Distrito">
+                                        <option value="">Distrito donde vives</option>
+                                        <option value="Ate">Ate</option>
+                                        <option value="Barranco">Barranco</option>
+                                        <option value="Breña">Breña</option>
+                                        <option value="Chorrillos">Chorrillos</option>
+                                        <option value="Comas">Comas</option>
+                                        <option value="Jesús María">Jesús María</option>
+                                        <option value="La Molina">La Molina</option>
+                                        <option value="La Victoria">La Victoria</option>
+                                        <option value="Lince">Lince</option>
+                                        <option value="Los Olivos">Los Olivos</option>
+                                        <option value="Magdalena del Mar">Magdalena del Mar</option>
+                                        <option value="Miraflores">Miraflores</option>
+                                        <option value="Pueblo Libre">Pueblo Libre</option>
+                                        <option value="San Borja">San Borja</option>
+                                        <option value="San Isidro">San Isidro</option>
+                                        <option value="San Juan de Lurigancho">San Juan de Lurigancho</option>
+                                        <option value="San Juan de Miraflores">San Juan de Miraflores</option>
+                                        <option value="San Martín de Porres">San Martín de Porres</option>
+                                        <option value="San Miguel">San Miguel</option>
+                                        <option value="Santiago de Surco">Santiago de Surco</option>
+                                        <option value="Surquillo">Surquillo</option>
+                                        <option value="Villa El Salvador">Villa El Salvador</option>
+                                    </select>
+                                </div>
+                                <p class="MensajeError" id="ErrorDistrito"></p>
+                            </div>
+                            <div class="Campo">
+                                <div class="CampoEntrada">
+                                    <label class="IconoCampo" for="Direccion"><img src="assets/iconos/IconoCasa.svg" alt="Dirección o referencia (opcional)"></label>
+                                    <input type="text" id="Direccion" placeholder="Dirección o referencia (opcional)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- "Tu hogar" versión móvil (en escritorio se oculta; allí está en la columna izquierda) -->
+                <section class="Tarjeta TarjetaHogar SoloMovil">
+                    <div class="CajaHogar">
+                        <div>
+                            <h2>Tu hogar,<br>nuestra prioridad</h2>
+                            <p>Encuentra ayuda confiable<br>sin complicaciones.</p>
+                        </div>
+                        <img src="assets/CasaHogar.svg" alt="">
+                    </div>
+                    <h3 class="TituloBeneficios">Con Casa Lista disfrutas de</h3>
+                    <ul class="ListaBeneficios">
+                        <li>
+                            <span class="CirculoIcono"><img src="assets/iconos/IconoEscudoVerde.svg" alt=""></span>
+                            <div>
+                                <p class="NombreBeneficio">Profesionales verificados</p>
+                                <p class="DetalleBeneficio">Personas evaluadas para tu tranquilidad</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="CirculoIcono"><img src="assets/iconos/IconoUbicacionVerde.svg" alt=""></span>
+                            <div>
+                                <p class="NombreBeneficio">Servicios cerca de ti</p>
+                                <p class="DetalleBeneficio">Encuentra ayuda en tu distrito</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="CirculoIcono"><img src="assets/iconos/IconoCorazonVerde.svg" alt=""></span>
+                            <div>
+                                <p class="NombreBeneficio">Atención sencilla</p>
+                                <p class="DetalleBeneficio">Solicita servicios en pocos pasos</p>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Términos y preferencias -->
+                <section class="Tarjeta TarjetaTerminos">
+                    <h2>Términos y preferencias</h2>
+                    <div class="Casilla">
+                        <input type="checkbox" id="Terminos">
+                        <label for="Terminos">Acepto los <a href="#">Términos y Privacidad</a></label>
+                    </div>
+                    <p class="MensajeError" id="ErrorTerminos"></p>
+                    <div class="Casilla CasillaSecundaria">
+                        <input type="checkbox" id="Novedades">
+                        <label for="Novedades">Quiero recibir novedades y promociones.</label>
+                    </div>
+                </section>
+
+                <!-- Aquí aparece "¡Cuenta creada!" cuando todo está bien -->
+                <p class="MensajeExito" id="MensajeExito"></p>
+
+                <button type="submit" class="BotonCrearCuenta">Crear mi cuenta</button>
+            </form>
+
+            <footer class="PieRegistro">
+                <p>¿Ya tienes cuenta? <a href="IniciarSesion.html">Iniciar sesión</a></p>
+            </footer>
+        </div>
     </main>
 
     <script src="CrearCuenta.js"></script>

@@ -1,69 +1,73 @@
-*{
+/* =========================================================
+   CrearCuentaCliente.css
+   Primero va la versión MÓVIL (menos de 768 px) y al final,
+   dentro de la media query, los cambios para ESCRITORIO.
+   ========================================================= */
+
+/* ---------- Reinicio básico ---------- */
+body, h1, h2, h3, p, ul, form{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: "Inter", sans-serif;
 }
 body{
     position: relative;
-    min-height: 100vh;
     background-color: #FCFBF8;
     color: #073E3B;
-    overflow-x: hidden;
+    font-family: "Inter", sans-serif;
 }
-.SoloLector{
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
+/* Los campos y botones no heredan la fuente: se la damos aquí */
+input, select, button{
+    font-family: "Inter", sans-serif;
+}
+a{
+    text-decoration: none;
 }
 
-/* Manchas decorativas */
-.Fondo{
+/* ---------- Manchas decorativas del fondo ---------- */
+/* Se pegan a las esquinas y solo redondeamos la esquina interior,
+   así parecen círculos que se salen de la pantalla */
+.Mancha{
     position: absolute;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-    pointer-events: none;
-}
-.ManchaDecorativa{
-    position: absolute;
-    border-radius: 50%;
     background-color: #FBEEE2;
 }
 .ManchaArribaIzquierda{
-    top: -110px;
-    left: -70px;
-    width: 230px;
-    height: 200px;
+    top: 0;
+    left: 0;
+    width: 120px;
+    height: 95px;
+    border-radius: 0 0 120px 0;
+}
+.ManchaArribaDerecha{
+    display: none;
 }
 .ManchaAbajoIzquierda{
-    bottom: -60px;
-    left: -110px;
-    width: 180px;
-    height: 220px;
+    bottom: 0;
+    left: 0;
+    width: 70px;
+    height: 140px;
+    border-radius: 0 140px 0 0;
 }
 .ManchaAbajoDerecha{
-    bottom: -55px;
-    right: -50px;
-    width: 90px;
-    height: 125px;
+    bottom: 0;
+    right: 0;
+    width: 40px;
+    height: 100px;
+    border-radius: 100px 0 0 0;
 }
 
-.Registro{
+/* ---------- Contenedor principal ---------- */
+/* position relative para que el contenido quede por encima de las manchas */
+.ContenedorPrincipal{
     position: relative;
-    z-index: 1;
     max-width: 420px;
     margin: 0 auto;
     padding: 22px 18px 24px 18px;
 }
+.ColumnaDerecha{
+    margin-top: 14px;
+}
 
-/* Encabezado */
+/* ---------- Encabezado: logo y título ---------- */
 .Logo{
     display: flex;
     align-items: center;
@@ -75,11 +79,8 @@ body{
     height: 32px;
 }
 .TextoLogo{
-    font-size: 1.375rem;
+    font-size: 22px;
     font-weight: 700;
-    letter-spacing: -0.01em;
-}
-.TextoLogoCasa{
     color: #073E3B;
 }
 .TextoLogoLista{
@@ -92,101 +93,102 @@ body{
     margin-top: 16px;
     padding-left: 4px;
 }
-.BotonVolver{
-    display: flex;
-    color: #073E3B;
-}
-.BotonVolver svg{
+.BotonVolver img{
     width: 26px;
     height: 26px;
 }
 .Titulo h1{
-    font-size: 1.875rem;
+    font-size: 30px;
     font-weight: 800;
-    letter-spacing: -0.01em;
     line-height: 1.2;
-}
-.TituloCrear{
     color: #073E3B;
 }
 .TituloCuenta{
     color: #FFB735;
-    margin-left: 4px;
 }
 
-/* Tipo de cuenta */
+/* ---------- Tarjetas de tipo de cuenta ---------- */
 .TipoCuenta{
     margin-top: 19px;
 }
 .TarjetasTipo{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     gap: 13px;
 }
 .TarjetaTipo{
-    position: relative;
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 175px;
-    padding-top: 1px;
     background-color: #FFFFFF;
     border: 1px solid #E3E5E4;
     border-radius: 16px;
-    text-decoration: none;
-    cursor: pointer;
 }
-.TarjetaTipo.Seleccionada{
+.TarjetaTipo:hover{
+    border-color: #006D61;
+}
+.TarjetaSeleccionada{
     background-color: #E6F5F1;
-    border: 1.5px solid #006D61;
+    border: 2px solid #006D61;
 }
-.TarjetaTipo:focus-visible{
-    outline: 2px solid #006D61;
-    outline-offset: 2px;
+/* Fila con el círculo arriba a la derecha; la imagen sube un poco (margen negativo) */
+.FilaRadio{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 9px 9px 0 0;
+    box-sizing: border-box;
 }
 .TarjetaTipo img{
     width: 136px;
     height: 125px;
-    object-fit: contain;
+    margin-top: -14px;
 }
 .CirculoRadio{
-    position: absolute;
-    top: 10px;
-    right: 9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 18px;
     height: 18px;
+    border: 1px solid #CFD3D2;
     border-radius: 50%;
-    border: 1.5px solid #CFD3D2;
     background-color: #FFFFFF;
+    box-sizing: border-box;
 }
-.TarjetaTipo.Seleccionada .CirculoRadio{
+.TarjetaSeleccionada .CirculoRadio{
     border: 2px solid #006D61;
+}
+.PuntoRadio{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
     background-color: #006D61;
-    box-shadow: inset 0 0 0 2px #FFFFFF;
 }
 .NombreTipo{
-    margin-top: 19px;
-    font-size: 1rem;
+    margin-top: 16px;
+    font-size: 16px;
     font-weight: 600;
     color: #073E3B;
 }
 .AyudaTipo{
     margin-top: 13px;
     text-align: center;
-    font-size: 0.75rem;
+    font-size: 12px;
     color: #6B7471;
 }
 
-/* Tarjetas */
+/* ---------- Tarjetas blancas (secciones) ---------- */
+.FormularioRegistro{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
 .Tarjeta{
-    margin-top: 15px;
     padding: 16px 16px 18px 16px;
     background-color: #FFFFFF;
     border: 1px solid #E3E5E4;
     border-radius: 16px;
-}
-.TipoCuenta + .Tarjeta{
-    margin-top: 12px;
 }
 .CabeceraTarjeta{
     display: flex;
@@ -195,35 +197,52 @@ body{
     margin-bottom: 14px;
 }
 .CabeceraTarjeta h2{
-    font-size: 1.0625rem;
+    font-size: 17px;
     font-weight: 700;
     color: #073E3B;
 }
 .CabeceraTarjeta p{
     margin-top: 3px;
-    font-size: 0.6875rem;
+    font-size: 11px;
     color: #3F4A47;
 }
+
+/* Círculo verde claro con un ícono al centro */
 .CirculoIcono{
-    flex-shrink: 0;
     display: flex;
-    align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    align-items: center;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     background-color: #E6F5F1;
-    color: #006D61;
 }
-.CirculoIcono svg{
+.CirculoIcono img{
+    width: 18px;
+    height: 18px;
+}
+.CirculoIconoGrande{
+    width: 40px;
+    height: 40px;
+}
+.CirculoIconoGrande img{
     width: 20px;
     height: 20px;
 }
 
-/* Campos */
-.Campo + .Campo{
-    margin-top: 7px;
+/* ---------- Campos del formulario ---------- */
+/* En móvil todo va en una sola columna */
+.GrupoCampos{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
 }
+.FilaCampos{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+/* position relative para ubicar los íconos dentro del campo */
 .CampoEntrada{
     position: relative;
 }
@@ -231,154 +250,130 @@ body{
 .CampoEntrada select{
     width: 100%;
     height: 43px;
-    padding: 0 44px 0 43px;
-    font-size: 0.875rem;
+    padding: 0 10px 0 43px;
+    box-sizing: border-box;
+    font-size: 14px;
     color: #073E3B;
     background-color: #FFFFFF;
     border: 1px solid #DCDFDE;
     border-radius: 10px;
-    outline: none;
-    appearance: none;
-    -webkit-appearance: none;
 }
-.CampoEntrada input::placeholder{
+/* El select empieza gris (como los placeholder); JS lo oscurece al elegir */
+.CampoEntrada select{
     color: #6B7471;
-}
-.CampoEntrada select:invalid,
-.CampoEntrada select.SinValor{
-    color: #6B7471;
-}
-.CampoEntrada select option{
-    color: #073E3B;
 }
 .CampoEntrada input:focus,
 .CampoEntrada select:focus{
     border-color: #006D61;
 }
-.CampoEntrada.TieneError input,
-.CampoEntrada.TieneError select{
-    border-color: #D14343;
+/* Los campos con ojo dejan espacio a la derecha para el botón */
+.CampoConOjo input{
+    padding-right: 44px;
 }
-.IconoCampo,
-.IconoFlecha{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 18px;
-    height: 18px;
-    color: #6B7471;
-    pointer-events: none;
-}
+/* Ícono de la izquierda: es el label del campo */
 .IconoCampo{
+    position: absolute;
+    top: 12px;
     left: 15px;
 }
-.IconoFlecha{
-    right: 15px;
+.IconoCampo img{
+    display: block;
+    width: 18px;
+    height: 18px;
 }
+/* Botón del ojo, a la derecha del campo de contraseña */
 .BotonOjo{
     position: absolute;
-    top: 50%;
+    top: 9px;
     right: 12px;
-    transform: translateY(-50%);
-    display: flex;
     padding: 2px;
     border: none;
-    background: none;
-    color: #6B7471;
+    background-color: #FFFFFF;
     cursor: pointer;
 }
-.BotonOjo svg{
+.BotonOjo img{
+    display: block;
     width: 20px;
     height: 20px;
 }
+/* Texto rojo debajo del campo (vacío hasta que haya un error, así no ocupa espacio) */
 .MensajeError{
-    display: block;
-    margin-top: 4px;
     padding-left: 4px;
-    font-size: 0.6875rem;
+    font-size: 11px;
+    line-height: 1.8;
     color: #D14343;
 }
-.MensajeError:empty{
-    display: none;
-}
 
-/* Tu hogar */
+/* ---------- Tarjeta "Tu hogar, nuestra prioridad" ---------- */
+.TarjetaHogar{
+    padding: 13px 13px 22px 13px;
+}
 .CajaHogar{
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    margin: -4px -4px 0 -4px;
+    align-items: center;
     padding: 14px 20px 18px 16px;
     background-color: #E6F5F1;
     border-radius: 14px;
 }
 .CajaHogar h2{
-    font-size: 1.3125rem;
+    font-size: 21px;
     font-weight: 700;
     line-height: 1.2;
     color: #073E3B;
 }
 .CajaHogar p{
     margin-top: 10px;
-    font-size: 0.625rem;
+    font-size: 10px;
     line-height: 1.4;
     color: #3F4A47;
 }
 .CajaHogar img{
     width: 64px;
     height: 64px;
-    margin-right: 4px;
 }
 .TituloBeneficios{
     margin-top: 22px;
-    font-size: 0.9375rem;
+    padding: 0 4px;
+    font-size: 15px;
     font-weight: 700;
     color: #073E3B;
 }
 .ListaBeneficios{
-    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
     margin-top: 12px;
+    padding: 0 4px;
+    list-style-type: none;
 }
 .ListaBeneficios li{
     display: flex;
     align-items: center;
     gap: 14px;
 }
-.ListaBeneficios li + li{
-    margin-top: 18px;
-}
-.CirculoIconoPequeno{
-    width: 36px;
-    height: 36px;
-}
-.CirculoIconoPequeno svg{
-    width: 17px;
-    height: 17px;
-}
-.ListaBeneficios strong{
-    display: block;
-    font-size: 0.75rem;
+.NombreBeneficio{
+    font-size: 12px;
     font-weight: 600;
     color: #073E3B;
 }
-.ListaBeneficios span{
-    display: block;
+.DetalleBeneficio{
     margin-top: 3px;
-    font-size: 0.625rem;
+    font-size: 10px;
     color: #3F4A47;
 }
-.ListaBeneficios .CirculoIcono{
-    display: flex;
-    margin-top: 0;
+
+/* En móvil se ve la copia del formulario y se oculta la de la columna izquierda */
+.SoloEscritorio{
+    display: none;
 }
 
-/* Términos */
+/* ---------- Términos y preferencias ---------- */
 .TarjetaTerminos{
-    margin-top: 28px;
-    padding: 18px 18px 16px 18px;
+    padding: 18px;
 }
 .TarjetaTerminos h2{
-    font-size: 0.9375rem;
+    font-size: 15px;
     font-weight: 700;
     color: #073E3B;
 }
@@ -388,95 +383,302 @@ body{
     gap: 9px;
     margin-top: 13px;
 }
-.CasillaSecundaria{
-    margin-top: 10px;
-}
 .Casilla input{
-    flex-shrink: 0;
     width: 18px;
     height: 18px;
-    border: 1px solid #DCDFDE;
-    border-radius: 4px;
-    background-color: #FFFFFF;
-    appearance: none;
-    -webkit-appearance: none;
+    margin: 0;
+    accent-color: #006D61;
     cursor: pointer;
-}
-.Casilla input:checked{
-    border-color: #006D61;
-    background-color: #006D61;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12.5 4.5 4.5L19 7.5'/%3E%3C/svg%3E");
-    background-size: 13px;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-.Casilla input:focus-visible{
-    outline: 2px solid #006D61;
-    outline-offset: 2px;
 }
 .Casilla label{
-    font-size: 0.6875rem;
+    font-size: 11px;
     color: #073E3B;
     cursor: pointer;
-}
-.CasillaSecundaria label{
-    font-size: 0.625rem;
-    color: #3F4A47;
 }
 .Casilla a{
     font-weight: 600;
     color: #006D61;
-    text-decoration: none;
-    margin-left: 3px;
+}
+.CasillaSecundaria{
+    margin-top: 10px;
+}
+.CasillaSecundaria label{
+    font-size: 10px;
+    color: #3F4A47;
 }
 
-/* Botón y pie */
+/* ---------- Mensaje de éxito, botón y pie ---------- */
+/* El <p> está vacío (no ocupa espacio) hasta que JS escribe "¡Cuenta creada!".
+   El margen negativo anula el gap del formulario para que el botón no se aleje */
 .MensajeExito{
-    margin-top: 20px;
-    padding: 14px 16px;
+    margin-bottom: -16px;
     text-align: center;
-    font-size: 0.8125rem;
-    font-weight: 600;
-    color: #073E3B;
-    background-color: #E6F5F1;
-    border-radius: 12px;
-}
-.MensajeExito[hidden]{
-    display: none;
-}
-.BotonCrearCuenta:disabled{
-    opacity: 0.7;
-    cursor: default;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 2;
+    color: #006D61;
 }
 .BotonCrearCuenta{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 24px;
     width: 100%;
     height: 56px;
-    margin-top: 20px;
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: #FFFFFF;
-    background-color: #006D61;
+    font-size: 15px;
+    font-weight: 700;
+    color: #073E3B;
+    background-color: #FFB735;
     border: none;
     border-radius: 12px;
     cursor: pointer;
 }
-.BotonCrearCuenta svg{
-    width: 20px;
-    height: 20px;
+.BotonCrearCuenta:hover{
+    background-color: #F5A915;
 }
-.TextoIniciarSesion{
+.PieRegistro{
     margin-top: 12px;
     text-align: center;
-    font-size: 0.75rem;
+    font-size: 12px;
     color: #3F4A47;
 }
-.TextoIniciarSesion a{
+.PieRegistro a{
     margin-left: 22px;
-    font-weight: 600;
+    font-weight: 700;
     color: #006D61;
-    text-decoration: none;
+}
+.PieRegistro a:hover{
+    color: #073E3B;
+}
+
+
+/* =========================================================
+   ESCRITORIO (desde 768 px): dos columnas como el mockup de 1440 px
+   ========================================================= */
+@media (min-width: 768px){
+
+    /* Manchas más grandes y aparece la de arriba a la derecha */
+    .ManchaArribaIzquierda{
+        width: 360px;
+        height: 240px;
+        border-radius: 0 0 360px 0;
+    }
+    .ManchaArribaDerecha{
+        display: block;
+        top: 0;
+        right: 0;
+        width: 240px;
+        height: 200px;
+        border-radius: 0 0 0 240px;
+    }
+    .ManchaAbajoIzquierda{
+        width: 300px;
+        height: 160px;
+        border-radius: 0 300px 0 0;
+    }
+    .ManchaAbajoDerecha{
+        display: none;
+    }
+
+    /* Las dos columnas lado a lado */
+    .ContenedorPrincipal{
+        display: flex;
+        align-items: flex-start;
+        gap: 44px;
+        max-width: 1120px;
+        padding: 30px 24px 60px 24px;
+    }
+    .ColumnaIzquierda{
+        width: 39%;
+    }
+    .ColumnaDerecha{
+        flex: 1;
+        margin-top: 60px;
+    }
+
+    /* Encabezado más grande */
+    .Logo{
+        padding-left: 4px;
+    }
+    .Logo img{
+        width: 34px;
+        height: 34px;
+    }
+    .TextoLogo{
+        font-size: 26px;
+    }
+    .Titulo{
+        margin-top: 30px;
+        gap: 18px;
+    }
+    .BotonVolver img{
+        width: 28px;
+        height: 28px;
+    }
+    .Titulo h1{
+        font-size: 46px;
+    }
+
+    /* Tarjetas de tipo de cuenta */
+    .TipoCuenta{
+        margin-top: 22px;
+    }
+    .TarjetasTipo{
+        gap: 16px;
+    }
+    .TarjetaTipo{
+        height: 180px;
+    }
+    .TarjetaTipo img{
+        width: 140px;
+        height: 129px;
+    }
+    .NombreTipo{
+        margin-top: 10px;
+        font-size: 17px;
+    }
+    .AyudaTipo{
+        margin-top: 24px;
+        font-size: 14px;
+    }
+
+    /* "Tu hogar": se muestra en la columna izquierda y se oculta la copia del formulario */
+    .SoloEscritorio{
+        display: block;
+        margin-top: 20px;
+    }
+    .SoloMovil{
+        display: none;
+    }
+    .TarjetaHogar{
+        padding: 20px 20px 22px 20px;
+    }
+    .CajaHogar{
+        padding: 24px 38px 22px 24px;
+        border-radius: 12px;
+    }
+    .CajaHogar h2{
+        font-size: 25px;
+    }
+    .CajaHogar p{
+        margin-top: 16px;
+        font-size: 13px;
+    }
+    .CajaHogar img{
+        width: 80px;
+        height: 80px;
+    }
+    .TituloBeneficios{
+        margin-top: 30px;
+        padding: 0;
+        font-size: 17px;
+    }
+    .ListaBeneficios{
+        gap: 16px;
+        margin-top: 16px;
+        padding: 0;
+    }
+    .ListaBeneficios li{
+        gap: 14px;
+    }
+    .ListaBeneficios .CirculoIcono{
+        width: 42px;
+        height: 42px;
+    }
+    .NombreBeneficio{
+        font-size: 14px;
+    }
+    .DetalleBeneficio{
+        font-size: 13px;
+    }
+
+    /* Tarjetas del formulario */
+    .FormularioRegistro{
+        gap: 20px;
+    }
+    .Tarjeta{
+        padding: 24px;
+    }
+    .CabeceraTarjeta{
+        gap: 14px;
+        margin-bottom: 18px;
+    }
+    .CirculoIconoGrande{
+        width: 46px;
+        height: 46px;
+    }
+    .CabeceraTarjeta h2{
+        font-size: 20px;
+    }
+    .CabeceraTarjeta p{
+        font-size: 13px;
+    }
+
+    /* Campos de dos en dos: cada fila pasa a ser horizontal */
+    .GrupoCampos{
+        gap: 18px;
+    }
+    .FilaCampos{
+        flex-direction: row;
+        gap: 16px;
+    }
+    .Campo{
+        flex: 1;
+    }
+    .CampoEntrada input,
+    .CampoEntrada select{
+        height: 50px;
+        padding: 0 8px 0 44px;
+        font-size: 14px;
+        border-radius: 8px;
+    }
+    .CampoConOjo input{
+        padding-right: 46px;
+    }
+    .IconoCampo{
+        top: 16px;
+        left: 16px;
+    }
+    .BotonOjo{
+        top: 13px;
+        right: 14px;
+    }
+    .MensajeError{
+        font-size: 12px;
+    }
+
+    /* Términos */
+    .TarjetaTerminos h2{
+        font-size: 18px;
+    }
+    .Casilla{
+        gap: 12px;
+        margin-top: 16px;
+    }
+    .Casilla input{
+        width: 20px;
+        height: 20px;
+    }
+    .Casilla label{
+        font-size: 15px;
+    }
+    .CasillaSecundaria{
+        margin-top: 14px;
+    }
+    .CasillaSecundaria label{
+        font-size: 14px;
+    }
+
+    /* Botón y pie */
+    .MensajeExito{
+        margin-bottom: -20px;
+        font-size: 15px;
+    }
+    .BotonCrearCuenta{
+        height: 58px;
+        font-size: 18px;
+    }
+    .PieRegistro{
+        margin-top: 26px;
+        font-size: 15px;
+    }
+    .PieRegistro a{
+        margin-left: 10px;
+    }
 }
