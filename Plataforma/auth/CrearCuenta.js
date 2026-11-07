@@ -198,6 +198,23 @@ function validarSelect(idSelect, idError, mensaje) {
     return true;
 }
 
+// Cuenta creada (Cliente y Profesional): muestra el mensaje, bloquea el botón
+// y, después de 2 segundos, lleva al usuario a la página del código de verificación
+function cuentaCreada() {
+    // Mostramos el mensaje de éxito debajo del formulario
+    document.getElementById("MensajeExito").textContent = "¡Cuenta creada! Te enviamos un código de verificación…";
+
+    // Desactivamos el botón "Crear mi cuenta" para que no se pueda pulsar dos veces
+    const boton = document.getElementById("BotonCrearCuenta");
+    boton.disabled = true;
+
+    // setTimeout espera 2000 milisegundos (2 segundos) y luego ejecuta la función.
+    // CodigoVerificacion.html está en la misma carpeta (auth), por eso basta con su nombre
+    setTimeout(function () {
+        window.location.href = "CodigoVerificacion.html";
+    }, 2000);
+}
+
 
 // ---------- 2. FORMULARIO DE CLIENTE (CrearCuentaCliente.html) ----------
 const formularioCliente = document.getElementById("FormularioCliente");
@@ -235,8 +252,9 @@ if (formularioCliente) {
             todoBien = false;
         }
 
+        // Si todo está bien: mensaje, botón desactivado y redirección (ver cuentaCreada)
         if (todoBien) {
-            mensajeExito.textContent = "¡Cuenta creada!";
+            cuentaCreada();
         }
     });
 }
@@ -401,8 +419,9 @@ if (formularioProfesional) {
             todoBien = false;
         }
 
+        // Si todo está bien: mensaje, botón desactivado y redirección (ver cuentaCreada)
         if (todoBien) {
-            mensajeExito.textContent = "¡Cuenta creada!";
+            cuentaCreada();
         }
     });
 }
