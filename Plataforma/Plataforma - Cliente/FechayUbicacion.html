@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CasaLista - Fecha y ubicación</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link rel="icon" href="../../LandingPage/img/IconoLogo.png" type="image/png">
+    <link rel="stylesheet" href="FechayUbicacion.css">
+</head>
+<body>
+    <div class="Pantalla">
+        <header class="Encabezado">
+            <img class="Logo" src="../../LandingPage/img/casalista_logo.png" alt="CasaLista">
+
+            <ol class="Pasos" aria-label="Pasos de la solicitud">
+                <li class="Paso Hecho">
+                    <a class="MarcaPaso" href="Servicio.html">
+                        <span class="CirculoPaso">1</span>
+                        <span class="EtiquetaPaso">Servicio</span>
+                    </a>
+                </li>
+                <li class="LineaPaso Hecha" aria-hidden="true"></li>
+                <li class="Paso Hecho">
+                    <a class="MarcaPaso" href="Detalles.html">
+                        <span class="CirculoPaso">2</span>
+                        <span class="EtiquetaPaso">Detalles</span>
+                    </a>
+                </li>
+                <li class="LineaPaso Hecha" aria-hidden="true"></li>
+                <li class="Paso Hecho" aria-current="step">
+                    <span class="MarcaPaso">
+                        <span class="CirculoPaso">3</span>
+                        <span class="EtiquetaPaso">Fecha y Ubicación</span>
+                    </span>
+                </li>
+                <li class="LineaPaso" aria-hidden="true"></li>
+                <li class="Paso">
+                    <span class="MarcaPaso">
+                        <span class="CirculoPaso">4</span>
+                        <span class="EtiquetaPaso">Negociación</span>
+                    </span>
+                </li>
+            </ol>
+
+            <div class="AccionesEncabezado">
+                <div class="Desplegable">
+                    <button type="button" class="BotonNotificaciones" data-panel="PanelNotificaciones" aria-label="Notificaciones" aria-expanded="false" aria-controls="PanelNotificaciones">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.27 21a2 2 0 0 0 3.46 0"/><path d="M3.26 15.33A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.67C19.41 13.96 18 12.5 18 8A6 6 0 0 0 6 8c0 4.5-1.41 5.96-2.74 7.33"/></svg>
+                    </button>
+                    <div class="Panel" id="PanelNotificaciones" hidden>
+                        <p class="TituloPanel">Notificaciones</p>
+                        <p class="TextoPanel">No tienes notificaciones nuevas.</p>
+                    </div>
+                </div>
+
+                <div class="Desplegable">
+                    <button type="button" class="BotonUsuario" data-panel="PanelUsuario" aria-label="Menú de Maribel" aria-expanded="false" aria-controls="PanelUsuario">
+                        <span class="Avatar" aria-hidden="true">M</span>
+                        <span class="NombreUsuario">Maribel</span>
+                        <svg class="FlechaUsuario" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div class="Panel" id="PanelUsuario" hidden>
+                        <p class="TituloPanel">Maribel</p>
+                        <p class="TextoPanel">Cuenta de cliente</p>
+                        <a class="EnlacePanel" href="../auth/IniciarSesion.html">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>
+                            Cerrar sesión
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="Contenido">
+            <section class="ColumnaDatos">
+                <h1 class="Titulo">¿Dónde y cuándo necesitas el servicio?</h1>
+                <p class="Descripcion">Indica la dirección y la fecha/hora en la que prefieres recibir el servicio.</p>
+
+                <form class="Formulario" id="FormularioServicio" novalidate>
+                    <div class="Campo">
+                        <label class="Etiqueta" for="direccion">Dirección del servicio</label>
+                        <div class="CajaDireccion">
+                            <svg class="IconoCampo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s-7.5-6.4-7.5-12.5a7.5 7.5 0 0 1 15 0C19.5 15.6 12 22 12 22Z"/><circle cx="12" cy="9.5" r="2.8"/></svg>
+                            <input type="text" id="direccion" name="direccion" value="Av. Primavera 123, Santiago de Surco" placeholder="Escribe la dirección del servicio" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="Sugerencias">
+                            <button type="button" class="BotonLimpiar" id="BotonLimpiar" aria-label="Borrar dirección">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M17 7 7 17M7 7l10 10"/></svg>
+                            </button>
+                            <ul class="Sugerencias" id="Sugerencias" role="listbox" aria-label="Direcciones sugeridas" hidden></ul>
+                        </div>
+                        <small class="MensajeError" id="error-direccion"></small>
+                    </div>
+
+                    <div class="FilaCampos">
+                        <div class="Campo">
+                            <label class="Etiqueta" id="EtiquetaFecha" for="BotonFecha">Fecha del servicio</label>
+                            <div class="Control Selector" id="SelectorFecha">
+                                <svg class="IconoCampo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="16" rx="2.5"/><path d="M3.5 9.5h17M8 2.8v3.4M16 2.8v3.4"/><path d="M8 13.5h.01M12 13.5h.01M16 13.5h.01M8 17h.01M12 17h.01M16 17h.01" stroke-width="2.4"/></svg>
+                                <button type="button" class="CampoSelector" id="BotonFecha" aria-haspopup="dialog" aria-expanded="false" aria-controls="Calendario" aria-labelledby="EtiquetaFecha TextoFecha">
+                                    <span id="TextoFecha"></span>
+                                </button>
+                                <svg class="IconoFlecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 9.5 5 5 5-5"/></svg>
+                                <div class="Calendario" id="Calendario" role="dialog" aria-label="Elegir la fecha del servicio" hidden>
+                                    <div class="CabeceraCalendario">
+                                        <button type="button" class="BotonMes" id="MesAnterior" aria-label="Mes anterior">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+                                        </button>
+                                        <p class="TituloMes" id="TituloMes" aria-live="polite"></p>
+                                        <button type="button" class="BotonMes" id="MesSiguiente" aria-label="Mes siguiente">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+                                        </button>
+                                    </div>
+                                    <div class="DiasSemana" aria-hidden="true">
+                                        <span>Lu</span><span>Ma</span><span>Mi</span><span>Ju</span><span>Vi</span><span>Sá</span><span>Do</span>
+                                    </div>
+                                    <div class="DiasMes" id="DiasMes"></div>
+                                </div>
+                            </div>
+                            <small class="MensajeError" id="error-fecha"></small>
+                        </div>
+
+                        <div class="Campo">
+                            <label class="Etiqueta" id="EtiquetaHora" for="BotonHora">Hora del servicio</label>
+                            <div class="Control Selector" id="SelectorHora">
+                                <svg class="IconoCampo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.8"/><path d="M12 7.3V12l3.2 2.1"/></svg>
+                                <button type="button" class="CampoSelector" id="BotonHora" aria-haspopup="dialog" aria-expanded="false" aria-controls="PanelHoras" aria-labelledby="EtiquetaHora TextoHora">
+                                    <span id="TextoHora"></span>
+                                </button>
+                                <svg class="IconoFlecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 9.5 5 5 5-5"/></svg>
+                                <div class="PanelHoras" id="PanelHoras" role="dialog" aria-label="Elegir la hora del servicio" hidden></div>
+                            </div>
+                            <small class="MensajeError" id="error-hora"></small>
+                        </div>
+                    </div>
+
+                    <div class="Campo">
+                        <div class="FilaEtiqueta">
+                            <label class="Etiqueta" for="referencia">Referencia adicional <span class="Opcional">(opcional)</span></label>
+                            <span class="Contador" id="ContadorReferencia">0/200</span>
+                        </div>
+                        <textarea id="referencia" name="referencia" maxlength="200" placeholder="Ej. Departamento 301, casa color blanco, timbre 2, etc."></textarea>
+                    </div>
+                </form>
+
+                <div class="Referencias">
+                    <article class="TarjetaReferencia">
+                        <div class="ImagenReferencia ImagenMoto">
+                            <picture>
+                                <source media="(prefers-reduced-motion: reduce)" srcset="../../LandingPage/img/RepartidorMoto.svg#Quieto">
+                                <img src="../../LandingPage/img/RepartidorMoto.svg" alt="Profesional de CasaLista llevando un paquete en moto">
+                            </picture>
+                        </div>
+                        <div class="TextoReferencia">
+                            <h2>Así llegará tu profesional</h2>
+                            <p>Irá a <strong id="LlegadaDireccion"></strong> el <strong id="LlegadaFecha"></strong> <span id="LlegadaConector">a las</span> <strong id="LlegadaHora"></strong></p>
+                        </div>
+                    </article>
+                    <article class="TarjetaReferencia TarjetaColumna">
+                        <div class="ImagenReferencia">
+                            <img src="../../LandingPage/img/ConfirmaYCoordina.png" alt="Profesional de CasaLista confirmando una fecha en su celular">
+                        </div>
+                        <div class="TextoReferencia">
+                            <h2>Confirma y coordina</h2>
+                            <p>Acuerdan el precio y coordinan la visita.</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="ColumnaMapa">
+                <div class="Mapa Cargando" id="Mapa">
+                    <iframe id="MarcoMapa" title="Mapa de la dirección del servicio" referrerpolicy="no-referrer-when-downgrade" allow="accelerometer; gyroscope; fullscreen"></iframe>
+                    <div class="VistasMapa" role="group" aria-label="Tipo de vista del mapa">
+                        <button type="button" class="BotonVista" data-vista="mapa" aria-pressed="true">Mapa</button>
+                        <button type="button" class="BotonVista" data-vista="satelite" aria-pressed="false">Satélite</button>
+                        <button type="button" class="BotonVista" data-vista="3d" aria-pressed="false">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+                            Vista 3D
+                        </button>
+                    </div>
+                    <a class="AbrirGoogleMaps" id="AbrirGoogleMaps" target="_blank" rel="noopener" aria-label="Abrir en Google Maps" title="Abrir en Google Maps">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                    </a>
+                    <p class="AvisoMapa" id="AvisoMapa" role="status" hidden>No encontramos una vista 3D para esta dirección. Te mostramos la vista satelital.</p>
+                    <div class="TarjetaMapa">
+                        <div class="TextoTarjeta">
+                            <strong id="TituloDireccion"></strong>
+                            <span id="DetalleDireccion"></span>
+                        </div>
+                        <button type="button" class="BotonEditar" id="BotonEditar">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.98-3.98L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5z"/><path d="m15 5 4 4"/></svg>
+                            Editar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="Pie">
+                    <a class="BotonVolver" href="Detalles.html">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19.5 12h-15M10.5 6l-6 6 6 6"/></svg>
+                        Volver
+                    </a>
+                    <button type="submit" class="BotonSiguiente" form="FormularioServicio">
+                        Siguiente
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="FechayUbicacion.js"></script>
+</body>
+</html>

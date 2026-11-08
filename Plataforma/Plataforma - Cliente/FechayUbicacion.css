@@ -1,0 +1,1392 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+body{
+    min-height: 100vh;
+    font-family: "Inter", sans-serif;
+    background-color: #FFFFFF;
+    color: #0C1B24;
+    -webkit-font-smoothing: antialiased;
+}
+button,
+input,
+textarea{
+    font: inherit;
+    color: inherit;
+}
+button{
+    cursor: pointer;
+}
+a,
+button{
+    -webkit-tap-highlight-color: transparent;
+}
+svg{
+    display: block;
+    flex-shrink: 0;
+}
+[hidden]{
+    display: none !important;
+}
+a:focus-visible,
+button:focus-visible{
+    outline: 2px solid #0B6E63;
+    outline-offset: 2px;
+}
+
+.Pantalla{
+    --Margen: clamp(24px, 3.6vw, 56px);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 20px var(--Margen) 8px;
+}
+
+.Encabezado{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 20px;
+}
+.Logo{
+    display: block;
+    flex-shrink: 0;
+    width: auto;
+    height: 46px;
+}
+.Pasos{
+    display: flex;
+    flex: 1;
+    align-items: flex-start;
+    justify-content: center;
+    max-width: 680px;
+    list-style: none;
+}
+.Paso{
+    display: flex;
+    justify-content: center;
+    min-width: 90px;
+}
+.MarcaPaso{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+.CirculoPaso{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #ADB4BD;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 300;
+    transition: background-color 0.2s;
+}
+.Hecho .CirculoPaso{
+    background-color: #0B6E63;
+}
+a.MarcaPaso:hover .CirculoPaso{
+    background-color: #0F8174;
+}
+.EtiquetaPaso{
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    color: #717F92;
+}
+.Hecho .EtiquetaPaso{
+    color: #1E796F;
+}
+.LineaPaso{
+    flex: 1;
+    min-width: 45px;
+    height: 2px;
+    margin-top: 21px;
+    border-radius: 2px;
+    background-color: #BCC3CA;
+}
+.LineaPaso.Hecha{
+    background-color: #0B6E63;
+}
+
+.AccionesEncabezado{
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 14px;
+}
+.Desplegable{
+    position: relative;
+}
+.BotonNotificaciones{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background: none;
+    color: #1B264E;
+    transition: background-color 0.2s;
+}
+.BotonNotificaciones svg{
+    width: 30px;
+    height: 30px;
+}
+.BotonUsuario{
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 4px 8px 4px 4px;
+    border: none;
+    border-radius: 30px;
+    background: none;
+    transition: background-color 0.2s;
+}
+.BotonNotificaciones:hover,
+.BotonUsuario:hover,
+.BotonNotificaciones[aria-expanded="true"],
+.BotonUsuario[aria-expanded="true"]{
+    background-color: #F1F4F6;
+}
+.Avatar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(140deg, #E3B22A 0%, #C8960F 52%, #8E6A0A 100%);
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1;
+}
+.NombreUsuario{
+    font-size: 18px;
+    font-weight: 700;
+    color: #0E2B42;
+}
+.FlechaUsuario{
+    width: 24px;
+    height: 24px;
+    color: #2D2D2D;
+    transition: transform 0.2s;
+}
+.BotonUsuario[aria-expanded="true"] .FlechaUsuario{
+    transform: rotate(180deg);
+}
+.Panel{
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    z-index: 50;
+    width: 280px;
+    padding: 16px 18px;
+    background-color: #FFFFFF;
+    border: 1px solid #E4E8EA;
+    border-radius: 14px;
+    box-shadow: 0 16px 36px rgba(12, 27, 36, 0.14);
+}
+.TituloPanel{
+    font-size: 16px;
+    font-weight: 700;
+    color: #0C1B24;
+}
+.TextoPanel{
+    margin-top: 4px;
+    font-size: 14px;
+    line-height: 1.45;
+    color: #5E6E86;
+}
+.EnlacePanel{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #EEF1F2;
+    font-size: 14px;
+    font-weight: 600;
+    color: #C23B3B;
+    text-decoration: none;
+}
+.EnlacePanel svg{
+    width: 20px;
+    height: 20px;
+}
+
+.Contenido{
+    display: grid;
+    flex: 1;
+    grid-template-columns: clamp(480px, 38vw, 640px) minmax(0, 1fr);
+    gap: 40px;
+}
+.ColumnaDatos{
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding-bottom: 12px;
+}
+.ColumnaMapa{
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.Titulo{
+    max-width: 14em;
+    font-size: clamp(32px, 2.5vw, 40px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    font-optical-sizing: none;
+    color: #0C1B24;
+}
+.Descripcion{
+    margin-top: 8px;
+    font-size: 15px;
+    line-height: 1.45;
+    text-wrap: balance;
+    color: #5E6E86;
+}
+
+.Formulario{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 16px 0;
+}
+.FilaCampos{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+.Campo{
+    min-width: 0;
+}
+.Etiqueta{
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #0D2233;
+}
+.FilaEtiqueta{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+}
+.Opcional{
+    font-size: 14px;
+    font-weight: 400;
+    color: #8B94A1;
+}
+.Contador{
+    font-size: 12.5px;
+    color: #8B94A1;
+}
+.CajaDireccion,
+.Control{
+    position: relative;
+    margin-top: 7px;
+}
+.IconoCampo{
+    position: absolute;
+    top: 50%;
+    left: 13px;
+    width: 24px;
+    height: 24px;
+    transform: translateY(-50%);
+    color: #516173;
+    pointer-events: none;
+}
+.IconoFlecha{
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    width: 24px;
+    height: 24px;
+    margin-top: -12px;
+    color: #808080;
+    pointer-events: none;
+    transition: transform 0.2s;
+}
+.Selector.Abierto .IconoFlecha{
+    transform: rotate(180deg);
+}
+
+.CajaDireccion input{
+    display: block;
+    width: 100%;
+    height: 50px;
+    padding: 0 46px 0 46px;
+    font-size: 15px;
+    color: #212F4B;
+    text-overflow: ellipsis;
+    background-color: #FFFFFF;
+    border: 1.5px solid #DCE2E8;
+    border-radius: 12px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.CajaDireccion input::placeholder{
+    color: #8B94A1;
+}
+.BotonLimpiar{
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    margin-top: -17px;
+    border: none;
+    border-radius: 50%;
+    background: none;
+    color: #797979;
+    transition: background-color 0.2s;
+}
+.BotonLimpiar:hover{
+    background-color: #F1F4F6;
+}
+.BotonLimpiar svg{
+    width: 24px;
+    height: 24px;
+}
+
+.Sugerencias{
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    z-index: 45;
+    max-height: 310px;
+    overflow-y: auto;
+    padding: 6px;
+    list-style: none;
+    background-color: #FFFFFF;
+    border: 1px solid #E4E8EA;
+    border-radius: 14px;
+    box-shadow: 0 16px 36px rgba(12, 27, 36, 0.14);
+}
+.Sugerencia{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.Sugerencia:hover,
+.Sugerencia.Activa{
+    background-color: #EEF6F4;
+}
+.Sugerencia svg{
+    width: 20px;
+    height: 20px;
+    color: #0B6E63;
+}
+.Sugerencia span{
+    min-width: 0;
+}
+.Sugerencia strong,
+.Sugerencia small{
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.Sugerencia strong{
+    font-size: 14.5px;
+    font-weight: 600;
+    color: #0C1B24;
+}
+.Sugerencia small{
+    margin-top: 2px;
+    font-size: 13px;
+    color: #6B7A8C;
+}
+.MensajeSugerencias{
+    padding: 10px 12px;
+    font-size: 14px;
+    line-height: 1.45;
+    color: #5E6E86;
+}
+
+.CampoSelector{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 0 40px 0 46px;
+    font-size: 15px;
+    text-align: left;
+    color: #22304B;
+    background-color: #FFFFFF;
+    border: 1.5px solid #DCE2E8;
+    border-radius: 12px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.CampoSelector span{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.CampoSelector:hover{
+    border-color: #C4CDD5;
+}
+.CajaDireccion input:focus,
+.CampoSelector:focus-visible,
+.Selector.Abierto .CampoSelector,
+.Campo textarea:focus{
+    border-color: #0B6E63;
+    box-shadow: 0 0 0 3px rgba(11, 110, 99, 0.12);
+}
+.Campo textarea{
+    display: block;
+    width: 100%;
+    height: 72px;
+    margin-top: 7px;
+    padding: 12px 15px;
+    font-size: 14.5px;
+    line-height: 1.4;
+    color: #22304B;
+    background-color: #FFFFFF;
+    border: 1.5px solid #DCE2E8;
+    border-radius: 12px;
+    outline: none;
+    resize: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.Campo textarea::placeholder{
+    color: #9CA5B0;
+}
+.ConError,
+.ConError:focus{
+    border-color: #D14343 !important;
+    box-shadow: 0 0 0 3px rgba(209, 67, 67, 0.1) !important;
+}
+.MensajeError{
+    display: block;
+    margin-top: 5px;
+    font-size: 13px;
+    color: #C23B3B;
+}
+.MensajeError:empty{
+    display: none;
+}
+
+.Calendario{
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    z-index: 40;
+    width: 340px;
+    padding: 12px 12px 10px;
+    background-color: #FFFFFF;
+    border: 1px solid #E4E8EA;
+    border-radius: 14px;
+    box-shadow: 0 16px 36px rgba(12, 27, 36, 0.16);
+}
+.CabeceraCalendario{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2px 8px;
+}
+.TituloMes{
+    font-size: 15px;
+    font-weight: 700;
+    color: #0C1B24;
+}
+.BotonMes{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #E4E8EA;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    color: #22304B;
+    transition: background-color 0.2s;
+}
+.BotonMes svg{
+    width: 18px;
+    height: 18px;
+}
+.BotonMes:hover:not(:disabled){
+    background-color: #F2F6F5;
+}
+.BotonMes:disabled{
+    opacity: 0.35;
+    cursor: default;
+}
+.DiasSemana,
+.DiasMes{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+}
+.DiasSemana span{
+    padding: 2px 0 4px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    color: #8A94A6;
+}
+.Dia{
+    height: 34px;
+    border: none;
+    border-radius: 9px;
+    background: none;
+    font-size: 14px;
+    color: #22304B;
+    transition: background-color 0.15s;
+}
+.Dia:hover:not(:disabled){
+    background-color: #EAF4F2;
+}
+.Dia.Hoy{
+    font-weight: 700;
+    color: #0B6E63;
+    box-shadow: inset 0 0 0 1px #9CCBC5;
+}
+.Dia[aria-pressed="true"],
+.Dia[aria-pressed="true"]:hover{
+    background-color: #0B6E63;
+    color: #FFFFFF;
+    font-weight: 600;
+    box-shadow: none;
+}
+.Dia:disabled{
+    color: #C3C9D0;
+    cursor: default;
+}
+.Dia:focus-visible{
+    outline-offset: 1px;
+}
+
+.PanelHoras{
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    z-index: 40;
+    width: calc(200% + 16px);
+    padding: 12px 14px 14px;
+    background-color: #FFFFFF;
+    border: 1px solid #E4E8EA;
+    border-radius: 14px;
+    box-shadow: 0 16px 36px rgba(12, 27, 36, 0.16);
+}
+.TituloHoras{
+    margin: 10px 0 6px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #5E6E86;
+}
+.TituloHoras:first-child{
+    margin-top: 0;
+}
+.ListaHoras{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6px;
+}
+.Hora{
+    height: 32px;
+    padding: 0 2px;
+    border: 1px solid #E4E8EA;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    font-size: 12.5px;
+    white-space: nowrap;
+    color: #22304B;
+    transition: background-color 0.15s, border-color 0.15s;
+}
+.Hora:hover:not(:disabled){
+    border-color: #9CCBC5;
+    background-color: #EAF4F2;
+}
+.Hora[aria-pressed="true"],
+.Hora[aria-pressed="true"]:hover{
+    border-color: #0B6E63;
+    background-color: #0B6E63;
+    color: #FFFFFF;
+    font-weight: 600;
+}
+.Hora:disabled{
+    border-color: #F0F2F4;
+    color: #C3C9D0;
+    cursor: default;
+}
+
+.Referencias{
+    display: grid;
+    flex: 1 1 auto;
+    grid-template-columns: minmax(0, 2.15fr) minmax(0, 1fr);
+    gap: 12px;
+    min-height: 150px;
+    max-height: 224px;
+    margin-top: auto;
+}
+.TarjetaReferencia{
+    display: flex;
+    gap: 10px;
+    min-width: 0;
+    padding: 8px;
+    background-color: #FFFFFF;
+    border: 1.5px solid #E8EEF2;
+    border-radius: 14px;
+}
+.TarjetaColumna{
+    flex-direction: column;
+    gap: 7px;
+}
+.ImagenReferencia{
+    position: relative;
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+    background-color: #E9F6FA;
+    border-radius: 10px;
+}
+.ImagenReferencia img{
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.ImagenMoto{
+    flex: 0 0 60%;
+}
+.ImagenMoto img{
+    object-fit: fill;
+}
+.TextoReferencia{
+    flex: 1 1 0;
+    align-self: center;
+    min-width: 0;
+    padding-right: 4px;
+}
+.TarjetaColumna .TextoReferencia{
+    flex: 0 0 auto;
+    align-self: stretch;
+    padding: 0 3px 1px;
+}
+.TextoReferencia h2{
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #0D2233;
+}
+.TextoReferencia p{
+    margin-top: 4px;
+    font-size: 12.5px;
+    line-height: 1.4;
+    color: #5E6E86;
+}
+.TextoReferencia strong{
+    font-weight: 600;
+    color: #0B6E63;
+}
+
+.Mapa{
+    position: relative;
+    flex: 1;
+    min-height: 420px;
+    overflow: hidden;
+    isolation: isolate;
+    background-color: #EEEAE5;
+    border: 1.5px solid #E6EAEE;
+    border-radius: 16px;
+}
+.Mapa iframe{
+    position: absolute;
+    top: -136px;
+    left: 0;
+    width: 100%;
+    height: calc(100% + 136px);
+    border: 0;
+    transition: opacity 0.3s;
+}
+.Mapa::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.6) 50%, rgba(255, 255, 255, 0) 70%);
+    background-size: 250% 100%;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+.Cargando::before{
+    opacity: 1;
+    animation: Brillo 1.3s linear infinite;
+}
+.Cargando iframe{
+    opacity: 0;
+}
+@keyframes Brillo{
+    from{
+        background-position: 120% 0;
+    }
+    to{
+        background-position: -120% 0;
+    }
+}
+.VistasMapa{
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    z-index: 1;
+    display: flex;
+    gap: 2px;
+    padding: 4px;
+    transform: translateX(-50%);
+    background-color: #FFFFFF;
+    border-radius: 22px;
+    box-shadow: 0 2px 8px rgba(12, 27, 36, 0.22);
+}
+.BotonVista{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    height: 34px;
+    padding: 0 14px;
+    border: none;
+    border-radius: 18px;
+    background: none;
+    font-size: 13.5px;
+    font-weight: 600;
+    white-space: nowrap;
+    color: #22304B;
+    transition: background-color 0.2s, color 0.2s;
+}
+.BotonVista:hover{
+    background-color: #EEF6F4;
+}
+.BotonVista[aria-pressed="true"],
+.BotonVista[aria-pressed="true"]:hover{
+    background-color: #0B6E63;
+    color: #FFFFFF;
+}
+.BotonVista svg{
+    width: 17px;
+    height: 17px;
+}
+.AbrirGoogleMaps{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 8px rgba(12, 27, 36, 0.22);
+    color: #0B6E63;
+    transition: background-color 0.2s;
+}
+.AbrirGoogleMaps:hover{
+    background-color: #EEF6F4;
+}
+.AbrirGoogleMaps svg{
+    width: 20px;
+    height: 20px;
+}
+.AvisoMapa{
+    position: absolute;
+    top: 64px;
+    left: 50%;
+    z-index: 1;
+    width: max-content;
+    max-width: calc(100% - 32px);
+    padding: 8px 14px;
+    transform: translateX(-50%);
+    font-size: 13px;
+    line-height: 1.4;
+    color: #6B4E00;
+    background-color: #FFF4D6;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(12, 27, 36, 0.14);
+}
+.TarjetaMapa{
+    position: absolute;
+    left: 8px;
+    bottom: 8px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: min(330px, 46%);
+    min-width: 270px;
+    min-height: 66px;
+    padding: 10px 12px 10px 14px;
+    background-color: #FFFFFF;
+    border: 1px solid #DDE3E7;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(12, 27, 36, 0.14);
+}
+.TextoTarjeta{
+    min-width: 0;
+}
+.TextoTarjeta strong,
+.TextoTarjeta span{
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.TextoTarjeta strong{
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #1E3342;
+}
+.TextoTarjeta span{
+    margin-top: 2px;
+    font-size: 13px;
+    line-height: 18px;
+    color: #7E8794;
+}
+.BotonEditar{
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 7px;
+    height: 42px;
+    padding: 0 13px;
+    border: 1.5px solid #6FAAA3;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #127267;
+    transition: background-color 0.2s;
+}
+.BotonEditar:hover{
+    background-color: #EEF6F4;
+}
+.BotonEditar svg{
+    width: 17px;
+    height: 17px;
+    color: #247D73;
+}
+
+.Pie{
+    position: sticky;
+    bottom: 0;
+    z-index: 20;
+    display: grid;
+    grid-template-columns: 0.95fr 1fr;
+    gap: 20px;
+    padding: 14px 0 12px;
+    background-color: #FFFFFF;
+}
+.BotonVolver,
+.BotonSiguiente{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 58px;
+    border-radius: 14px;
+    font-family: "Poppins", "Inter", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s, transform 0.1s;
+}
+.BotonVolver{
+    gap: 28px;
+    color: #112B45;
+    background-color: #FFFFFF;
+    border: 1.5px solid #66A49D;
+}
+.BotonSiguiente{
+    gap: 18px;
+    color: #0D273B;
+    background-color: #FEC135;
+    border: none;
+}
+.BotonVolver svg,
+.BotonSiguiente svg{
+    width: 26px;
+    height: 26px;
+    color: #0D273B;
+}
+.BotonVolver:hover{
+    background-color: #F1F8F7;
+}
+.BotonSiguiente:hover{
+    background-color: #F8B921;
+}
+.BotonVolver:active,
+.BotonSiguiente:active{
+    transform: scale(0.99);
+}
+
+@media (min-height: 860px) and (min-width: 1081px){
+    .Formulario{
+        gap: 22px;
+        margin: 24px 0;
+    }
+    .CajaDireccion input,
+    .CampoSelector{
+        height: 56px;
+    }
+    .Campo textarea{
+        height: 130px;
+    }
+}
+@media (max-height: 720px) and (min-width: 1081px){
+    .Pantalla{
+        padding-top: 12px;
+    }
+    .Encabezado{
+        margin-bottom: 12px;
+    }
+    .Formulario{
+        gap: 10px;
+        margin: 12px 0;
+    }
+    .Campo textarea{
+        height: 56px;
+        padding: 8px 15px;
+    }
+    .Referencias{
+        min-height: 128px;
+    }
+    .Mapa{
+        min-height: 360px;
+    }
+}
+@media (max-width: 1080px){
+    .Pantalla{
+        padding-bottom: 0;
+    }
+    .Encabezado{
+        flex-wrap: wrap;
+    }
+    .Pasos{
+        order: 3;
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+    .Contenido{
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+    .ColumnaDatos,
+    .ColumnaMapa,
+    .Formulario{
+        display: contents;
+    }
+    .Titulo{
+        order: 1;
+    }
+    .Descripcion{
+        order: 2;
+    }
+    .Formulario > .Campo:first-child{
+        order: 3;
+        margin-top: 16px;
+    }
+    .Mapa{
+        order: 4;
+        flex: none;
+        height: 420px;
+        min-height: 0;
+        margin-top: 14px;
+    }
+    .FilaCampos{
+        order: 5;
+        margin-top: 16px;
+    }
+    .Formulario > .Campo:last-child{
+        order: 6;
+        margin-top: 16px;
+    }
+    .Referencias{
+        order: 7;
+        flex: none;
+        height: 190px;
+        min-height: 0;
+        max-height: none;
+        margin-top: 16px;
+    }
+    .Pie{
+        order: 8;
+        margin: 16px calc(var(--Margen) * -1) 0;
+        padding: 14px var(--Margen) 14px;
+        border-top: 1px solid #F0F0F0;
+    }
+}
+@media (max-width: 640px){
+    .Pantalla{
+        --Margen: 16px;
+        padding-top: 12px;
+    }
+    .Encabezado{
+        position: relative;
+        gap: 8px;
+        margin-bottom: 0;
+    }
+    .Logo{
+        flex: 1 1 0;
+        width: 0;
+        min-width: 0;
+        max-width: 174px;
+        height: 36px;
+        object-fit: contain;
+        object-position: left center;
+    }
+    .AccionesEncabezado{
+        gap: 2px;
+    }
+    .Desplegable{
+        position: static;
+    }
+    .BotonNotificaciones{
+        width: 36px;
+        height: 36px;
+    }
+    .BotonNotificaciones svg{
+        width: 26px;
+        height: 26px;
+    }
+    .BotonUsuario{
+        gap: 7px;
+        padding: 3px 4px 3px 3px;
+    }
+    .Avatar{
+        width: 28px;
+        height: 28px;
+        font-size: 13px;
+    }
+    .NombreUsuario{
+        font-size: 12px;
+    }
+    .FlechaUsuario{
+        width: 20px;
+        height: 20px;
+    }
+    .Panel{
+        top: 44px;
+        width: min(280px, 100%);
+    }
+
+    .Pasos{
+        margin-top: 16px;
+        padding: 0 16px 16px 4px;
+    }
+    .Paso{
+        flex: 0 0 32px;
+        min-width: 0;
+    }
+    .MarcaPaso{
+        position: relative;
+        display: block;
+        width: 32px;
+        height: 32px;
+    }
+    .CirculoPaso{
+        width: 32px;
+        height: 32px;
+        font-size: 13px;
+    }
+    .EtiquetaPaso{
+        position: absolute;
+        top: 35px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 10px;
+        line-height: 12px;
+    }
+    .LineaPaso{
+        min-width: 8px;
+        margin: 15px 10px 0;
+    }
+
+    .Titulo{
+        max-width: 310px;
+        margin-top: 20px;
+        font-size: 22px;
+        line-height: 26px;
+    }
+    .Descripcion{
+        max-width: 330px;
+        margin-top: 10px;
+        font-size: 12.5px;
+        line-height: 17.5px;
+        text-wrap: wrap;
+    }
+    .Etiqueta{
+        font-size: 14px;
+        line-height: 17px;
+    }
+    .Opcional{
+        font-size: 13px;
+    }
+    .Contador{
+        font-size: 11.5px;
+    }
+    .Formulario > .Campo:first-child{
+        margin-top: 13px;
+    }
+    .CajaDireccion{
+        margin-top: 8px;
+    }
+    .IconoCampo{
+        left: 7px;
+        width: 26px;
+        height: 26px;
+    }
+    .CajaDireccion .IconoCampo{
+        left: 5px;
+        width: 26px;
+        height: 26px;
+    }
+    .IconoFlecha{
+        right: 10px;
+        width: 20px;
+        height: 20px;
+        margin-top: -10px;
+    }
+    .CajaDireccion input{
+        height: 38px;
+        padding: 0 36px 0 38px;
+        font-size: 12.5px;
+        border-width: 1px;
+        border-color: #E4E4E4;
+        border-radius: 7px;
+    }
+    .BotonLimpiar{
+        right: 5px;
+        width: 30px;
+        height: 30px;
+        margin-top: -15px;
+    }
+    .BotonLimpiar svg{
+        width: 22px;
+        height: 22px;
+    }
+    .CampoSelector{
+        height: 43px;
+        padding: 0 36px 0 38px;
+        font-size: 12.5px;
+        border-width: 1px;
+        border-color: #E1E1E1;
+        border-radius: 8px;
+    }
+    .FilaCampos{
+        grid-template-columns: minmax(0, 1fr);
+        gap: 8px;
+        margin-top: 8px;
+    }
+    .Formulario > .Campo:last-child{
+        margin-top: 13px;
+    }
+    .Campo textarea{
+        height: 66px;
+        padding: 11px 15px;
+        font-size: 12px;
+        border-width: 1px;
+        border-color: #E4E4E4;
+        border-radius: 8px;
+    }
+
+    .Calendario,
+    .PanelHoras{
+        width: 100%;
+    }
+    .Dia{
+        height: 38px;
+    }
+    .ListaHoras{
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .Hora{
+        height: 38px;
+        font-size: 12px;
+    }
+
+    .Mapa{
+        height: 260px;
+        margin-top: 9px;
+        background-color: #EEF1F2;
+        border-width: 1px;
+        border-radius: 8px;
+    }
+    .Mapa iframe{
+        top: -44px;
+        height: calc(100% - 12px);
+    }
+    .Mapa.ModoCalle iframe{
+        top: -80px;
+        height: calc(100% + 24px);
+    }
+    .Mapa.ModoCalle .AbrirGoogleMaps{
+        display: none;
+    }
+    .VistasMapa{
+        top: 8px;
+        left: 8px;
+        padding: 3px;
+        transform: none;
+        border-radius: 19px;
+    }
+    .BotonVista{
+        gap: 4px;
+        height: 30px;
+        padding: 0 10px;
+        font-size: 12px;
+    }
+    .BotonVista svg{
+        width: 14px;
+        height: 14px;
+    }
+    .AbrirGoogleMaps{
+        top: 8px;
+        right: 8px;
+        width: 36px;
+        height: 36px;
+    }
+    .AbrirGoogleMaps svg{
+        width: 18px;
+        height: 18px;
+    }
+    .AvisoMapa{
+        top: 52px;
+        right: 8px;
+        left: 8px;
+        width: auto;
+        max-width: none;
+        padding: 6px 10px;
+        transform: none;
+        font-size: 11.5px;
+    }
+    .TarjetaMapa{
+        right: 4px;
+        bottom: 4px;
+        left: 4px;
+        width: auto;
+        min-width: 0;
+        min-height: 52px;
+        padding: 7px 12px 7px 9px;
+        border-color: #D9D9D9;
+        border-radius: 7px;
+    }
+    .TextoTarjeta strong{
+        font-size: 12px;
+        line-height: 15px;
+    }
+    .TextoTarjeta span{
+        margin-top: 3px;
+        font-size: 11px;
+        line-height: 14px;
+    }
+    .BotonEditar{
+        gap: 6px;
+        height: 36px;
+        padding: 0 11px 0 10px;
+        font-size: 13px;
+        border-radius: 8px;
+    }
+    .BotonEditar svg{
+        width: 15px;
+        height: 15px;
+    }
+
+    .Referencias{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        height: auto;
+        margin-top: 13px;
+    }
+    .TarjetaReferencia,
+    .TarjetaColumna{
+        flex-direction: row;
+        flex: none;
+        gap: 10px;
+        min-height: 124px;
+    }
+    .ImagenReferencia,
+    .ImagenMoto{
+        flex: 0 0 46%;
+    }
+    .TarjetaColumna .TextoReferencia{
+        flex: 1 1 0;
+        align-self: center;
+        padding: 0 4px 0 0;
+    }
+
+    .Pie{
+        margin-top: 12px;
+        padding: 17px var(--Margen) 16px;
+    }
+    .BotonVolver,
+    .BotonSiguiente{
+        height: 52px;
+        border-radius: 12px;
+        font-size: 16px;
+    }
+    .BotonVolver{
+        justify-content: flex-start;
+        gap: min(30px, 7.5vw);
+        padding-left: 16px;
+    }
+    .BotonSiguiente{
+        gap: 15px;
+    }
+    .BotonVolver svg,
+    .BotonSiguiente svg{
+        width: 24px;
+        height: 24px;
+    }
+}
+@supports (-webkit-touch-callout: none){
+    .CajaDireccion input,
+    .Campo textarea{
+        font-size: 16px;
+    }
+}
+@media (prefers-reduced-motion: reduce){
+    *,
+    *::before{
+        transition-duration: 0.01ms !important;
+    }
+    .Cargando::before{
+        animation: none;
+    }
+}
