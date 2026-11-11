@@ -1,14 +1,157 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <title>Cuenta verificada | CasaLista</title>
+
     <link rel="stylesheet" href="CuentaVerificada.css">
 </head>
+
 <body>
-    <h1>
-        Christian Lazaro
-    </h1>
+
+    <main class="container">
+
+        <!-- ENCABEZADO SOLO PARA MÓVIL -->
+        <header class="mobile-header">
+
+            <div class="status-bar">
+                <span>9:41</span>
+
+                <div class="status-icons">
+                    <span>▮▮▮</span>
+                    <span>▰</span>
+                </div>
+            </div>
+
+            <h1>Verificar tu cuenta</h1>
+
+        </header>
+
+
+        <!-- TARJETA PRINCIPAL -->
+        <section class="verification-card">
+
+            <!-- COLUMNA IZQUIERDA: ILUSTRACIÓN -->
+            <div class="illustration">
+
+                <svg viewBox="0 0 520 390"
+                     xmlns="http://www.w3.org/2000/svg"
+                     role="img"
+                     aria-label="Sobre con cuenta verificada">
+
+                    <defs>
+                        <linearGradient id="mint" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#C9F1E9"/>
+                            <stop offset="100%" stop-color="#A9E8DC"/>
+                        </linearGradient>
+                    </defs>
+
+                    <!-- Fondo verde menta -->
+                    <path
+                        d="M64 184C74 95 157 36 245 53c66 13 81 69 121 91
+                        47 26 104 43 104 108 0 67-58 102-127 99H139
+                        C76 351 34 282 64 184Z"
+                        fill="url(#mint)"
+                    />
+
+                    <!-- Líneas decorativas -->
+                    <g stroke="#087568"
+                       stroke-width="13"
+                       stroke-linecap="round">
+
+                        <path d="M390 42l-13 45"/>
+                        <path d="M434 70l-32 35"/>
+                        <path d="M460 116l-38 17"/>
+
+                    </g>
+
+                    <!-- Parte inferior del sobre -->
+                    <rect
+                        x="91" y="178"
+                        width="337" height="166"
+                        rx="22"
+                        fill="#BCEDE3"
+                        stroke="#006451"
+                        stroke-width="9"
+                    />
+
+                    <!-- Pliegues del sobre -->
+                    <path
+                        d="M98 194l160 127 163-127"
+                        fill="none"
+                        stroke="#56BDA9"
+                        stroke-width="9"
+                    />
+
+                    <path
+                        d="M97 335l117-100M422 335L306 235"
+                        fill="none"
+                        stroke="#65C8B4"
+                        stroke-width="9"
+                    />
+
+                    <!-- Solapa del sobre -->
+                    <path
+                        d="M111 177V112c0-17 13-30 30-30h238
+                        c17 0 30 13 30 30v65L277 286
+                        c-11 9-21 9-33 0L91 177"
+                        fill="#FFFFFF"
+                        stroke="#006451"
+                        stroke-width="9"
+                        stroke-linejoin="round"
+                    />
+
+                    <!-- Círculo de verificación -->
+                    <circle
+                        cx="260"
+                        cy="165"
+                        r="48"
+                        fill="#FFFFFF"
+                        stroke="#16A45A"
+                        stroke-width="10"
+                    />
+
+                    <!-- Check -->
+                    <path
+                        d="M239 165l15 16 31-34"
+                        fill="none"
+                        stroke="#16A45A"
+                        stroke-width="12"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+
+                </svg>
+
+            </div>
+
+
+            <!-- COLUMNA DERECHA: MENSAJE -->
+            <div class="content">
+
+                <h2>¡Cuenta verificada!</h2>
+
+                <p>
+                    Tu cuenta se creó correctamente.<br>
+                    Ya puedes empezar a usar CasaLista.
+                </p>
+
+                <button type="button" id="homeButton">
+                    Ir al inicio
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
 </body>
 </html>
