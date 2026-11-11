@@ -1,14 +1,138 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="CodigoVerificacion.css">
+    <title>Verificar tu cuenta</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>
-        Yeremy Santiago
-    </h1>
+
+    <main class="page">
+
+        <section class="verification-card">
+
+            <!-- ILUSTRACIÓN -->
+            <div class="illustration">
+
+                <div class="illustration-bg"></div>
+
+                <svg class="envelope" viewBox="0 0 400 350"
+                     xmlns="http://www.w3.org/2000/svg">
+
+                    <path d="M200 30 C120 15 50 100 45 175
+                    C35 255 110 300 200 290
+                    C290 310 370 260 360 175
+                    C350 100 280 25 200 30Z"
+                    fill="#D7F3EC"/>
+
+                    <g stroke="#006B52" stroke-width="8"
+                       stroke-linecap="round" stroke-linejoin="round">
+
+                        <path d="M100 145 L200 220 L300 145"
+                              fill="none"/>
+
+                        <rect x="90" y="105" width="220"
+                              height="190" rx="22"
+                              fill="#BDEBE0"/>
+
+                        <path d="M90 150 L200 230 L310 150"
+                              fill="none"/>
+
+                        <path d="M90 275 L165 215"
+                              fill="none" opacity=".45"/>
+
+                        <path d="M310 275 L235 215"
+                              fill="none" opacity=".45"/>
+
+                        <rect x="110" y="55" width="180"
+                              height="125" rx="18"
+                              fill="white"/>
+
+                        <path d="M275 35 L280 10"/>
+                        <path d="M300 48 L320 25"/>
+                        <path d="M315 70 L340 60"/>
+
+                    </g>
+
+                    <text x="200" y="125"
+                          text-anchor="middle"
+                          font-size="25"
+                          font-weight="bold"
+                          fill="#006B52">
+                        0000 - 0000
+                    </text>
+
+                </svg>
+
+            </div>
+
+            <!-- FORMULARIO -->
+            <div class="form-section">
+
+                <h1>Verificar tu cuenta</h1>
+
+                <h2>Ingresa el código de verificación</h2>
+
+                <p class="description">
+                    Hemos enviado un código de 8 dígitos
+                    a tu correo electrónico.
+                </p>
+
+                <form id="verificationForm">
+
+                    <div class="code-inputs" id="codeInputs">
+
+                        <input type="text" maxlength="1" inputmode="numeric" autocomplete="one-time-code" aria-label="Dígito 1">
+                        <input type="text" maxlength="1" inputmode="numeric" aria-label="Dígito 2">
+                        <input type="text" maxlength="1" inputmode="numeric" aria-label="Dígito 3">
+                        <input type="text" maxlength="1" inputmode="numeric" aria-label="Dígito 4">
+
+                        <span class="separator">-</span>
+
+                        <input type="text" maxlength="1" inputmode="numeric" aria-label="Dígito 5">
+                        <input type="text" maxlength="1" inputmode="numeric" aria-label="Dígito 6">
+                        <input type="text" maxlength="1" inputmode="numeric" aria-label="Dígito 7">
+                        <input type="text" maxlength="1" inputmode="numeric" aria-label="Dígito 8">
+
+                    </div>
+
+                    <div class="resend-section">
+
+                        <p>¿No recibiste el código?</p>
+
+                        <button type="button" id="resendBtn">
+                            Reenviar código (<span id="timer">60s</span>)
+                        </button>
+
+                    </div>
+
+                    <p id="message" class="message"
+                       role="status" aria-live="polite"></p>
+
+                    <div class="buttons">
+
+                        <button type="submit" class="btn-verify">
+                            Verificar cuenta
+                        </button>
+
+                        <button type="button" class="btn-back"
+                                id="backBtn">
+                            Volver
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
 </body>
 </html>

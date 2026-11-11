@@ -1,3 +1,380 @@
-*{
-    background-color: green;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #ffffff;
+    min-height: 100vh;
+    color: #111111;
+}
+
+.page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* DECORACIÓN DEL FONDO */
+
+.page::before,
+.page::after {
+    content: "";
+    position: fixed;
+    width: 280px;
+    height: 200px;
+    background: #d8eeeb;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.page::before {
+    top: -110px;
+    left: -100px;
+}
+
+.page::after {
+    bottom: -130px;
+    right: -100px;
+}
+
+/* TARJETA PRINCIPAL */
+
+.verification-card {
+    width: 100%;
+    max-width: 1220px;
+    min-height: 700px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 30px;
+    padding: 30px;
+}
+
+/* ILUSTRACIÓN */
+
+.illustration {
+    min-height: 580px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-right: 1px solid #dddddd;
+}
+
+.envelope {
+    width: 85%;
+    max-width: 470px;
+    position: relative;
+    z-index: 2;
+}
+
+/* FORMULARIO */
+
+.form-section {
+    padding: 30px 35px;
+    text-align: center;
+}
+
+.form-section h1 {
+    font-size: 44px;
+    margin-bottom: 36px;
+    font-weight: 700;
+}
+
+.form-section h2 {
+    font-size: 29px;
+    color: #777777;
+    margin-bottom: 25px;
+}
+
+.description {
+    font-size: 19px;
+    line-height: 1.4;
+    color: #777777;
+    margin-bottom: 40px;
+}
+
+/* CASILLAS DEL CÓDIGO */
+
+.code-inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+.code-inputs input {
+    width: 65px;
+    height: 75px;
+    border: 1.5px solid #00866d;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 27px;
+    font-weight: bold;
+    color: #006b52;
+    outline: none;
+    transition: 0.2s;
+}
+
+.code-inputs input:focus {
+    border: 2px solid #006b52;
+    box-shadow: 0 0 5px #bdebe0;
+}
+
+.separator {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+/* REENVIAR CÓDIGO */
+
+.resend-section {
+    margin-bottom: 25px;
+}
+
+.resend-section p {
+    font-size: 19px;
+    color: #777777;
+    margin-bottom: 15px;
+}
+
+#resendBtn {
+    border: none;
+    background: transparent;
+    color: #007963;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#resendBtn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+/* MENSAJES */
+
+.message {
+    min-height: 20px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: #b00020;
+}
+
+/* BOTONES */
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.buttons button {
+    width: 100%;
+    height: 80px;
+    border: none;
+    border-radius: 16px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-verify {
+    background: #087568;
+    color: white;
+}
+
+.btn-verify:hover {
+    background: #006454;
+}
+
+.btn-back {
+    background: #ffbd2e;
+    color: black;
+}
+
+.btn-back:hover {
+    background: #f3aa13;
+}
+
+/* ADAPTACIÓN PARA TABLETS */
+
+@media (max-width: 900px) {
+
+    .verification-card {
+        grid-template-columns: 1fr 1fr;
+        padding: 20px;
+    }
+
+    .form-section {
+        padding: 20px;
+    }
+
+    .form-section h1 {
+        font-size: 32px;
+    }
+
+    .form-section h2 {
+        font-size: 22px;
+    }
+
+    .description {
+        font-size: 16px;
+    }
+
+    .code-inputs {
+        gap: 6px;
+    }
+
+    .code-inputs input {
+        width: 38px;
+        height: 52px;
+        font-size: 20px;
+    }
+
+    .buttons button {
+        height: 60px;
+    }
+
+    .illustration {
+        min-height: 450px;
+    }
+}
+
+/* ADAPTACIÓN PARA CELULARES */
+
+@media (max-width: 600px) {
+
+    .page {
+        display: block;
+        padding: 0;
+        min-height: 100vh;
+        overflow: auto;
+    }
+
+    .verification-card {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        min-height: 100vh;
+        border: none;
+        border-radius: 0;
+        padding: 0 28px 25px;
+    }
+
+    .illustration {
+        order: 1;
+        min-height: auto;
+        width: 100%;
+        border: none;
+        padding: 15px 0 0;
+    }
+
+    .envelope {
+        width: 100%;
+        max-width: 330px;
+    }
+
+    .form-section {
+        order: 2;
+        width: 100%;
+        padding: 0;
+    }
+
+    .form-section h1 {
+        font-size: 29px;
+        margin-bottom: 20px;
+    }
+
+    .form-section h2 {
+        font-size: 21px;
+        margin-bottom: 12px;
+    }
+
+    .description {
+        font-size: 13px;
+        font-weight: bold;
+        line-height: 1.4;
+        margin-bottom: 34px;
+    }
+
+    .code-inputs {
+        gap: 5px;
+        margin-bottom: 32px;
+    }
+
+    .code-inputs input {
+        width: 30px;
+        height: 37px;
+        border-radius: 6px;
+        font-size: 17px;
+    }
+
+    .separator {
+        font-size: 18px;
+        margin: 0 1px;
+    }
+
+    .resend-section {
+        margin-bottom: 0;
+    }
+
+    .resend-section p {
+        font-size: 14px;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    #resendBtn {
+        font-size: 13px;
+    }
+
+    .message {
+        margin-top: 12px;
+    }
+
+    .buttons {
+        margin-top: 85px;
+        gap: 12px;
+    }
+
+    .buttons button {
+        height: 50px;
+        border-radius: 16px;
+        font-size: 16px;
+    }
+}
+
+/* CELULARES PEQUEÑOS */
+
+@media (max-width: 360px) {
+
+    .verification-card {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .code-inputs {
+        gap: 3px;
+    }
+
+    .code-inputs input {
+        width: 27px;
+    }
+
+    .buttons {
+        margin-top: 60px;
+    }
 }
