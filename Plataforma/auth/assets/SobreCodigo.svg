@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 400" fill="none">
+  <!-- Fondo verde menta -->
+  <path d="M52 236C40 150 108 68 210 64c74-3 104 40 138 66 40 30 120 44 122 128 2 78-62 112-140 112H170C98 370 60 316 52 236Z" fill="#C6EFE6"/>
+
+  <!-- Destellos -->
+  <g stroke="#0B6E5C" stroke-width="13" stroke-linecap="round">
+    <path d="M405 30l-11 46"/>
+    <path d="M452 66l-34 34"/>
+    <path d="M474 118l-40 18"/>
+  </g>
+
+  <!-- Parte trasera del sobre -->
+  <path d="M90 206c0-8 4-14 10-18l20-14h280l20 14c6 4 10 10 10 18v126a22 22 0 0 1-22 22H112a22 22 0 0 1-22-22V206Z" fill="#BDEBE1" stroke="#0B5E4F" stroke-width="10" stroke-linejoin="round"/>
+
+  <!-- Carta -->
+  <path d="M122 198V110a26 26 0 0 1 26-26h224a26 26 0 0 1 26 26v88L268 290a14 14 0 0 1-16 0L122 198Z" fill="#FFFFFF" stroke="#0B5E4F" stroke-width="10" stroke-linejoin="round"/>
+
+  <!-- Código -->
+  <text x="260" y="166" text-anchor="middle" textLength="228" lengthAdjust="spacingAndGlyphs" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" fill="#0B5E4F">0000 - 0000</text>
+
+  <!-- Bolsillo delantero -->
+  <path d="M94 196l158 116a14 14 0 0 0 16 0l158-116v136a22 22 0 0 1-22 22H116a22 22 0 0 1-22-22V196Z" fill="#C6EFE6"/>
+  <path d="M110 344l104-82M410 344l-104-82" stroke="#6CC7B5" stroke-width="9" stroke-linecap="round"/>
+  <path d="M94 196l158 116a14 14 0 0 0 16 0l158-116" stroke="#0B5E4F" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M90 206v126a22 22 0 0 0 22 22h296a22 22 0 0 0 22-22V206" stroke="#0B5E4F" stroke-width="10" stroke-linejoin="round"/>
+</svg>

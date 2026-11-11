@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fecha y ubicación | CasaLista</title>
+  <link rel="icon" href="assets/IconoLogo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Nunito:wght@800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="FechayUbicacion.css">
+</head>
+<body>
+
+  <!--
+    ICONOS: cada icono es una imagen dentro de assets/iconos/.
+    Si el archivo todavía no existe, se muestra un recuadro punteado
+    con el nombre del archivo que falta (ver FechayUbicacion.js).
+  -->
+
+  <div class="app">
+    <!-- ================= ENCABEZADO ================= -->
+    <header class="header">
+      <a href="Servicio.html" class="logo" aria-label="CasaLista, inicio">
+        <img class="logo-icon" src="assets/IconoLogo.png" alt="">
+        <span class="logo-text">Casa<span>Lista</span></span>
+      </a>
+
+      <div class="user-menu">
+        <button class="icon-btn" type="button" aria-label="Notificaciones">
+          <span class="icono-slot icono-campana"><img src="assets/iconos/IconoCampana.png" alt=""></span>
+        </button>
+
+        <div class="profile">
+          <button class="profile-btn" id="profileBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="profileMenu">
+            <span class="avatar">M</span>
+            <span class="user-name">Maribel</span>
+            <span class="icono-slot icono-chevron"><img src="assets/iconos/IconoFlechaAbajo.png" alt=""></span>
+          </button>
+
+          <ul class="dropdown" id="profileMenu" role="menu" hidden>
+            <li role="none">
+              <a role="menuitem" href="#" class="dropdown-item item-perfil">
+                <span class="icono-slot icono-menu"><img src="assets/iconos/IconoPerfil.png" alt=""></span>
+                Perfil
+              </a>
+            </li>
+            <li role="none">
+              <a role="menuitem" href="#" class="dropdown-item">
+                <span class="icono-slot icono-menu"><img src="assets/iconos/IconoReportar.png" alt=""></span>
+                Reportar
+              </a>
+            </li>
+            <li role="none">
+              <a role="menuitem" href="../auth/IniciarSesion.html" class="dropdown-item item-salir">
+                <span class="icono-slot icono-menu"><img src="assets/iconos/IconoCerrarSesion.png" alt=""></span>
+                Cerrar Sesion
+              </a>
+            </li>
+            <li role="none">
+              <a role="menuitem" href="#" class="dropdown-item">
+                <span class="icono-slot icono-menu"><img src="assets/iconos/IconoProfesional.png" alt=""></span>
+                Como Profesional
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <!-- ================= STEPPER ================= -->
+    <nav class="stepper" aria-label="Progreso de la solicitud">
+      <ol>
+        <li class="step done">
+          <span class="step-circle">1</span>
+          <span class="step-label">Servicio</span>
+        </li>
+        <li class="step done">
+          <span class="step-circle">2</span>
+          <span class="step-label">Detalles</span>
+        </li>
+        <li class="step active" aria-current="step">
+          <span class="step-circle">3</span>
+          <span class="step-label">Fecha y Ubicacion</span>
+        </li>
+        <li class="step">
+          <span class="step-circle">4</span>
+          <span class="step-label">Negociacion</span>
+        </li>
+      </ol>
+    </nav>
+
+    <!-- ================= CONTENIDO ================= -->
+    <form class="content" id="formFecha" novalidate>
+      <!-- Columna izquierda: dirección y mapa -->
+      <section class="col-left" aria-labelledby="tituloPagina">
+        <h1 class="page-title" id="tituloPagina">¿Donde y cuando necesitas el servicio?</h1>
+        <p class="page-subtitle">Indica la direccion y la fecha/hora en la que prefieres recibir el servicio.</p>
+
+        <label class="field-label" for="direccion">Dirección del servicio</label>
+        <div class="field field-direccion">
+          <span class="icono-slot icono-campo"><img src="assets/iconos/IconoUbicacion.png" alt=""></span>
+          <input type="text" id="direccion" name="direccion" value="Av. Primavera 123, Santiago de Surco" placeholder="Escribe tu dirección" autocomplete="street-address" aria-describedby="errorDireccion">
+          <button type="button" class="btn-limpiar" id="btnLimpiar" aria-label="Borrar dirección">
+            <span class="icono-slot icono-cerrar"><img src="assets/iconos/IconoCerrar.png" alt=""></span>
+          </button>
+        </div>
+        <small class="error" id="errorDireccion"></small>
+
+        <!-- Mapa: imagen estática (no está conectado a ningún servicio de mapas) -->
+        <div class="mapa">
+          <span class="icono-slot mapa-imagen"><img src="assets/Mapa.png" alt="Mapa con la ubicación del servicio"></span>
+          <span class="icono-slot mapa-pin"><img src="assets/iconos/IconoPinMapa.png" alt=""></span>
+        </div>
+      </section>
+
+      <div class="divider" aria-hidden="true"></div>
+
+      <!-- Columna derecha: fecha, hora y referencia -->
+      <section class="col-right" aria-label="Fecha y hora">
+        <div class="campos">
+          <label class="field-label" for="fecha">Fecha del servicio</label>
+          <div class="field field-select">
+            <span class="icono-slot icono-campo"><img src="assets/iconos/IconoCalendario.png" alt=""></span>
+            <select id="fecha" name="fecha" aria-describedby="errorFecha"></select>
+            <span class="icono-slot icono-select"><img src="assets/iconos/IconoFlechaAbajo.png" alt=""></span>
+          </div>
+          <small class="error" id="errorFecha"></small>
+
+          <label class="field-label" for="hora">Hora del servicio</label>
+          <div class="field field-select">
+            <span class="icono-slot icono-campo"><img src="assets/iconos/IconoReloj.png" alt=""></span>
+            <select id="hora" name="hora" aria-describedby="errorHora"></select>
+            <span class="icono-slot icono-select"><img src="assets/iconos/IconoFlechaAbajo.png" alt=""></span>
+          </div>
+          <small class="error" id="errorHora"></small>
+
+          <label class="field-label" for="referencia">Referencia adicional <span class="opcional">(opcional)</span></label>
+          <textarea id="referencia" name="referencia" class="field field-textarea" rows="5" maxlength="200" placeholder="Ej. Departamento 301, casa color blanco, timbre 2, etc."></textarea>
+        </div>
+
+        <div class="acciones">
+          <a href="Detalles.html" class="btn btn-volver">Volver</a>
+          <button type="submit" class="btn btn-siguiente">Siguiente</button>
+        </div>
+      </section>
+    </form>
+  </div>
+
+  <script src="FechayUbicacion.js"></script>
+</body>
+</html>

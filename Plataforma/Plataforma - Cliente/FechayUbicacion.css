@@ -1,0 +1,701 @@
+/* =========================================
+   VARIABLES Y RESET
+   ========================================= */
+:root {
+  --teal: #0b6e63;
+  --teal-hover: #095c53;
+  --teal-fondo: #f3faf8;
+  --amarillo: #ffc233;
+  --amarillo-hover: #f5b414;
+  --navy: #0f1e36;
+  --slate: #5b6b80;
+  --gris-step: #a6aeba;
+  --gris-linea: #b4bac3;
+  --gris-placeholder: #a3a9b1;
+  --borde: #e6eaee;
+  --borde-input: #c9cfd6;
+  --rojo: #d32f2f;
+  --blanco: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--blanco);
+  color: var(--navy);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* =========================================
+   ESPACIOS PARA ICONOS (IMÁGENES)
+   Si la imagen no existe, JS agrega .vacio y se ve
+   un recuadro punteado con el nombre del archivo.
+   ========================================= */
+.icono-slot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.icono-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.icono-slot.vacio {
+  border: 1.5px dashed #9aa6b2;
+  border-radius: 6px;
+  background: rgba(148, 163, 184, 0.12);
+  overflow: hidden;
+}
+
+.icono-slot.vacio img {
+  display: none;
+}
+
+.icono-slot.vacio::after {
+  content: attr(data-archivo);
+  font-size: 8px;
+  line-height: 1.1;
+  color: #64748b;
+  text-align: center;
+  word-break: break-all;
+  padding: 2px;
+}
+
+.icono-campana { width: 44px; height: 44px; }
+.icono-chevron { width: 22px; height: 22px; }
+.icono-menu { width: 18px; height: 18px; }
+.icono-campo { width: 26px; height: 26px; }
+.icono-cerrar { width: 22px; height: 22px; }
+.icono-select { width: 18px; height: 18px; }
+
+.icono-chevron.vacio::after,
+.icono-menu.vacio::after,
+.icono-campo.vacio::after,
+.icono-cerrar.vacio::after,
+.icono-select.vacio::after {
+  content: "";
+}
+
+/* =========================================
+   LAYOUT GENERAL
+   ========================================= */
+.app {
+  max-width: 1520px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 16px 30px 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================
+   ENCABEZADO
+   ========================================= */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logo-icon {
+  width: 84px;
+  height: 76px;
+  object-fit: contain;
+}
+
+.logo-text {
+  font-family: "Nunito", "Inter", sans-serif;
+  font-size: 50px;
+  font-weight: 900;
+  color: #0d5c52;
+  letter-spacing: -0.5px;
+}
+
+.logo-text span {
+  color: #2e9b86;
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.icon-btn {
+  display: flex;
+  padding: 4px;
+  border-radius: 10px;
+}
+
+.profile {
+  position: relative;
+}
+
+.profile-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px;
+  border-radius: 40px;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #d3a514 0%, #a37c08 55%, #6f5205 100%);
+  color: var(--blanco);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.user-name {
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 224px;
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(15, 30, 54, 0.08);
+  padding: 8px 0;
+  z-index: 20;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  font-size: 16px;
+  color: var(--navy);
+  text-decoration: none;
+}
+
+.dropdown-item:hover {
+  background: var(--teal-fondo);
+}
+
+.item-perfil { color: var(--teal); }
+.item-salir { color: var(--rojo); }
+
+.icon-btn:focus-visible,
+.profile-btn:focus-visible,
+.dropdown-item:focus-visible,
+.btn-limpiar:focus-visible,
+.btn:focus-visible {
+  outline: 3px solid rgba(11, 110, 99, 0.45);
+  outline-offset: 3px;
+}
+
+/* =========================================
+   STEPPER
+   ========================================= */
+.stepper {
+  margin: 22px auto 0;
+  width: 100%;
+  max-width: 1240px;
+}
+
+.stepper ol {
+  display: flex;
+  justify-content: space-between;
+}
+
+.step {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 26px;
+  left: calc(50% + 54px);
+  right: calc(-50% + 54px);
+  height: 3px;
+  background: var(--gris-linea);
+}
+
+/* Los pasos completados pintan su línea de verde */
+.step.done::after {
+  background: var(--teal);
+}
+
+.step-circle {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--gris-step);
+  color: var(--blanco);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.step-label {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--slate);
+  white-space: nowrap;
+}
+
+.step.done .step-circle,
+.step.active .step-circle {
+  background: var(--teal);
+}
+
+.step.done .step-label,
+.step.active .step-label {
+  color: var(--teal);
+  font-weight: 600;
+}
+
+/* =========================================
+   CONTENIDO: 2 COLUMNAS
+   ========================================= */
+.content {
+  flex: 1;
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 2px minmax(0, 1fr);
+  column-gap: 30px;
+}
+
+.divider {
+  background: #dcdfe3;
+}
+
+.col-left {
+  padding-top: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-title {
+  font-size: 50px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  line-height: 1.15;
+  max-width: 680px;
+}
+
+.page-subtitle {
+  margin-top: 22px;
+  max-width: 640px;
+  font-size: 24px;
+  line-height: 1.25;
+  color: var(--slate);
+}
+
+.field-label {
+  display: block;
+  margin-top: 28px;
+  margin-bottom: 12px;
+  font-size: 25px;
+  font-weight: 700;
+  color: #000;
+}
+
+.col-left .field-label {
+  margin-top: 30px;
+}
+
+.opcional {
+  font-weight: 300;
+  color: #8a8f96;
+}
+
+/* Campos con icono */
+.field {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  min-height: 50px;
+  padding: 0 18px 0 22px;
+  border: 1.5px solid var(--borde-input);
+  border-radius: 8px;
+  background: var(--blanco);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.field:focus-within {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(11, 110, 99, 0.12);
+}
+
+.field.invalido {
+  border-color: var(--rojo);
+}
+
+.field input,
+.field select {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  min-height: 46px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 18px;
+  color: #1a1a1a;
+}
+
+.field input::placeholder,
+.field-textarea::placeholder {
+  color: var(--gris-placeholder);
+}
+
+.btn-limpiar {
+  display: flex;
+  padding: 4px;
+  border-radius: 6px;
+}
+
+/* Selects con la flecha propia */
+.field-select {
+  position: relative;
+  min-height: 58px;
+  border-radius: 14px;
+  padding: 0 22px 0 18px;
+}
+
+.field-select select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  padding-right: 32px;
+  min-height: 56px;
+}
+
+.field-select .icono-select {
+  position: absolute;
+  right: 20px;
+  pointer-events: none;
+}
+
+.field-textarea {
+  display: block;
+  min-height: 195px;
+  padding: 14px 12px;
+  border-radius: 14px;
+  resize: vertical;
+  font-size: 17px;
+  line-height: 1.4;
+  outline: none;
+}
+
+.error {
+  display: block;
+  min-height: 0;
+  margin-top: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--rojo);
+}
+
+.error:empty {
+  display: none;
+}
+
+/* Mapa (imagen estática) */
+.mapa {
+  position: relative;
+  flex: 1;
+  min-height: 300px;
+  margin-top: 22px;
+  border: 1px solid var(--borde);
+  overflow: hidden;
+  background: #efe9e2;
+}
+
+.mapa-imagen {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.mapa-imagen img {
+  object-fit: cover;
+}
+
+.mapa-imagen.vacio {
+  border-radius: 0;
+  border: none;
+}
+
+.mapa-imagen.vacio::after {
+  font-size: 14px;
+}
+
+.mapa-pin {
+  position: absolute;
+  top: 33%;
+  left: 55%;
+  width: 26px;
+  height: 34px;
+  transform: translate(-50%, -100%);
+}
+
+.mapa-pin.vacio::after {
+  content: "";
+}
+
+/* Columna derecha */
+.col-right {
+  padding-top: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.col-right .field-label:first-child {
+  margin-top: 0;
+}
+
+.acciones {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 26px;
+}
+
+.btn {
+  min-height: 78px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn:active {
+  transform: scale(0.99);
+}
+
+.btn-volver {
+  background: var(--amarillo);
+  color: #111;
+  font-weight: 600;
+}
+
+.btn-volver:hover {
+  background: var(--amarillo-hover);
+}
+
+.btn-siguiente {
+  background: var(--teal);
+  color: var(--blanco);
+}
+
+.btn-siguiente:hover {
+  background: var(--teal-hover);
+}
+
+/* =========================================
+   TABLET
+   ========================================= */
+@media (max-width: 1200px) {
+  .logo-text { font-size: 40px; }
+  .logo-icon { width: 66px; height: 60px; }
+  .page-title { font-size: 40px; }
+  .page-subtitle { font-size: 19px; }
+  .field-label { font-size: 21px; }
+  .btn { min-height: 64px; font-size: 21px; }
+}
+
+/* =========================================
+   MÓVIL
+   ========================================= */
+@media (max-width: 820px) {
+  .app {
+    padding: 12px 16px 20px;
+  }
+
+  .logo { gap: 6px; }
+  .logo-icon { width: 46px; height: 42px; }
+  .logo-text { font-size: 27px; }
+
+  .user-menu { gap: 14px; }
+  .icono-campana { width: 26px; height: 26px; }
+  .avatar { width: 28px; height: 28px; font-size: 13px; }
+  .user-name { font-size: 14px; font-weight: 600; }
+  .profile-btn { gap: 6px; }
+  .icono-chevron { width: 14px; height: 14px; }
+
+  .dropdown {
+    width: 150px;
+    top: calc(100% + 4px);
+    border-radius: 10px;
+    padding: 6px 0;
+  }
+
+  .dropdown-item {
+    font-size: 11px;
+    padding: 7px 10px;
+  }
+
+  .icono-menu { width: 16px; height: 16px; }
+
+  .stepper { margin-top: 14px; }
+  .step { gap: 4px; }
+
+  .step-circle {
+    width: 30px;
+    height: 30px;
+    font-size: 13px;
+  }
+
+  .step:not(:last-child)::after {
+    top: 14px;
+    height: 2px;
+    left: calc(50% + 22px);
+    right: calc(-50% + 22px);
+  }
+
+  .step-label { font-size: 10px; }
+
+  .content {
+    margin-top: 16px;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .divider { display: none; }
+
+  .col-left { padding-top: 0; }
+
+  .page-title {
+    font-size: 22px;
+    letter-spacing: -0.3px;
+    line-height: 1.25;
+    max-width: 320px;
+  }
+
+  .page-subtitle {
+    margin-top: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .field-label,
+  .col-left .field-label {
+    margin-top: 14px;
+    margin-bottom: 8px;
+    font-size: 15px;
+  }
+
+  .field {
+    min-height: 36px;
+    padding: 0 12px;
+    gap: 10px;
+  }
+
+  .field input,
+  .field select {
+    min-height: 34px;
+    font-size: 13px;
+  }
+
+  .icono-campo { width: 20px; height: 20px; }
+  .icono-cerrar { width: 14px; height: 14px; }
+  .icono-select { width: 14px; height: 14px; }
+
+  .field-select {
+    min-height: 42px;
+    border-radius: 8px;
+  }
+
+  .field-select select { min-height: 40px; }
+  .field-select .icono-select { right: 14px; }
+
+  .field-textarea {
+    height: 66px;
+    min-height: 66px;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 11px;
+  }
+
+  .mapa {
+    flex: none;
+    min-height: 0;
+    height: 156px;
+    margin-top: 10px;
+  }
+
+  .mapa-pin { width: 18px; height: 24px; }
+
+  .col-right {
+    padding-top: 0;
+    gap: 28px;
+  }
+
+  .col-right .field-label:first-child { margin-top: 14px; }
+
+  .acciones { gap: 22px; }
+
+  .btn {
+    min-height: 50px;
+    border-radius: 10px;
+    font-size: 16px;
+  }
+}

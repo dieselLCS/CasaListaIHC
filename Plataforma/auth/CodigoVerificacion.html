@@ -1,138 +1,66 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verificar tu cuenta</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+  <title>Verificar tu cuenta | CasaLista</title>
+  <link rel="icon" href="assets/IconoLogo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="CodigoVerificacion.css">
 </head>
 <body>
+  <main class="page">
+    <!-- Manchas decorativas del fondo (solo escritorio) -->
+    <span class="decor decor-top-left" aria-hidden="true"></span>
+    <span class="decor decor-top-center" aria-hidden="true"></span>
+    <span class="decor decor-bottom-center" aria-hidden="true"></span>
+    <span class="decor decor-bottom-right" aria-hidden="true"></span>
 
-    <main class="page">
+    <section class="card">
+      <div class="illustration">
+        <img src="assets/SobreCodigo.svg" alt="Sobre abierto con una carta que muestra un código de verificación">
+      </div>
 
-        <section class="verification-card">
+      <div class="divider" aria-hidden="true"></div>
 
-            <!-- ILUSTRACIÓN -->
-            <div class="illustration">
+      <div class="form-section">
+        <h1 class="title">Verificar tu cuenta</h1>
+        <h2 class="subtitle">Ingresa el codigo de verificación</h2>
+        <p class="description">Hemos enviado un codigo de 8 digitos a tu correo electronico</p>
 
-                <div class="illustration-bg"></div>
+        <form id="verificationForm" class="form" novalidate>
+          <fieldset class="code-inputs" id="codeInputs" aria-describedby="message">
+            <legend class="sr-only">Código de verificación de 8 dígitos</legend>
+            <input type="text" inputmode="numeric" maxlength="1" autocomplete="one-time-code" aria-label="Dígito 1">
+            <input type="text" inputmode="numeric" maxlength="1" autocomplete="off" aria-label="Dígito 2">
+            <input type="text" inputmode="numeric" maxlength="1" autocomplete="off" aria-label="Dígito 3">
+            <input type="text" inputmode="numeric" maxlength="1" autocomplete="off" aria-label="Dígito 4">
+            <span class="separator" aria-hidden="true"></span>
+            <input type="text" inputmode="numeric" maxlength="1" autocomplete="off" aria-label="Dígito 5">
+            <input type="text" inputmode="numeric" maxlength="1" autocomplete="off" aria-label="Dígito 6">
+            <input type="text" inputmode="numeric" maxlength="1" autocomplete="off" aria-label="Dígito 7">
+            <input type="text" inputmode="numeric" maxlength="1" autocomplete="off" aria-label="Dígito 8">
+          </fieldset>
 
-                <svg class="envelope" viewBox="0 0 400 350"
-                     xmlns="http://www.w3.org/2000/svg">
+          <p class="message" id="message" role="alert" aria-live="polite"></p>
 
-                    <path d="M200 30 C120 15 50 100 45 175
-                    C35 255 110 300 200 290
-                    C290 310 370 260 360 175
-                    C350 100 280 25 200 30Z"
-                    fill="#D7F3EC"/>
+          <div class="resend">
+            <p>¿No recibiste el codigo?</p>
+            <button type="button" class="resend-btn">Reenviar codigo</button>
+          </div>
 
-                    <g stroke="#006B52" stroke-width="8"
-                       stroke-linecap="round" stroke-linejoin="round">
+          <div class="buttons">
+            <button type="submit" class="btn btn-verify">Verificar cuenta</button>
+            <button type="button" class="btn btn-back" id="backBtn">Volver</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
 
-                        <path d="M100 145 L200 220 L300 145"
-                              fill="none"/>
-
-                        <rect x="90" y="105" width="220"
-                              height="190" rx="22"
-                              fill="#BDEBE0"/>
-
-                        <path d="M90 150 L200 230 L310 150"
-                              fill="none"/>
-
-                        <path d="M90 275 L165 215"
-                              fill="none" opacity=".45"/>
-
-                        <path d="M310 275 L235 215"
-                              fill="none" opacity=".45"/>
-
-                        <rect x="110" y="55" width="180"
-                              height="125" rx="18"
-                              fill="white"/>
-
-                        <path d="M275 35 L280 10"/>
-                        <path d="M300 48 L320 25"/>
-                        <path d="M315 70 L340 60"/>
-
-                    </g>
-
-                    <text x="200" y="125"
-                          text-anchor="middle"
-                          font-size="25"
-                          font-weight="bold"
-                          fill="#006B52">
-                        0000 - 0000
-                    </text>
-
-                </svg>
-
-            </div>
-
-            <!-- FORMULARIO -->
-            <div class="form-section">
-
-                <h1>Verificar tu cuenta</h1>
-
-                <h2>Ingresa el código de verificación</h2>
-
-                <p class="description">
-                    Hemos enviado un código de 8 dígitos
-                    a tu correo electrónico.
-                </p>
-
-                <form id="verificationForm">
-
-                    <div class="code-inputs" id="codeInputs">
-
-                        <input type="text" maxlength="1" inputmode="numeric" autocomplete="one-time-code" aria-label="Dígito 1">
-                        <input type="text" maxlength="1" inputmode="numeric" aria-label="Dígito 2">
-                        <input type="text" maxlength="1" inputmode="numeric" aria-label="Dígito 3">
-                        <input type="text" maxlength="1" inputmode="numeric" aria-label="Dígito 4">
-
-                        <span class="separator">-</span>
-
-                        <input type="text" maxlength="1" inputmode="numeric" aria-label="Dígito 5">
-                        <input type="text" maxlength="1" inputmode="numeric" aria-label="Dígito 6">
-                        <input type="text" maxlength="1" inputmode="numeric" aria-label="Dígito 7">
-                        <input type="text" maxlength="1" inputmode="numeric" aria-label="Dígito 8">
-
-                    </div>
-
-                    <div class="resend-section">
-
-                        <p>¿No recibiste el código?</p>
-
-                        <button type="button" id="resendBtn">
-                            Reenviar código (<span id="timer">60s</span>)
-                        </button>
-
-                    </div>
-
-                    <p id="message" class="message"
-                       role="status" aria-live="polite"></p>
-
-                    <div class="buttons">
-
-                        <button type="submit" class="btn-verify">
-                            Verificar cuenta
-                        </button>
-
-                        <button type="button" class="btn-back"
-                                id="backBtn">
-                            Volver
-                        </button>
-
-                    </div>
-
-                </form>
-
-            </div>
-
-        </section>
-
-    </main>
-
-    <script src="script.js"></script>
-
+  <script src="CodigoVerificacion.js"></script>
 </body>
 </html>

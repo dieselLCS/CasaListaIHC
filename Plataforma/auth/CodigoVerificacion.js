@@ -1,180 +1,65 @@
-
-// ELEMENTOS DEL HTML
-
-const inputs = [...document.querySelectorAll("#codeInputs input")];
-
+// =========================================
+// VALIDACIÓN DEL CÓDIGO DE VERIFICACIÓN
+// =========================================
+const inputs = Array.from(document.querySelectorAll("#codeInputs input"));
 const form = document.getElementById("verificationForm");
-const resendBtn = document.getElementById("resendBtn");
-const timerElement = document.getElementById("timer");
 const message = document.getElementById("message");
 const backBtn = document.getElementById("backBtn");
 
-let seconds = 60;
-let countdown;
-
-// TEMPORIZADOR
-
-function startTimer() {
-
-    clearInterval(countdown);
-
-    seconds = 60;
-    resendBtn.disabled = true;
-
-    timerElement.textContent = "60s";
-
-    countdown = setInterval(() => {
-
-        seconds--;
-
-        timerElement.textContent = seconds + "s";
-
-        if (seconds <= 0) {
-
-            clearInterval(countdown);
-
-            timerElement.textContent = "Reenviar";
-            resendBtn.disabled = false;
-        }
-
-    }, 1000);
+function mostrarError(texto) {
+  message.textContent = texto;
+  inputs.forEach((input) => {
+    input.setAttribute("aria-invalid", input.value ? "false" : "true");
+  });
 }
 
-// INICIO DEL TEMPORIZADOR
+function limpiarError() {
+  message.textContent = "";
+  inputs.forEach((input) => input.removeAttribute("aria-invalid"));
+}
 
-startTimer();
-
-
-// INGRESO AUTOMÁTICO DE LOS DÍGITOS
-
+// Cada casilla acepta solo un número y pasa a la siguiente
 inputs.forEach((input, index) => {
+  input.addEventListener("input", () => {
+    input.value = input.value.replace(/\D/g, "").slice(-1);
+    if (input.value && index < inputs.length - 1) inputs[index + 1].focus();
+    limpiarError();
+  });
 
-    input.addEventListener("input", () => {
-
-        input.value = input.value.replace(/\D/g, "").slice(-1);
-
-        if (input.value && index < inputs.length - 1) {
-            inputs[index + 1].focus();
-        }
-
-        message.textContent = "";
-
-    });
-
-    // RETROCEDER CON BACKSPACE
-
-    input.addEventListener("keydown", (event) => {
-
-        if (
-            event.key === "Backspace" &&
-            !input.value &&
-            index > 0
-        ) {
-            inputs[index - 1].focus();
-        }
-
-        if (event.key === "ArrowLeft" && index > 0) {
-            inputs[index - 1].focus();
-        }
-
-        if (
-            event.key === "ArrowRight" &&
-            index < inputs.length - 1
-        ) {
-            inputs[index + 1].focus();
-        }
-
-    });
-
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Backspace" && !input.value && index > 0) {
+      inputs[index - 1].focus();
+    }
+  });
 });
 
+// Al enviar: vacío → error, incompleto → error, completo → CuentaVerificada.html
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-// PEGAR CÓDIGO COMPLETO
+  const codigo = inputs.map((input) => input.value).join("");
+  const faltan = inputs.length - codigo.length;
 
-document.getElementById("codeInputs").addEventListener(
-    "paste",
-    (event) => {
-
-        const pasted = event.clipboardData
-            .getData("text")
-            .replace(/\D/g, "")
-            .slice(0, inputs.length);
-
-        if (!pasted) return;
-
-        event.preventDefault();
-
-        inputs.forEach((input, index) => {
-            input.value = pasted[index] || "";
-        });
-
-        inputs[Math.min(pasted.length, inputs.length) - 1].focus();
-
-    }
-);
-
-
-// REENVIAR CÓDIGO
-
-resendBtn.addEventListener("click", () => {
-
-    if (resendBtn.disabled) return;
-
-    inputs.forEach(input => {
-        input.value = "";
-    });
-
-    message.style.color = "#007963";
-    message.textContent = "Solicitando un nuevo código...";
-
-    // Aquí debes conectar el envío real al correo
-    // mediante tu backend.
-
-    startTimer();
-
+  if (codigo.length === 0) {
+    mostrarError("Ingresa el código que enviamos a tu correo.");
     inputs[0].focus();
+    return;
+  }
 
+  if (faltan > 0) {
+    mostrarError(`El código está incompleto. Faltan ${faltan} dígito${faltan === 1 ? "" : "s"}.`);
+    inputs.find((input) => !input.value).focus();
+    return;
+  }
+
+  window.location.href = "CuentaVerificada.html";
 });
 
-
-// VERIFICAR CUENTA
-
-form.addEventListener("submit", (event) => {
-
-    event.preventDefault();
-
-    const code = inputs.map(input => input.value).join("");
-
-    if (code.length !== 8) {
-
-        message.style.color = "#b00020";
-        message.textContent =
-            "Por favor, ingresa los 8 dígitos.";
-
-        const emptyInput = inputs.find(input => !input.value);
-
-        if (emptyInput) emptyInput.focus();
-
-        return;
-    }
-
-    message.style.color = "#007963";
-
-    message.textContent =
-        "Código ingresado correctamente. Verificando...";
-
-    // Aquí debes conectar la validación
-    // con tu backend o API.
-
-    console.log("Código ingresado:", code);
-
-});
-
-
-// BOTÓN VOLVER
-
+// Volver a la pantalla anterior (crear cuenta)
 backBtn.addEventListener("click", () => {
-
-    window.history.back();
-
+  if (history.length > 1) {
+    history.back();
+  } else {
+    window.location.href = "CrearCuentaCliente.html";
+  }
 });
