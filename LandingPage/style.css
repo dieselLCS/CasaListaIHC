@@ -1,460 +1,1597 @@
+/* =========================================
+   CASALISTA - LANDING PAGE
+   Diseño "mobile first": primero móvil,
+   luego tablet (768px) y escritorio (1024px).
+   ========================================= */
+
+:root {
+    --verde: #07695D;
+    --verde-hover: #055449;
+    --verde-claro: #E5F0EC;
+    --verde-fondo: #F5FBFA;
+    --amarillo: #FFC233;
+    --amarillo-hover: #F5B414;
+    --naranja: #E9A23B;
+    --naranja-hover: #D99128;
+    --negro: #111111;
+    --gris-texto: #5C6360;
+    --gris-claro: #F3F3F3;
+    --borde: #D4D4D4;
+    --footer: #1B1B1B;
+    --footer-texto: #9FA5A4;
+    --rojo: #C62828;
+    --blanco: #FFFFFF;
+}
+
 * {
-    margin: 0; /*crea un espacio exterior transparente alrededor de un elemento html*/
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Inter", sans-serif;
 }
 
-nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    background-color: white;
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 72px; /* para que la cabecera fija no tape los títulos */
 }
-.NavegadorContenedor{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem 0.5rem;
-    width: 100%;
+
+body {
+    font-family: "Inter", sans-serif;
+    color: var(--negro);
+    background: var(--blanco);
+    -webkit-font-smoothing: antialiased;
 }
-.ContenedorIzquierda{
-    display: flex;
-    align-items: center;
+
+img {
+    display: block;
+    max-width: 100%;
 }
-.NavegarLink{
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+.SoloLector {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.SoloDesktop {
     display: none;
 }
-.LogoCasaLista{
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight:bolder;
-    display: flex;
+
+/* Contenedor centrado para todas las secciones */
+.Contenedor {
+    width: 100%;
+    max-width: 1260px;
+    margin: 0 auto;
+    padding: 0 18px;
+}
+
+/* =========================================
+   ICONOS PENDIENTES
+   Si la imagen no existe, el navegador muestra
+   un recuadro punteado en su lugar.
+   ========================================= */
+.Icono {
+    position: relative;
+    flex-shrink: 0;
+    object-fit: contain;
+}
+
+.Icono::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px dashed #9AA6B2;
+    border-radius: 4px;
+    background: #F1F3F5;
+}
+
+.IconoCheck {
+    width: 14px;
+    height: 14px;
+}
+
+.IconoMenu {
+    width: 26px;
+    height: 26px;
+}
+
+/* =========================================
+   TEXTOS COMUNES
+   ========================================= */
+.Etiqueta {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--verde);
+}
+
+.EtiquetaClara {
+    color: var(--blanco);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+}
+
+.TituloSeccion {
+    margin-top: 14px;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.3px;
+}
+
+.NumeroPaso {
+    display: inline-flex;
     align-items: center;
-    gap: 0.2rem;
-}
-.TextoLogoCasa{
-    color: black;
-}
-.TextoLogoLista{
-    color: #07695D;
-}
-.ContenedorDerecha{
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-.ContenedorDerecha p{
-    font-size: 1.7rem;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--verde);
+    color: var(--blanco);
+    font-size: 13px;
     font-weight: 700;
 }
-.BotonIniciarSesionCabecera{
-    background-color: #07695D;
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 10px;
-    border:none;
-}
-.MenuBoton{
-    border: none;
-    font-size: 1.1rem;
-    padding: 0.5rem;
-}
-.Body1{
-    background-color: #E5F0EC;
-    max-height: 100vh;
+
+.ListaChecks {
     display: flex;
     flex-direction: column;
-}
-.Contenedor1Body1{
-    padding: 5rem 1rem 0.5rem 1rem;
-    height: 70%;
-}
-.Frase1Body1{
-    color: #07695D;
-    padding: 0.5rem 0rem;
+    gap: 10px;
 }
 
-.Frase3Body1{
-    color: #5C6360;
-    padding: 0.5rem 0rem;
-    font-size: 0.9rem;
-    font-weight: 400;
-    line-height: 1.2rem;
-}
-.BotonesBody1{
+.ListaChecks li {
     display: flex;
-    flex-direction: column;
-
+    align-items: center;
+    gap: 14px;
+    font-size: 13px;
+    font-weight: 500;
 }
-.CrearCuenta{
+
+/* =========================================
+   CABECERA
+   ========================================= */
+.Cabecera {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--blanco);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+}
+
+.NavegadorContenedor {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
-    padding: 1rem 0rem;
+    gap: 16px;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 10px 12px;
+}
 
-}
-.IrParaProfesionales{
-    width: 100%;
-}
-.IrParaProfesionales a{
-    display: block;
-    background-color: #07695D;
+.LogoCasaLista {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 20px;
+    font-weight: 800;
     text-decoration: none;
-    color: white;
-    border-radius: 10px;
-    text-align: center;
-    padding: 0.5rem;
 }
-.EntradaEmail{
-    border: 1px solid #07695D;
-    border-radius: 10px;
-    width: 69%;
-    box-sizing: border-box;
-    padding: 10px;
 
+.IconoLogo {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
 }
-.BotonCrearCuenta{
-    background-color: #E9A23B;
-    border: none;
-    border-radius: 10px;
-    width: 30%;
-    padding: 10px;
+
+.TextoLogoCasa {
+    color: var(--negro);
+}
+
+.TextoLogoLista {
+    color: var(--verde);
+}
+
+.ContenedorDerecha {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.BotonIniciarSesionCabecera {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 6px;
+    border-radius: 8px;
+    background: var(--verde);
+    color: var(--blanco);
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.BotonIniciarSesionCabecera:hover {
+    background: var(--verde-hover);
+}
+
+.MenuBoton {
+    display: flex;
+    padding: 4px;
     cursor: pointer;
 }
-.ChecksBody1{
-    list-style-type: none;
-    line-height: 2rem;
-    padding: 0.5rem 0rem 0rem 0rem;
-}
-.Contenedor2Body1{
-    height: 30%;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    padding: 1rem 0rem;
-    box-sizing: border-box;
-    justify-content: flex-end;
-    padding-bottom: 0;
 
+/* Menú móvil: se abre al marcar el checkbox oculto */
+.MenuToggle {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
 }
-.ImagenLandingContenedor2{
+
+.NavegarLink {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: var(--blanco);
+    border-top: 1px solid #EEE;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+}
+
+.MenuToggle:checked ~ .NavegarLink {
+    display: flex;
+}
+
+.NavegarLink a {
     display: block;
-    width: 100%;
-    height: auto;
-    align-self: center;
-    padding: 0rem 1rem 0rem 0rem;
-}
-.Body2{
-    background-color: white;
-    text-align: center;
-    padding: 0rem 1rem;
-}
-.Frase1Body2{
-    color: #07695D;
-    padding: 1rem 0rem;
-    font-size: 0.8rem;
-    text-align: start;
-}
-.Frase2Body2{
-    color: black;
-    font-size: 1.5rem;
-    text-align: start;
-}
-.Contenedor1Body2{
-    display: flex;
-    flex-direction: column;
-    padding: 1rem 0rem 3rem 0rem;
-    gap: 1rem;
-}
-.PasosTarjeta{
-    border: 2px solid #CCCCCC;
-    border-radius: 10px;
-    text-align: start;
-    padding: 1rem 0.5rem;
-}
-
-.PasosTarjeta span{
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #07695D;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    color: white;
-}
-
-.PasosTarjeta h3{
-    font-weight: 700;
-    padding: 0.5rem 0rem;
-}
-.PasosTarjeta p{
-    color: #666D6A;
-}
-.Body3{
-    background-color: #F3F3F3;
-    padding: 0rem 1rem;
-}
-.Body3 h2{
-    font-size: 1.7rem;
-}
-.Body3 h5{
-    color: #07695D;
-    padding: 1rem 0rem;
-}
-.Contenedor1Body3{
-    display: flex;
-    flex-direction: column;
-    padding: 1rem 0rem;
-    gap: 1rem;
-}
-.ServicioTarjeta{
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    background-color: white;
-    border-radius: 10px;
-    gap:0.5rem;
-    padding: 1rem 1rem;
-}
-.ServicioTarjeta p{
-    color: #5F5F5F;
-    padding: 0.5rem 0rem 0rem 0rem;
-}
-.ContenedorImagenesServicios{
-    width: 100%;
-}
-.ContenedorImagenesServicios img{
-    width: 100%;
-    height: auto;
-}
-.LimpiezaRobotizado{
-    background-color: #F5FBFA;
-}
-.Contenedor0LimpiezaRobotizado{
-    display: flex;
-    flex-direction: column;
-    background-color: #F5FBFA;
-}
-.Contenedor1LimpiezaRobotizado{
-    padding: 1rem 1rem;
-
-}
-.Contenedor1LimpiezaRobotizado h5{
-    padding: 1rem 0rem;
-    color: #07695D;
-}
-.Contenedor1LimpiezaRobotizado p{
-    padding: 1rem 0rem;
-    color: #5F5F5F;
-}
-.Contenedor1LimpiezaRobotizado ul{
-    line-height: 1.5rem;
-    list-style-type: none;
-}
-
-.Contenedor2LimpiezaRobotizado{
-    width: 100%;
-}
-.Contenedor2LimpiezaRobotizado img{
-    width: 100%;
-    height: auto;
-    align-items: end;
-}
-.Body4{
-    background-color: white;
-    padding: 1rem 1rem 2rem 1rem;
-}
-.Contenedor1Body4{
-    width: 100%;
-    max-width: 100%;
-}
-.Contenedor1Body4 img{
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
-.SeguridadBody4{
-    display: block;
-    max-width: 100%;
-    height: auto;
-}
-.Body4 h5{
-    font-size: 0.8rem;
-    color: #07695D;
-    padding: 1.5rem 0rem 0rem 0rem;
-}
-.Body4 h3{
-    font-size: 1.6rem;
-    padding: 1rem 0rem;
-}
-.Contenedor2Body4{
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-.SeguridadTarjeta{
-    display: flex;
-    gap: 0.6rem;
-    align-items: center;
-}
-
-.SeguridadTarjeta h4{
-    font-size: 1rem;
-    padding: 0rem 0rem 0.5rem 0rem;
-}
-.SeguridadTarjeta p{
-    font-size: 14px;
+    padding: 14px 20px;
+    font-size: 15px;
     font-weight: 500;
-    color: #666D6A;
-}
-.Body5{
-    background-color: #07695D;
-    padding: 1rem 1rem 0rem 1rem;
-    color: white;
-}
-.Contenedor1Body5 h5{
-    font-size: 0.8rem;
-    padding: 1rem 0rem;
-}
-
-.Contenedor1Body5 ul{
-    list-style-type: none;
-    padding: 1.5rem 0rem;
-    line-height: 2rem;
-    font-size: 0.8rem;
-    font-weight: 500;
-}
-.Contenedor2Body5{
-    width: 100%;
-    max-width: 100%;
-}
-.ParaProfesionalesBody5{
-    width: 100%;
-    display: block;
-    max-width: 100%;
-    height: auto;
-}
-
-.PasosParaProfesionales{
-    background-color: #F4F4F4;
-    padding: 0rem 1rem;
-}
-.PasosParaProfesionales h5{
-    color: #07695D;
-    padding: 1rem 0rem;
-}
-
-.Contenedor1PasosParaProfesionales{
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1rem 0rem;
-}
-.TarjetaPasosParaProfesionales{
-    background-color: white;
-    padding: 1rem 1rem;
-    border-radius: 10px;
-    width: 100%;
-}
-.Contenedor1PasosParaProfesionales h3{
-    font-size: 1.25rem;
-}
-.Contenedor1PasosParaProfesionales p{
-    padding: 0.2rem 0rem;
-    color: #5F5F5F;
-    font-size: 1rem;
-}
-.ContenedorPasosPasosProfesionales img{
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
-.TarjetaPasosParaProfesionales span{
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #07695D;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    color: white;
-}
-.PasoNumero{
-    display: flex;
-    justify-content: center;
-    padding: 0rem 0rem 0.6rem 0rem;
-}
-.Body6{
-    padding: 1rem 1rem;
-}
-.Body7{
-    background-color: #1B1B1B;
-    padding: 1rem 1rem;
-    color: white;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    padding: 1.5rem 1rem;
-
-
-}
-.Contenedor2Body7{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 30px;
-}
-.FooterTextoLogoCasa{
-    color: white;
-}
-.FooterTextoLogoLista{
-    color: #07695D;
-}
-.Body7 p{
-    color: #9FA5A4;
-    padding: 1rem 0rem 0rem 0rem;
-    font-size: 0.9rem;
-}
-.TarjetaBody7{
-    line-height: 1.8rem;
-}
-.TarjetaBody7 ul{
-    list-style-type: none;
-}
-.TarjetaBody7 ul li a{
     text-decoration: none;
+}
+
+.NavegarLink a:hover {
+    color: var(--verde);
+}
+
+.MenuToggle:focus-visible ~ .ContenedorDerecha .MenuBoton,
+.BotonIniciarSesionCabecera:focus-visible,
+.NavegarLink a:focus-visible {
+    outline: 3px solid rgba(7, 105, 93, 0.4);
+    outline-offset: 2px;
+}
+
+/* =========================================
+   HERO (Body1)
+   ========================================= */
+.Body1 {
+    background: var(--verde-claro);
+    padding: 18px 0 30px;
+}
+
+.Frase2Body1 {
+    margin-top: 12px;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.4px;
+}
+
+.Frase3Body1 {
+    margin-top: 12px;
+    font-size: 16px;
+    line-height: 1.3;
+    color: var(--gris-texto);
+}
+
+.CrearCuenta {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.EntradaEmail {
+    width: 100%;
+    height: 48px;
+    padding: 0 16px;
+    border: 1px solid var(--verde);
+    border-radius: 10px;
+    background: var(--blanco);
+    font-size: 16px;
+    outline: none;
+}
+
+.EntradaEmail::placeholder {
+    color: #8A8F8D;
+}
+
+.EntradaEmail:focus {
+    box-shadow: 0 0 0 3px rgba(7, 105, 93, 0.18);
+}
+
+.EntradaEmail[aria-invalid="true"] {
+    border-color: var(--rojo);
+}
+
+.BotonCrearCuenta {
+    height: 48px;
+    border: none;
+    border-radius: 10px;
+    background: var(--amarillo);
+    color: var(--negro);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.BotonCrearCuenta:hover {
+    background: var(--amarillo-hover);
+}
+
+.BotonCrearCuenta:focus-visible,
+.IrParaProfesionales:focus-visible,
+.BotonCTA:focus-visible {
+    outline: 3px solid rgba(7, 105, 93, 0.4);
+    outline-offset: 3px;
+}
+
+.ErrorEmail {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--rojo);
+}
+
+.ErrorEmail:empty {
+    display: none;
+}
+
+/* En móvil este botón no aparece en el mockup */
+.IrParaProfesionales {
+    display: none;
+}
+
+.ChecksBody1 {
+    margin-top: 22px;
+    padding-left: 4px;
+}
+
+.Contenedor2Body1 {
+    margin-top: 20px;
+}
+
+.ImagenLandingContenedor2 {
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
+}
+
+/* =========================================
+   CÓMO FUNCIONA (Body2)
+   ========================================= */
+.Body2 {
+    padding: 40px 0 40px;
+}
+
+.Body2 .Contenedor {
+    padding: 0 22px;
+}
+
+.Contenedor1Body2 {
+    margin-top: 34px;
+    display: grid;
+    gap: 14px;
+}
+
+.PasosTarjeta {
+    min-height: 150px;
+    padding: 18px 14px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+}
+
+.PasosTarjeta h3 {
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.PasosTarjeta p {
+    margin-top: 18px;
+    font-size: 12.5px;
+    line-height: 1.35;
+    color: var(--gris-texto);
+}
+
+/* =========================================
+   SERVICIOS (Body3)
+   ========================================= */
+.Body3 {
+    background: var(--gris-claro);
+    padding: 30px 0 40px;
+}
+
+.Contenedor1Body3 {
+    margin-top: 14px;
+    display: grid;
+    gap: 12px;
+}
+
+.ServicioTarjeta {
+    display: flex;
+    gap: 24px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: var(--blanco);
+}
+
+.ServicioTarjeta img {
+    width: 85px;
+    height: 105px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.ServicioTarjeta h3 {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.ServicioTarjeta p {
+    margin-top: 18px;
+    font-size: 13px;
+    line-height: 1.35;
+    color: var(--gris-texto);
+}
+
+/* =========================================
+   LIMPIEZA ROBOTIZADA
+   En móvil la imagen va entre el título y el texto.
+   ========================================= */
+.LimpiezaRobotizado {
+    background: var(--verde-claro);
+    padding: 40px 0 36px;
+}
+
+.LimpiezaRobotizadoGrid {
+    display: flex;
+    flex-direction: column;
+}
+
+.Contenedor1LimpiezaRobotizado {
+    display: contents;
+}
+
+.Contenedor1LimpiezaRobotizado .Etiqueta { order: 1; }
+.Contenedor1LimpiezaRobotizado .TituloSeccion { order: 2; }
+.Contenedor2LimpiezaRobotizado { order: 3; margin-top: 18px; }
+.TextoLimpiezaRobotizado { order: 4; }
+.ListaRobotizado { order: 5; }
+
+.Contenedor2LimpiezaRobotizado img {
+    width: 100%;
+    border-radius: 0 0 12px 12px;
+}
+
+.TextoLimpiezaRobotizado {
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.4;
+    color: var(--gris-texto);
+}
+
+.ListaRobotizado {
+    margin-top: 10px;
+    gap: 14px;
+}
+
+.ListaRobotizado li {
+    font-size: 13px;
+}
+
+/* =========================================
+   SEGURIDAD (Body4)
+   ========================================= */
+.Body4 {
+    padding: 16px 0 40px;
+}
+
+.Contenedor1Body4 img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.Contenedor2Body4 {
+    margin-top: 16px;
+}
+
+.ListaSeguridad {
+    margin-top: 34px;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+}
+
+.SeguridadTarjeta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.IconoSeguridad {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: var(--verde-claro);
+}
+
+.IconoSeguridad img {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+}
+
+.SeguridadTarjeta h3 {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.SeguridadTarjeta p {
+    margin-top: 10px;
+    font-size: 13px;
+    line-height: 1.35;
+    color: var(--gris-texto);
+}
+
+/* =========================================
+   PARA PROFESIONALES (Body5)
+   ========================================= */
+.Body5 {
+    background: var(--verde);
+    color: var(--blanco);
+    padding: 40px 0 0;
+}
+
+.Body5 .Contenedor {
+    padding: 0 28px;
+}
+
+.Body5 .TituloSeccion {
+    margin-top: 18px;
+    font-size: 24px;
+}
+
+.ListaBody5 {
+    margin-top: 28px;
+    gap: 12px;
+}
+
+.ListaBody5 li {
+    font-weight: 400;
+}
+
+.Contenedor2Body5 {
+    margin-top: 20px;
+}
+
+.ParaProfesionalesBody5 {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+/* =========================================
+   PASOS PARA PROFESIONALES
+   En móvil: imagen arriba y número debajo.
+   ========================================= */
+.PasosParaProfesionales {
+    padding: 40px 0 50px;
+}
+
+.Contenedor1PasosParaProfesionales {
+    margin-top: 22px;
+    display: grid;
+    gap: 22px;
+}
+
+.TarjetaPasosParaProfesionales {
+    display: flex;
+    flex-direction: column;
+    padding: 14px 14px 18px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    background: var(--blanco);
+}
+
+.TarjetaPasosParaProfesionales img {
+    order: -1;
+    width: 100%;
+    aspect-ratio: 352 / 140;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.TarjetaPasosParaProfesionales .NumeroPaso {
+    margin-top: 12px;
+}
+
+.TarjetaPasosParaProfesionales h3 {
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.TarjetaPasosParaProfesionales p {
+    margin-top: 16px;
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--gris-texto);
+}
+
+/* =========================================
+   PREGUNTAS FRECUENTES (Body6)
+   ========================================= */
+.Body6 {
+    padding: 40px 0 30px;
+}
+
+.Body6 .Contenedor {
+    padding: 0 26px;
+}
+
+.Body6 .TituloSeccion {
+    margin-top: 12px;
+}
+
+.TextoBody6 {
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 1.3;
+    color: var(--gris-texto);
+}
+
+.ListaPreguntas {
+    margin-top: 10px;
+    border-top: 1px solid var(--borde);
+}
+
+.Pregunta {
+    border-bottom: 1px solid var(--borde);
+}
+
+.Pregunta summary {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 74px;
+    padding: 12px 40px 12px 0;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+}
+
+.Pregunta summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Signo + / − dibujado con CSS */
+.Pregunta summary::before,
+.Pregunta summary::after {
+    content: "";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    width: 16px;
+    height: 2.5px;
+    border-radius: 2px;
+    background: var(--verde);
+    transform: translateY(-50%);
+}
+
+.Pregunta summary::after {
+    transform: translateY(-50%) rotate(90deg);
+    transition: transform 0.2s;
+}
+
+.Pregunta[open] summary::after {
+    transform: translateY(-50%) rotate(0deg);
+}
+
+.Pregunta[open] summary {
+    min-height: 40px;
+}
+
+.Pregunta summary:focus-visible {
+    outline: 3px solid rgba(7, 105, 93, 0.4);
+    outline-offset: 2px;
+}
+
+.Pregunta p {
+    padding: 8px 2px 14px;
+    font-size: 13.5px;
+    font-weight: 300;
+    line-height: 1.3;
+    color: var(--gris-texto);
+}
+
+/* =========================================
+   LLAMADO FINAL
+   ========================================= */
+.BodyCTA {
+    padding: 0 0 40px;
+}
+
+.BodyCTA .Contenedor {
+    padding: 0 26px;
+}
+
+.TarjetaCTA {
+    padding: 20px 20px 18px;
+    border-radius: 16px;
+    background: var(--verde-claro);
+}
+
+.TarjetaCTA h2 {
+    max-width: 260px;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.TarjetaCTA p {
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 1.3;
+}
+
+.BotonCTA {
+    margin: 26px 10px 0;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: var(--amarillo);
+    color: var(--negro);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.BotonCTA:hover {
+    background: var(--amarillo-hover);
+}
+
+/* =========================================
+   FOOTER (Body7)
+   ========================================= */
+.Body7 {
+    background: var(--footer);
+    color: var(--blanco);
+    padding: 22px 0 18px;
+}
+
+.Body7 .Contenedor {
+    padding: 0 14px;
+}
+
+.Contenedor1Body7 {
+    padding: 0 8px;
+}
+
+.FooterLogo {
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.FooterTextoLogoLista {
+    color: var(--verde);
+}
+
+.Contenedor1Body7 p {
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.3;
+    color: #C9CDCC;
+}
+
+.Contenedor2Body7 {
+    margin-top: 22px;
+    padding: 0 8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 20px;
+}
+
+.TarjetaBody7 h3 {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.TarjetaBody7 ul {
+    margin-top: 6px;
+}
+
+.TarjetaBody7 a {
+    display: inline-block;
+    padding: 4px 0;
+    font-size: 14px;
+    font-weight: 300;
     color: #6E7170;
-
+    text-decoration: none;
 }
+
+.TarjetaBody7 a:hover,
+.FooterInferior a:hover {
+    color: var(--blanco);
+}
+
+.FooterInferior {
+    margin-top: 12px;
+    padding: 6px 2px 0;
+    border-top: 1px solid #555;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 11px;
+}
+
+.FooterLegal,
+.FooterRedes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 6px;
+}
+
+/* En móvil la fila legal se parte como en el mockup:
+   "© 2026 CasaLista" arriba y los enlaces debajo, separados por "·" */
+.FooterLegal span {
+    flex-basis: 100%;
+    margin-bottom: 6px;
+}
+
+.FooterLegal a + a::before,
+.FooterRedes a + a::before {
+    content: "· ";
+}
+
+.FooterInferior a {
+    text-decoration: none;
+}
+
+/* =========================================
+   TABLET (768px o más)
+   ========================================= */
 @media (min-width: 768px) {
-    .Contenedor1Body3{
-        display: flex;
-        flex-direction: row;
-    }
-    .Contenedor1PasosParaProfesionales{
-        display: flex;
-        flex-direction: row;
-    }
-}
-@media (min-width: 1200px) {
-    .NavegarLink{
-        display: flex;
-        list-style-type: none;
-        
-    }
-    .Body1{
-        display: flex;
-        flex-direction: row;
-    }
-    .Body4{
-        display: flex;
-        flex-direction: row;
-    }
-    .Body5{
-        display: flex;
-        flex-direction: row;
+    .Contenedor,
+    .Body2 .Contenedor,
+    .Body5 .Contenedor,
+    .Body6 .Contenedor,
+    .BodyCTA .Contenedor,
+    .Body7 .Contenedor {
+        padding: 0 40px;
     }
 
+    .TituloSeccion {
+        font-size: 32px;
+    }
+
+    .Contenedor1Body2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .Contenedor1Body3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Tarjetas de servicio verticales */
+    .ServicioTarjeta {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 10px 22px;
+        border-radius: 8px;
+    }
+
+    .ServicioTarjeta img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 320 / 170;
+        border-radius: 0;
+    }
+
+    .ServicioTarjeta h3 {
+        font-size: 22px;
+        font-weight: 500;
+    }
+
+    .ServicioTarjeta p {
+        margin-top: 4px;
+        font-size: 15.5px;
+        line-height: 1.3;
+    }
+
+    .Contenedor1PasosParaProfesionales {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .Contenedor2Body7 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .FooterInferior {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+    }
+
+    .FooterLegal span {
+        flex-basis: auto;
+        margin-bottom: 0;
+    }
+
+    .FooterLegal,
+    .FooterRedes {
+        gap: 14px;
+    }
+
+    .FooterLegal a + a::before,
+    .FooterRedes a + a::before {
+        content: none;
+    }
+}
+
+/* =========================================
+   ESCRITORIO (1024px o más)
+   ========================================= */
+@media (min-width: 1024px) {
+    html {
+        scroll-padding-top: 92px;
+    }
+
+    .SoloDesktop {
+        display: inline;
+    }
+
+    .SoloMovil {
+        display: none;
+    }
+
+    .Contenedor,
+    .Body2 .Contenedor,
+    .Body5 .Contenedor,
+    .Body6 .Contenedor,
+    .BodyCTA .Contenedor,
+    .Body7 .Contenedor {
+        padding: 0 0;
+        width: calc(100% - 140px);
+    }
+
+    .IconoCheck {
+        width: 11px;
+        height: 11px;
+    }
+
+    .Etiqueta {
+        font-size: 14px;
+        letter-spacing: 0.08em;
+    }
+
+    .TituloSeccion {
+        margin-top: 16px;
+        font-size: 36px;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+    }
+
+    .NumeroPaso {
+        width: 46px;
+        height: 46px;
+        font-size: 20px;
+    }
+
+    /* ---------- Cabecera ---------- */
+    .NavegadorContenedor {
+        justify-content: flex-start;
+        gap: 0;
+        padding: 0 34px 0 30px;
+        height: 92px;
+    }
+
+    .LogoCasaLista {
+        font-size: 24px;
+        gap: 10px;
+    }
+
+    .IconoLogo {
+        width: 46px;
+        height: 46px;
+    }
+
+    .NavegarLink,
+    .MenuToggle:checked ~ .NavegarLink {
+        position: static;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 4px;
+        margin-left: 26px;
+        border: none;
+        box-shadow: none;
+        background: none;
+    }
+
+    .NavegarLink a {
+        padding: 8px 16px;
+        font-size: 15px;
+    }
+
+    .ContenedorDerecha {
+        margin-left: auto;
+    }
+
+    .MenuBoton {
+        display: none;
+    }
+
+    .BotonIniciarSesionCabecera {
+        padding: 14px 31px;
+        border-radius: 12px;
+        font-size: 15px;
+    }
+
+    /* ---------- Hero ---------- */
+    .Body1 {
+        padding: 80px 0 60px;
+    }
+
+    .Body1Grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+        align-items: center;
+        gap: 10px;
+        max-width: 1440px;
+        width: 100%;
+        padding: 0 0 0 90px;
+    }
+
+    .Frase2Body1 {
+        margin-top: 10px;
+        font-size: clamp(44px, 4vw, 56px);
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -1px;
+    }
+
+    .Frase3Body1 {
+        margin-top: 30px;
+        max-width: 610px;
+        font-size: 18px;
+        line-height: 1.65;
+    }
+
+    .CrearCuenta {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 4px;
+        max-width: 528px;
+    }
+
+    .EntradaEmail {
+        flex: 1;
+        height: 54px;
+        padding: 0 22px;
+        font-size: 15px;
+        letter-spacing: 0.04em;
+    }
+
+    .BotonCrearCuenta {
+        width: 164px;
+        height: 54px;
+        border-radius: 8px;
+        background: var(--naranja);
+        font-weight: 700;
+    }
+
+    .BotonCrearCuenta:hover {
+        background: var(--naranja-hover);
+    }
+
+    .ErrorEmail {
+        flex-basis: 100%;
+        margin-top: 4px;
+    }
+
+    .IrParaProfesionales {
+        margin-top: 10px;
+        max-width: 528px;
+        min-height: 54px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        border-radius: 6px;
+        background: var(--verde);
+        color: var(--blanco);
+        font-size: 16px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background-color 0.2s;
+    }
+
+    .IrParaProfesionales:hover {
+        background: var(--verde-hover);
+    }
+
+    .ChecksBody1 {
+        margin-top: 30px;
+        padding: 0;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px 26px;
+    }
+
+    .ChecksBody1 li {
+        gap: 4px;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .Contenedor2Body1 {
+        margin-top: 0;
+    }
+
+    .ImagenLandingContenedor2 {
+        max-width: 640px;
+        margin: 0 0 0 auto;
+    }
+
+    /* ---------- Cómo funciona ---------- */
+    .Body2 {
+        padding: 80px 0 96px;
+    }
+
+    .Contenedor1Body2 {
+        margin-top: 46px;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 62px;
+    }
+
+    .PasosTarjeta {
+        min-height: 0;
+        padding: 14px 14px 20px;
+        border-radius: 6px;
+        text-align: left;
+    }
+
+    .PasosTarjeta .NumeroPaso {
+        display: flex;
+        margin: 0 auto;
+    }
+
+    .PasosTarjeta h3 {
+        margin-top: 12px;
+        font-size: 20px;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+    .PasosTarjeta p {
+        margin-top: 6px;
+        font-size: 16px;
+        line-height: 1.85;
+    }
+
+    /* ---------- Servicios ---------- */
+    .Body3 {
+        padding: 60px 0 54px;
+    }
+
+    .Contenedor1Body3 {
+        margin-top: 40px;
+        grid-template-columns: repeat(3, minmax(0, 340px));
+        justify-content: space-between;
+        gap: 40px;
+    }
+
+    /* ---------- Limpieza robotizada ---------- */
+    .LimpiezaRobotizado {
+        background: var(--verde-fondo);
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .LimpiezaRobotizadoGrid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+        align-items: center;
+        max-width: 1440px;
+        width: 100%;
+        padding: 0 0 0 90px;
+    }
+
+    .Contenedor1LimpiezaRobotizado {
+        display: block;
+        padding: 60px 0;
+    }
+
+    .Contenedor2LimpiezaRobotizado {
+        margin-top: 0;
+        align-self: end;
+        padding-top: 20px;
+    }
+
+    .Contenedor2LimpiezaRobotizado img {
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .Contenedor1LimpiezaRobotizado .TituloSeccion {
+        max-width: 520px;
+        font-size: 42px;
+        line-height: 1.2;
+    }
+
+    .TextoLimpiezaRobotizado {
+        margin-top: 16px;
+        max-width: 600px;
+        font-size: 18px;
+        line-height: 1.65;
+    }
+
+    .ListaRobotizado {
+        margin-top: 26px;
+        gap: 18px;
+    }
+
+    .ListaRobotizado li {
+        gap: 4px;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    /* ---------- Seguridad ---------- */
+    .Body4 {
+        padding: 50px 0;
+    }
+
+    .Body4Grid {
+        display: grid;
+        grid-template-columns: minmax(0, 535px) minmax(0, 1fr);
+        align-items: center;
+        gap: 46px;
+    }
+
+    .Contenedor1Body4 img {
+        border-radius: 18px;
+    }
+
+    .Contenedor2Body4 {
+        margin-top: 0;
+    }
+
+    .Body4 .TituloSeccion {
+        margin-top: 24px;
+        font-size: 36px;
+    }
+
+    .ListaSeguridad {
+        margin-top: 30px;
+        gap: 30px;
+    }
+
+    .SeguridadTarjeta {
+        align-items: flex-start;
+        gap: 14px;
+    }
+
+    .IconoSeguridad {
+        width: 44px;
+        height: 44px;
+        margin-top: 4px;
+        border: 1px solid #DADADA;
+        border-radius: 10px;
+        background: #F1F1F1;
+    }
+
+    .SeguridadTarjeta h3 {
+        font-size: 20px;
+    }
+
+    .SeguridadTarjeta p {
+        margin-top: 6px;
+        font-size: 16px;
+        line-height: 1.2;
+    }
+
+    /* ---------- Para profesionales ---------- */
+    .Body5 {
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .Body5Grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+        align-items: center;
+    }
+
+    .Contenedor1Body5 {
+        padding: 60px 0;
+    }
+
+    .Body5 .TituloSeccion {
+        font-size: 38px;
+        font-weight: 700;
+        line-height: 1.25;
+    }
+
+    .Body5 .Etiqueta {
+        font-size: 13px;
+    }
+
+    .ListaBody5 {
+        margin-top: 30px;
+        gap: 18px;
+    }
+
+    .ListaBody5 li {
+        gap: 6px;
+        font-size: 17px;
+    }
+
+    .Contenedor2Body5 {
+        margin-top: 0;
+        align-self: end;
+        padding-top: 40px;
+    }
+
+    .ParaProfesionalesBody5 {
+        max-width: 640px;
+        margin: 0 0 0 auto;
+    }
+
+    /* ---------- Pasos para profesionales ---------- */
+    .PasosParaProfesionales {
+        background: var(--gris-claro);
+        padding: 44px 0 26px;
+        text-align: center;
+    }
+
+    .PasosParaProfesionales .Etiqueta {
+        font-size: 14px;
+    }
+
+    .PasosParaProfesionales .TituloSeccion {
+        margin-top: 6px;
+    }
+
+    .Contenedor1PasosParaProfesionales {
+        margin-top: 20px;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 53px;
+        text-align: left;
+    }
+
+    .TarjetaPasosParaProfesionales {
+        padding: 12px 16px 18px;
+        border: none;
+        border-radius: 4px;
+    }
+
+    .TarjetaPasosParaProfesionales img {
+        order: 0;
+        margin-top: 8px;
+        aspect-ratio: 243 / 141;
+    }
+
+    .TarjetaPasosParaProfesionales .NumeroPaso {
+        order: -1;
+        margin: 0 auto;
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+    }
+
+    .TarjetaPasosParaProfesionales h3 {
+        margin-top: 18px;
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    .TarjetaPasosParaProfesionales p {
+        margin-top: 4px;
+        font-size: 16px;
+        line-height: 1.2;
+    }
+
+    /* ---------- Preguntas frecuentes ---------- */
+    .Body6 {
+        padding: 90px 0 96px;
+    }
+
+    .Body6Grid {
+        display: grid;
+        grid-template-columns: minmax(0, 470px) minmax(0, 1fr);
+        gap: 44px;
+        width: calc(100% - 160px);
+        max-width: 1280px;
+    }
+
+    .Body6 .Etiqueta {
+        font-size: 14px;
+        letter-spacing: 0.12em;
+    }
+
+    .Body6 .TituloSeccion {
+        font-size: 36px;
+    }
+
+    .TextoBody6 {
+        margin-top: 28px;
+        font-size: 17px;
+    }
+
+    .ListaPreguntas {
+        margin-top: 0;
+        border-top: none;
+    }
+
+    .Pregunta summary,
+    .Pregunta[open] summary {
+        min-height: 66px;
+        padding: 16px 40px 16px 4px;
+        font-size: 17px;
+        font-weight: 500;
+    }
+
+    .Pregunta:first-child summary {
+        min-height: 0;
+        padding-top: 0;
+    }
+
+    .Pregunta summary::before,
+    .Pregunta summary::after {
+        width: 12px;
+        height: 1.8px;
+        background: var(--negro);
+    }
+
+    .Pregunta p {
+        margin-top: -6px;
+        padding: 0 0 16px;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.2;
+    }
+
+    /* ---------- Llamado final ---------- */
+    .BodyCTA {
+        padding: 0 0 68px;
+    }
+
+    .BodyCTA .Contenedor {
+        max-width: 1200px;
+    }
+
+    .TarjetaCTA {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+        min-height: 188px;
+        padding: 30px 52px 30px 74px;
+        border-radius: 24px;
+    }
+
+    .TarjetaCTA h2 {
+        max-width: none;
+        font-size: 36px;
+        font-weight: 800;
+    }
+
+    .TarjetaCTA p {
+        margin-top: 24px;
+        font-size: 16px;
+        color: var(--gris-texto);
+    }
+
+    .BotonCTA {
+        flex-shrink: 0;
+        margin: 0 0 18px;
+        width: 210px;
+        min-height: 50px;
+        border-radius: 6px;
+        background: var(--naranja);
+        font-weight: 700;
+    }
+
+    .BotonCTA:hover {
+        background: var(--naranja-hover);
+    }
+
+    /* ---------- Footer ---------- */
+    .Body7 {
+        padding: 46px 0 26px;
+    }
+
+    .Body7 .Contenedor {
+        max-width: 1274px;
+    }
+
+    .Body7Grid {
+        display: grid;
+        grid-template-columns: 398px minmax(0, 1fr);
+    }
+
+    .Contenedor1Body7 {
+        padding: 0;
+    }
+
+    .FooterLogo {
+        font-size: 21px;
+    }
+
+    .Contenedor1Body7 p {
+        margin-top: 24px;
+        max-width: 270px;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 1.25;
+        color: var(--blanco);
+    }
+
+    .Contenedor2Body7 {
+        margin-top: 0;
+        padding: 0;
+        grid-template-columns: 180px 220px 1fr;
+        gap: 0;
+    }
+
+    .TarjetaBody7 h3 {
+        font-size: 14px;
+    }
+
+    .TarjetaBody7 ul {
+        margin-top: 10px;
+    }
+
+    .TarjetaBody7 a {
+        font-size: 14px;
+        font-weight: 400;
+        color: #D7DAD9;
+    }
+
+    .FooterInferior {
+        margin-top: 12px;
+        padding: 14px 4px 0;
+        border-color: #4A4A4A;
+        font-size: 14px;
+    }
 }
