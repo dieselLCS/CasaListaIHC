@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalles del servicio | CasaLista</title>
+  <link rel="icon" href="assets/IconoLogo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="Detalles.css">
+</head>
+<body>
+
+  <!--
+    ICONOS: cada icono es una imagen dentro de assets/iconos/.
+    Si el archivo todavía no existe, se muestra un recuadro punteado
+    con el nombre del archivo que falta (ver Detalles.js).
+  -->
+
+  <div class="app">
+    <!-- ================= ENCABEZADO ================= -->
+    <header class="header">
+      <a href="Servicio.html" class="logo" aria-label="CasaLista, inicio">
+        <img class="logo-icon" src="assets/IconoLogo.png" alt="">
+        <span class="logo-text">Casa<span>Lista</span></span>
+      </a>
+
+      <div class="user-menu">
+        <button class="icon-btn" type="button" aria-label="Notificaciones">
+          <span class="icono-slot icono-campana"><img src="assets/iconos/IconoCampana.png" alt=""></span>
+        </button>
+
+        <div class="profile">
+          <button class="profile-btn" id="profileBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="profileMenu">
+            <span class="avatar">M</span>
+            <span class="user-name">Maribel</span>
+            <span class="icono-slot icono-chevron"><img src="assets/iconos/IconoFlechaAbajo.png" alt=""></span>
+          </button>
+
+          <ul class="dropdown" id="profileMenu" role="menu" hidden>
+            <li role="none">
+              <a role="menuitem" href="#" class="dropdown-item item-perfil">
+                <span class="icono-slot icono-menu"><img src="assets/iconos/IconoPerfil.png" alt=""></span>
+                Perfil
+              </a>
+            </li>
+            <li role="none">
+              <a role="menuitem" href="#" class="dropdown-item">
+                <span class="icono-slot icono-menu"><img src="assets/iconos/IconoReportar.png" alt=""></span>
+                Reportar
+              </a>
+            </li>
+            <li role="none">
+              <a role="menuitem" href="../auth/IniciarSesion.html" class="dropdown-item item-salir">
+                <span class="icono-slot icono-menu"><img src="assets/iconos/IconoCerrarSesion.png" alt=""></span>
+                Cerrar Sesion
+              </a>
+            </li>
+            <li role="none">
+              <a role="menuitem" href="#" class="dropdown-item">
+                <span class="icono-slot icono-menu"><img src="assets/iconos/IconoProfesional.png" alt=""></span>
+                Como Profesional
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <!-- ================= STEPPER ================= -->
+    <nav class="stepper" aria-label="Progreso de la solicitud">
+      <ol>
+        <li class="step done">
+          <span class="step-circle">1</span>
+          <span class="step-label">Servicio</span>
+        </li>
+        <li class="step active" aria-current="step">
+          <span class="step-circle">2</span>
+          <span class="step-label">Detalles</span>
+        </li>
+        <li class="step">
+          <span class="step-circle">3</span>
+          <span class="step-label">Fecha y Ubicacion</span>
+        </li>
+        <li class="step">
+          <span class="step-circle">4</span>
+          <span class="step-label">Negociacion</span>
+        </li>
+      </ol>
+    </nav>
+
+    <!-- ================= CONTENIDO ================= -->
+    <form class="content" id="formDetalles" novalidate>
+      <!-- Columna izquierda: descripción -->
+      <section class="col-left" aria-labelledby="tituloPagina">
+        <h1 class="page-title" id="tituloPagina">Cuéntanos más sobre tu servicio</h1>
+        <p class="page-subtitle">Completa los detalles para que los profesionales puedan darte una mejor propuesta.</p>
+
+        <div class="field-header">
+          <label class="field-label" for="descripcion">Describe lo que necesitas</label>
+          <span class="field-tag">Obligatorio</span>
+        </div>
+        <div class="textarea-box textarea-principal">
+          <textarea id="descripcion" name="descripcion" maxlength="500" required
+            placeholder="¿Qué trabajo necesitas y qué resultado esperas? Incluye lo que consideres importante."
+            aria-describedby="contador errorDescripcion ejemplo"></textarea>
+          <span class="contador" id="contador" aria-live="polite">0/500</span>
+        </div>
+        <small class="error" id="errorDescripcion"></small>
+        <p class="ayuda" id="ejemplo"><strong>Por ejemplo:</strong> limpiar un sofá, reparar una fuga de agua o instalar una repisa.</p>
+      </section>
+
+      <div class="divider" aria-hidden="true"></div>
+
+      <!-- Columna derecha: datos opcionales -->
+      <section class="col-right" aria-label="Información adicional">
+        <div class="campos">
+          <div class="field-header">
+            <label class="field-label" for="notas">¿Hay algo que debamos saber?</label>
+            <span class="field-tag">Opcional</span>
+          </div>
+          <div class="textarea-box textarea-notas">
+            <textarea id="notas" name="notas" maxlength="300"
+              placeholder="Acceso al lugar, materiales disponibles o cuidados especiales."></textarea>
+          </div>
+
+          <div class="field-header">
+            <span class="field-label" id="tituloFotos">Fotos de referencia</span>
+            <span class="field-tag">Opcional</span>
+          </div>
+
+          <!-- El input de archivos está oculto: el recuadro punteado es su etiqueta -->
+          <input type="file" id="fotos" class="sr-only" accept="image/jpeg,image/png" multiple aria-labelledby="tituloFotos" aria-describedby="infoFotos errorFotos">
+          <label for="fotos" class="subir-fotos" id="zonaFotos">
+            <span class="subir-icono"><span class="icono-slot icono-camara"><img src="assets/iconos/IconoCamara.png" alt=""></span></span>
+            <span class="subir-texto">
+              <span class="subir-titulo">Agregar fotos</span>
+              <span class="subir-info" id="infoFotos">Hasta 5 fotos · JPG o PNG · 10 MB por foto</span>
+            </span>
+            <span class="icono-slot icono-mas"><img src="assets/iconos/IconoMas.png" alt=""></span>
+          </label>
+          <small class="error" id="errorFotos"></small>
+
+          <ul class="lista-fotos" id="listaFotos" aria-label="Fotos agregadas"></ul>
+
+          <p class="ayuda ayuda-fotos">Muestra el objeto, la zona o el problema, si te ayuda.</p>
+
+          <p class="aviso">
+            <span class="icono-slot icono-info"><img src="assets/iconos/IconoInfo.png" alt=""></span>
+            No necesitas conocer los detalles técnicos.
+          </p>
+        </div>
+
+        <div class="acciones">
+          <a href="Servicio.html" class="btn btn-volver">Volver</a>
+          <button type="submit" class="btn btn-siguiente">Siguiente</button>
+        </div>
+      </section>
+    </form>
+  </div>
+
+  <script src="Detalles.js"></script>
+</body>
+</html>
