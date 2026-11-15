@@ -1,0 +1,261 @@
+/* =========================================
+   CASALISTA - SOLICITUD PUBLICADA
+   Diseño PC + Móvil
+   ========================================= */
+
+:root {
+  --crema: #fffcf7;
+  --blanco: #ffffff;
+  --verde-decoracion: #d8e8e2;
+  --verde: #0b6e63;
+  --verde-hover: #095a51;
+  --texto: #000000;
+  --texto-secundario: #52677f;
+  --borde: #dcdcdc;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--crema);
+  color: var(--texto);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* =========================================
+   FONDO Y DECORACIONES
+   ========================================= */
+.page {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+  overflow: hidden;
+}
+
+.decor {
+  position: absolute;
+  z-index: -1;
+  background: var(--verde-decoracion);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.decor-top-left {
+  width: 380px;
+  height: 340px;
+  top: -175px;
+  left: -195px;
+}
+
+.decor-top-center {
+  width: 370px;
+  height: 190px;
+  top: -125px;
+  left: 17%;
+}
+
+.decor-bottom-center {
+  width: 370px;
+  height: 160px;
+  bottom: -100px;
+  left: 59%;
+}
+
+.decor-bottom-right {
+  width: 380px;
+  height: 260px;
+  bottom: -130px;
+  right: -195px;
+}
+
+/* =========================================
+   TARJETA
+   ========================================= */
+.card {
+  width: 100%;
+  max-width: 1220px;
+  min-height: 700px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 1px minmax(0, 1fr);
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: 24px;
+}
+
+.illustration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 30px;
+}
+
+.illustration img {
+  width: 100%;
+  max-width: 470px;
+  height: auto;
+  display: block;
+}
+
+/* Línea divisoria que no toca los bordes de la tarjeta */
+.divider {
+  background: var(--borde);
+  margin: 30px 0 52px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 36px 80px 44px;
+}
+
+.content h1 {
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+}
+
+.content p {
+  margin-top: 18px;
+  max-width: 480px;
+  font-size: 27px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--texto-secundario);
+}
+
+.btn-primary {
+  margin-top: 46px;
+  width: 100%;
+  max-width: 528px;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: var(--verde);
+  color: var(--blanco);
+  font-size: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover {
+  background: var(--verde-hover);
+}
+
+.btn-primary:active {
+  transform: scale(0.99);
+}
+
+.btn-primary:focus-visible {
+  outline: 3px solid rgba(11, 110, 99, 0.45);
+  outline-offset: 4px;
+}
+
+/* =========================================
+   TABLET
+   ========================================= */
+@media (max-width: 1100px) {
+  .card {
+    min-height: 560px;
+  }
+
+  .content h1 {
+    font-size: 34px;
+  }
+
+  .content p {
+    margin-top: 14px;
+    font-size: 20px;
+  }
+
+  .btn-primary {
+    margin-top: 36px;
+    min-height: 64px;
+    font-size: 22px;
+  }
+}
+
+/* =========================================
+   MÓVIL
+   ========================================= */
+@media (max-width: 640px) {
+  body {
+    background: var(--blanco);
+  }
+
+  .page {
+    min-height: 100vh;
+    min-height: 100svh;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 20px 16px 22px;
+  }
+
+  .decor,
+  .divider {
+    display: none;
+  }
+
+  .card {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .illustration {
+    padding: 0;
+    margin-top: 14vh;
+  }
+
+  .illustration img {
+    max-width: 280px;
+  }
+
+  .content {
+    flex: 1;
+    justify-content: flex-start;
+    padding: 0;
+  }
+
+  .content h1 {
+    margin-top: 18px;
+    font-size: 27px;
+  }
+
+  .content p {
+    margin-top: 10px;
+    max-width: 262px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+
+  /* El botón se queda abajo de la pantalla */
+  .btn-primary {
+    margin-top: auto;
+    max-width: none;
+    min-height: 50px;
+    border-radius: 10px;
+    font-size: 16px;
+  }
+}

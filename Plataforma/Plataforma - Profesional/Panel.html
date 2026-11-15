@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel del profesional | CasaLista</title>
+  <link rel="icon" href="assets/IconoLogo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="Panel.css">
+</head>
+<body>
+
+  <!--
+    ICONOS: cada icono es una imagen dentro de assets/iconos/.
+    Si el archivo todavía no existe, se muestra un recuadro punteado
+    con el nombre del archivo que falta (ver Panel.js).
+  -->
+
+  <div class="app">
+    <!-- ================= ENCABEZADO ================= -->
+    <header class="header">
+      <a href="Panel.html" class="logo" aria-label="CasaLista, inicio">
+        <img class="logo-icon" src="assets/IconoLogo.png" alt="">
+        <span class="logo-text">Casa<span>Lista</span></span>
+      </a>
+
+      <div class="user-menu">
+        <button class="icon-btn" type="button" aria-label="Notificaciones">
+          <span class="icono-slot icono-campana"><img src="assets/iconos/IconoCampana.png" alt=""></span>
+        </button>
+
+        <div class="profile">
+          <button class="profile-btn" id="profileBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="profileMenu">
+            <span class="avatar">C</span>
+            <span class="user-name">Carlos</span>
+            <span class="icono-slot icono-chevron"><img src="assets/iconos/IconoFlechaAbajo.png" alt=""></span>
+          </button>
+
+          <ul class="dropdown" id="profileMenu" role="menu" hidden>
+            <li role="none">
+              <a role="menuitem" href="#" class="dropdown-item item-perfil">
+                <span class="icono-slot icono-menu"><img src="assets/iconos/IconoPerfil.png" alt=""></span>
+                Perfil
+              </a>
+            </li>
+            <li role="none">
+              <a role="menuitem" href="#" class="dropdown-item">
+                <span class="icono-slot icono-menu"><img src="assets/iconos/IconoReportar.png" alt=""></span>
+                Reportar
+              </a>
+            </li>
+            <li role="none">
+              <a role="menuitem" href="../auth/IniciarSesion.html" class="dropdown-item item-salir">
+                <span class="icono-slot icono-menu"><img src="assets/iconos/IconoCerrarSesion.png" alt=""></span>
+                Cerrar Sesion
+              </a>
+            </li>
+            <li role="none">
+              <a role="menuitem" href="../Plataforma - Cliente/Servicio.html" class="dropdown-item">
+                <span class="icono-slot icono-menu"><img src="assets/iconos/IconoCliente.png" alt=""></span>
+                Como Cliente
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main class="panel">
+      <!-- ================= SALUDO + DISPONIBILIDAD ================= -->
+      <section class="saludo">
+        <div>
+          <h1 class="page-title">Hola, Carlos</h1>
+          <p class="page-subtitle">Gasfitería · Santiago de Surco</p>
+        </div>
+
+        <label class="disponible">
+          <input type="checkbox" id="disponible" checked>
+          <span class="switch" aria-hidden="true"></span>
+          <span class="disponible-texto" id="disponibleTexto">Disponible</span>
+        </label>
+      </section>
+
+      <!-- ================= RESUMEN ================= -->
+      <ul class="resumen" aria-label="Resumen">
+        <li class="resumen-item">
+          <span class="resumen-num" id="numNuevas">3</span>
+          <span class="resumen-label">Solicitudes nuevas</span>
+        </li>
+        <li class="resumen-item">
+          <span class="resumen-num">5</span>
+          <span class="resumen-label">Servicios esta semana</span>
+        </li>
+        <li class="resumen-item">
+          <span class="resumen-num">4.8 <span class="estrella" aria-hidden="true">★</span></span>
+          <span class="resumen-label">Calificación</span>
+        </li>
+      </ul>
+
+      <div class="columnas">
+        <!-- ================= SOLICITUDES ================= -->
+        <section class="col-solicitudes" aria-labelledby="tituloSolicitudes">
+          <div class="seccion-header">
+            <h2 class="section-title" id="tituloSolicitudes">Solicitudes cerca de ti</h2>
+            <span class="seccion-tag" id="tagNuevas">3 nuevas</span>
+          </div>
+
+          <ul class="lista-solicitudes" id="listaSolicitudes">
+            <li class="solicitud">
+              <div class="solicitud-top">
+                <span class="tipo-icono"><span class="icono-slot icono-tipo"><img src="assets/iconos/IconoReparacionFugas.png" alt=""></span></span>
+                <div class="solicitud-info">
+                  <h3>Reparacion de fugas</h3>
+                  <p>Fuga debajo del lavadero de la cocina.</p>
+                </div>
+                <div class="precio">
+                  <span class="precio-label">Ofrece</span>
+                  <span class="precio-monto">S/ 80</span>
+                </div>
+              </div>
+              <ul class="meta">
+                <li><span class="icono-slot icono-meta"><img src="assets/iconos/IconoUbicacion.png" alt=""></span>Santiago de Surco · 1.2 km</li>
+                <li><span class="icono-slot icono-meta"><img src="assets/iconos/IconoCalendario.png" alt=""></span>Lun, 16 nov · 10:00 a. m.</li>
+              </ul>
+              <div class="solicitud-acciones">
+                <button type="button" class="btn-sm btn-contraoferta">Contraofertar</button>
+                <button type="button" class="btn-sm btn-aceptar">Aceptar</button>
+              </div>
+            </li>
+
+            <li class="solicitud">
+              <div class="solicitud-top">
+                <span class="tipo-icono"><span class="icono-slot icono-tipo"><img src="assets/iconos/IconoInstalacionGriferia.png" alt=""></span></span>
+                <div class="solicitud-info">
+                  <h3>Instalacion de griferia</h3>
+                  <p>Cambiar el caño del baño por uno nuevo (ya lo compré).</p>
+                </div>
+                <div class="precio">
+                  <span class="precio-label">Ofrece</span>
+                  <span class="precio-monto">S/ 120</span>
+                </div>
+              </div>
+              <ul class="meta">
+                <li><span class="icono-slot icono-meta"><img src="assets/iconos/IconoUbicacion.png" alt=""></span>Miraflores · 2.8 km</li>
+                <li><span class="icono-slot icono-meta"><img src="assets/iconos/IconoCalendario.png" alt=""></span>Mar, 17 nov · 3:00 p. m.</li>
+              </ul>
+              <div class="solicitud-acciones">
+                <button type="button" class="btn-sm btn-contraoferta">Contraofertar</button>
+                <button type="button" class="btn-sm btn-aceptar">Aceptar</button>
+              </div>
+            </li>
+
+            <li class="solicitud">
+              <div class="solicitud-top">
+                <span class="tipo-icono"><span class="icono-slot icono-tipo"><img src="assets/iconos/IconoDesatoroTuberias.png" alt=""></span></span>
+                <div class="solicitud-info">
+                  <h3>Desatoro de tuberias</h3>
+                  <p>El desagüe de la ducha no baja.</p>
+                </div>
+                <div class="precio">
+                  <span class="precio-label">Ofrece</span>
+                  <span class="precio-monto">S/ 90</span>
+                </div>
+              </div>
+              <ul class="meta">
+                <li><span class="icono-slot icono-meta"><img src="assets/iconos/IconoUbicacion.png" alt=""></span>Barranco · 3.5 km</li>
+                <li><span class="icono-slot icono-meta"><img src="assets/iconos/IconoCalendario.png" alt=""></span>Mié, 18 nov · 9:00 a. m.</li>
+              </ul>
+              <div class="solicitud-acciones">
+                <button type="button" class="btn-sm btn-contraoferta">Contraofertar</button>
+                <button type="button" class="btn-sm btn-aceptar">Aceptar</button>
+              </div>
+            </li>
+          </ul>
+
+          <p class="vacio-msg" id="sinSolicitudes" hidden>No tienes solicitudes nuevas por ahora.</p>
+        </section>
+
+        <div class="divider" aria-hidden="true"></div>
+
+        <!-- ================= PRÓXIMO SERVICIO ================= -->
+        <aside class="col-agenda" aria-labelledby="tituloProximo">
+          <h2 class="section-title" id="tituloProximo">Próximo servicio</h2>
+
+          <article class="proximo">
+            <div class="proximo-cuando">
+              <span class="icono-slot icono-meta"><img src="assets/iconos/IconoReloj.png" alt=""></span>
+              Hoy · 4:00 p. m.
+            </div>
+            <div class="proximo-servicio">
+              <span class="tipo-icono"><span class="icono-slot icono-tipo"><img src="assets/iconos/IconoInstalacionSanitaria.png" alt=""></span></span>
+              <div>
+                <h3>Instalacion sanitaria</h3>
+                <p>Maribel · S/ 150 acordado</p>
+              </div>
+            </div>
+            <p class="proximo-direccion">
+              <span class="icono-slot icono-meta"><img src="assets/iconos/IconoUbicacion.png" alt=""></span>
+              Av. Primavera 123, Santiago de Surco
+            </p>
+
+            <div class="codigo">
+              <span class="codigo-label">Código de seguridad</span>
+              <span class="codigo-valor">8425 - 1736</span>
+              <span class="codigo-ayuda">Díselo al cliente al llegar.</span>
+            </div>
+
+            <a href="#" class="btn btn-siguiente">Ver detalle</a>
+          </article>
+
+          <h2 class="section-title section-title-sm">Esta semana</h2>
+          <ul class="agenda">
+            <li><span class="agenda-dia">Lun 16</span><span class="agenda-txt">Mantenimiento de terma</span><span class="agenda-hora">11:00</span></li>
+            <li><span class="agenda-dia">Jue 19</span><span class="agenda-txt">Reparacion de fugas</span><span class="agenda-hora">09:30</span></li>
+          </ul>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <!-- Aviso breve tras aceptar o contraofertar -->
+  <p class="toast" id="toast" role="status" aria-live="polite" hidden></p>
+
+  <script src="Panel.js"></script>
+</body>
+</html>
