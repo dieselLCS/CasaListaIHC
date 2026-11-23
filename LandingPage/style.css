@@ -109,6 +109,19 @@ input {
 .IconoMenu {
     width: 26px;
     height: 26px;
+   .IconoHamburguesa {
+     display: flex;
+     flex-direction: column;
+      justify-content: space-between;
+     width: 26px;
+     height: 20px;
+   }
+
+   .IconoHamburguesa span {
+     height: 3px;
+     border-radius: 2px;
+     background: var(--verde);
+   }
 }
 
 /* =========================================
@@ -232,7 +245,7 @@ input {
 
 .MenuBoton {
     display: flex;
-    padding: 4px;
+    padding: 11px;
     cursor: pointer;
 }
 
